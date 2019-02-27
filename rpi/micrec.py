@@ -2,7 +2,7 @@ import speech_recognition as sr
 
 # obtain audio from the microphone
 r = sr.Recognizer()
-with sr.Microphone() as source:
+with sr.Microphone(device_index=2) as source:
     print("Listening")
     audio = r.listen(source)
 
