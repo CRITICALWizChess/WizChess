@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import time
 import serial
-import gpiozero
+from gpiozero import Button, LED
 
 # initialize serial
 ser = serial.Serial(            
