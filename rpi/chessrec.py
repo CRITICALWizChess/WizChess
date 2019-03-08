@@ -17,7 +17,16 @@ ser = serial.Serial(
 readyspeak = Button(2)
 listenled = LED(4)
 
+#put startup tone here, pygame suggested solution
+#its gonna be frikken cool
+
+#initialize variables
+player = "WHITE"
+convert = 0
+
 while 1:
+
+	#sets piece color
     
 	if readyspeak.is_pressed:
 		listenled.on()
@@ -29,15 +38,49 @@ while 1:
         
         # recognize speech using Sphinx
         try:
-            Command = r.recognize_sphinx(audio) +"\n" # save command as variable
-            print(Command) # print variable, this will not be in the final version
+            Commandi = r.recognize_sphinx(audio) +"\n" # save command as variable
+            print(Commandi) # print variable, this will not be in the final version
         except sr.UnknownValueError:
             print("Sphinx could not understand audio")
         except sr.RequestError as e:
             print("Sphinx error; {0}".format(e))
-        
-        ser.write(Command)
-		listenled.blink()
+                
+		listenled.blink() # processing
+		
+		#checks if string is usable (add a flag or summon to invoke the listen loop) 
+		
+		convert = 1
+		
+	if convert
+		#convert to usable format
+		parts = Commandi.split(" ",3)
+		if parts[3] == "ONE"
+			number = "1"
+		elif parts[3] == "TWO"
+			number = "2"
+		elif parts[3] == "THREE"
+			number = "3"
+		elif parts[3] == "FOUR"
+			number = "4"
+		elif parts[3] == "FIVE"
+			number = "5"
+		elif parts[3] == "SIX"
+			number = "6"
+		elif parts[3] == "SEVEN"
+			number = "7"
+		else
+			for i in range(1,3):
+				listenled.on()
+				sleep(1)
+				listenled.blink()
+				sleep(1)
+		Commando = player[0].lower()+parts[0][0].lower()+parts[2][0].lower()+number
+		if player == "WHITE"
+			player = "BLACK"
+		else
+			player = "WHITE"
+		
+		ser.write(Commando)
 		sleep(1)
 		listenled.off()
 		
