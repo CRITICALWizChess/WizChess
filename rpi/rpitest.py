@@ -51,7 +51,7 @@ while 1:
 		else:
 			print("N CONVERSION ERROR")
 			sleep(1)
-			continue
+			break
 		if parts[0] == "PAWN":
 			piece = "p"
 		elif parts[0] == "ROOK":
@@ -67,7 +67,7 @@ while 1:
 		else:
 			print("P CONVERSION ERROR")
 			sleep(1)
-			continue
+			break
 		Commando = player[0].lower()+piece+parts[2][0].lower()+number
 		if player == "WHITE":
 			player = "BLACK"
