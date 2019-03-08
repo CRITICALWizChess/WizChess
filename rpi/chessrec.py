@@ -26,8 +26,7 @@ convert = 0
 
 while 1:
 
-	#sets piece color
-    
+	   
 	if readyspeak.is_pressed:
 		listenled.on()
 	    # obtain audio from the microphone
@@ -48,12 +47,11 @@ while 1:
 		listenled.blink() # processing
 		
 		#checks if string is usable (add a flag or summon to invoke the listen loop) 
-		
+		parts = Commandi.split(" ",3)
 		convert = 1
 		
 	if convert
 		#convert to usable format
-		parts = Commandi.split(" ",3)
 		if parts[3] == "ONE"
 			number = "1"
 		elif parts[3] == "TWO"
@@ -82,6 +80,7 @@ while 1:
 		
 		ser.write(Commando)
 		sleep(1)
+		convert = 0
 		listenled.off()
 		
 		
