@@ -48,10 +48,12 @@ while 1:
 			number = "7"
 		elif parts[3] == "EIGHT":
 			number = "8"
+		# elif parts[3] == "TO"
+			# number = "2"
 		else:
-			print("N CONVERSION ERROR")
+			print("N CONVERSION ERROR\n")
 			sleep(1)
-			break
+			continue
 		if parts[0] == "PAWN":
 			piece = "p"
 		elif parts[0] == "ROOK":
@@ -65,15 +67,15 @@ while 1:
 		elif parts[0] == "KING":
 			piece = "k"
 		else:
-			print("P CONVERSION ERROR")
+			print("P CONVERSION ERROR\n")
 			sleep(1)
-			break
+			continue	
 		Commando = player[0].lower()+piece+parts[2][0].lower()+number
 		if player == "WHITE":
 			player = "BLACK"
 		else:
 			player = "WHITE"
 		
-		print("Commando is " + Commando)
+		print("Commando is " + Commando + "\n\n")
 		
 		convert = 0

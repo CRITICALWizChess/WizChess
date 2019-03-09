@@ -81,7 +81,7 @@ while 1:
 		else:
 			listenled.blink()
 			sleep(1)
-			break
+			continue
 		if parts[0] == "PAWN":
 			piece = "p"
 		elif parts[0] == "ROOK":
@@ -97,7 +97,7 @@ while 1:
 		else:
 			listenled.blink()
 			sleep(1)
-			break
+			continue
 		Commando = player[0].lower()+piece+parts[2][0].lower()+number
 		if player == "WHITE":
 			player = "BLACK"
