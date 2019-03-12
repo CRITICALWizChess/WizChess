@@ -17,7 +17,7 @@ void zero( void);
 #include <GPIO.h>
 #include <Thread.h>
 
-#define SYS_FREQ 100000000 //uhhh right, confirm this before testing
+#define SYS_FREQ 98304000 //uhhh right, confirm this before testing
 #define BUFFER_SIZE 10
 
 void UART_RECEIVEstring ( char* );
@@ -43,9 +43,7 @@ int main(void){
     while (true){
 
         UART_RECEIVEstring(movein);
-        xpd_puts("Hello, world!\n");
-        xpd_puts("Loop counter is: ");
-        xpd_echo_int(count, XPD_Flag_UnsignedDecimal);
+        xpd_puts(movein);
         xpd_putc('\n');
         long_wait();
         count += 1;
