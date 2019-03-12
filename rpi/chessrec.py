@@ -98,7 +98,7 @@ while 1:
 			listenled.blink()
 			sleep(1)
 			continue
-		Commando = player[0].lower()+piece+parts[2][0].lower()+number
+		Commando = player[0].lower()+piece+parts[2][0].lower()+number+"\n"
 		if player == "WHITE":
 			player = "BLACK"
 		else:
