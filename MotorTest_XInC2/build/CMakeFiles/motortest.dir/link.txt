@@ -1,0 +1,1 @@
+D:\SXC\bin\sxc-none-eabi-llvm-link.exe -o motortest.a  CMakeFiles/motortest.dir/src/Initialization.cpp.obj CMakeFiles/motortest.dir/src/main.cpp.obj D:\SXC\lib\sxc-none-eabi\sxc-crt0.a 

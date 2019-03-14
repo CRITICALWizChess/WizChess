@@ -1,0 +1,51 @@
+; ModuleID = 'D:\Documents\MotorTest_XInC2\src\Initialization.cpp'
+target datalayout = "e-p:16:16:16-i1:16:16-i8:16:16-i16:16:16-i32:16:16-a0:16:16-s0:16:16-n16"
+target triple = "XInC2"
+
+@llvm.global_ctors = appending global [1 x { i32, void ()* }] [{ i32, void ()* } { i32 65535, void ()* @_Z10Initializev }]
+
+define void @_Z10Initializev() nounwind {
+  %1 = tail call i16 @llvm.XInC2.inp(i16 114) nounwind
+  %2 = and i16 %1, -1025
+  tail call void @llvm.XInC2.outp(i16 %2, i16 114) nounwind
+  br label %3
+
+; <label>:3                                       ; preds = %3, %0
+  %4 = tail call i16 @llvm.XInC2.inp(i16 114) nounwind
+  %5 = icmp sgt i16 %4, -1
+  br i1 %5, label %6, label %3
+
+; <label>:6                                       ; preds = %3
+  tail call void @llvm.XInC2.outp(i16 1, i16 117) nounwind
+  tail call void @llvm.XInC2.outp(i16 2051, i16 116) nounwind
+  %7 = tail call i16 @llvm.XInC2.inp(i16 114) nounwind
+  %8 = and i16 %7, -1025
+  tail call void @llvm.XInC2.outp(i16 %8, i16 114) nounwind
+  br label %9
+
+; <label>:9                                       ; preds = %9, %6
+  %10 = tail call i16 @llvm.XInC2.inp(i16 114) nounwind
+  %11 = icmp sgt i16 %10, -1
+  br i1 %11, label %12, label %9
+
+; <label>:12                                      ; preds = %9
+  %13 = tail call i16 @llvm.XInC2.inp(i16 114) nounwind
+  %14 = or i16 %13, 3072
+  tail call void @llvm.XInC2.outp(i16 %14, i16 114) nounwind
+  br label %15
+
+; <label>:15                                      ; preds = %15, %12
+  %16 = tail call i16 @llvm.XInC2.inp(i16 114) nounwind
+  %17 = icmp sgt i16 %16, -1
+  br i1 %17, label %15, label %_Z14sys_clock_init12crystal_freq8sys_freq.exit
+
+_Z14sys_clock_init12crystal_freq8sys_freq.exit:   ; preds = %15
+  tail call void @llvm.XInC2.outp(i16 -32637, i16 115) nounwind
+  tail call void @llvm.XInC2.outp(i16 22, i16 112) nounwind
+  tail call void @llvm.XInC2.outp(i16 115, i16 113) nounwind
+  ret void
+}
+
+declare void @llvm.XInC2.outp(i16, i16) nounwind
+
+declare i16 @llvm.XInC2.inp(i16) nounwind
