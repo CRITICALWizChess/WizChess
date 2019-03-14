@@ -11,19 +11,23 @@ void northwest(int);
 void zero( void);
 */
 
-#include <UARTPin.h>
 #include <SystemClock.h>
 #include <XPD.h>
 #include <GPIO.h>
 #include <Thread.h>
+#include <UARTPin.h>
+#include <string.h>
 
-#define SYS_FREQ 98304000 //uhhh right, confirm this before testing
+
+#include "main.h"
+
+#define SYS_FREQ 98304000 //uhhh right, confirm this before testing(huh)
 #define BUFFER_SIZE 10
 
 void UART_RECEIVEstring ( char* );
 void long_wait( void );
 
-char movein[BUFFER_SIZE];
+
 
 // Setting up a UART RX/TX pair on PC1/PC2 at 115200 baud
 //  using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 115200>;
@@ -36,16 +40,28 @@ char movein[BUFFER_SIZE];
 
 int main(void){
 
-    using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 19200>;
-    using TX = UARTPin<GPIO_C, 2, SYS_FREQ / 19200>;
+  char movein[BUFFER_SIZE];
+  
+  // Set port D as inputs
+  gpio_set_config((0x00 << 8), GPIO_D);
+  // Set pin PC0 as output
+  // Pins are set as an output by setting a 1 in position N+8, where N is
+  // the GPIO pin number.
+  gpio_set_config((0x01 << 8), GPIO_C);  
 
     uint16_t count = 0;
     while (true){
 
-        UART_RECEIVEstring(movein);
+        using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 19200>;
+        using TX = UARTPin<GPIO_C, 2, SYS_FREQ / 19200>;
+        TX::
+
+        //UART_RECEIVEstring(movein);
+        //xpd_puts("uart recieved below\n");
+        //movein[0] = '1';
         xpd_puts(movein);
         xpd_putc('\n');
-        long_wait();
+        long_wait();  
         count += 1;
 
         // Toggle the LED based on the loop counter
@@ -57,7 +73,9 @@ int main(void){
     }
 }
 
-void UART_RECEIVEstring ( char *recieve ){
+void UART_RECEIVEstring ( char *receive){
+    using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 19200>;
+    using TX = UARTPin<GPIO_C, 2, SYS_FREQ / 19200>;
     int i=0;
     while (i<BUFFER_SIZE){
         receive[i] = RX::readByte();
@@ -65,6 +83,8 @@ void UART_RECEIVEstring ( char *recieve ){
             receive[i]='\0';
             break;
         }
+      ++i;
+      //xpd_echo_int(i, XPD_Flag_UnsignedDecimal);
     }
 }
 void long_wait()
