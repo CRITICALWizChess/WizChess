@@ -61,9 +61,9 @@ void UART_RECEIVEstring ( char *recieve ){
     int i=0;
     while (i<BUFFER_SIZE){
         receive[i] = RX::readByte();
-        if (recieve[i]=='\n'){
-            recieve[i]='\0';
-            break
+        if (receive[i]=='\n'){
+            receive[i]='\0';
+            break;
         }
     }
 }
