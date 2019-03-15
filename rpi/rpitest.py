@@ -1,54 +1,56 @@
 from time import sleep
 	
 #initialize variables
-player = "WHITE"
+#player = "WHITE"
 convert = 0
 speak = 0
-#number = " "
-#piece = " "
 
 
-def numberwtod(parts, number):
-	if parts[3] == "ONE":
+def numberwtod(parts, i):
+	exit = 0
+	if parts[i] == "ONE":
 		number = "1"
-	elif parts[3] == "TWO":
+	elif parts[i] == "TWO":
 		number = "2"
-	elif parts[3] == "THREE":
+	elif parts[i] == "THREE":
 		number = "3"
-	elif parts[3] == "FOUR":
+	elif parts[i] == "FOUR":
 		number = "4"
-	elif parts[3] == "FIVE":
+	elif parts[i] == "FIVE":
 		number = "5"
-	elif parts[3] == "SIX":
+	elif parts[i] == "SIX":
 		number = "6"
-	elif parts[3] == "SEVEN":
+	elif parts[i] == "SEVEN":
 		number = "7"
-	elif parts[3] == "EIGHT":
+	elif parts[i] == "EIGHT":
 		number = "8"
-	#elif parts[3] == "TO"
+	#elif parts[i] == "TO"
 		#number = "2"
 	else:
 		print("N CONVERSION ERROR\n")
 		sleep(1)
-	return 
+		exit = 1
+	return number, exit
 
-def piecewtol(str, piece):
-	if parts[0] == "PAWN":
+def piecewtol(parts, i):
+	exit = 0
+	if parts[i] == "PAWN":
 		piece = "p"
-	elif parts[0] == "ROOK":
+	elif parts[i] == "ROOK":
 		piece = "r"
-	elif parts[0] == "KNIGHT":
+	elif parts[i] == "KNIGHT":
 		piece = "n"
-	elif parts[0] == "BISHOP":
+	elif parts[i] == "BISHOP":
 		piece = "b"
-	elif parts[0] == "QUEEN":
+	elif parts[i] == "QUEEN":
 		piece = "q"
-	elif parts[0] == "KING":
+	elif parts[i] == "KING":
 		piece = "k"
 	else:
 		print("P CONVERSION ERROR\n")
 		sleep(1)
-	return 
+		exit = 1
+	return piece, exit
 
 
 while 1:
@@ -59,9 +61,9 @@ while 1:
 		print("Input is " + Commandi) # print variable, this will not be in the final version		
 		
 		#checks if string is usable (add a flag or summon to invoke the listen loop) 
-		if (len(Commandi) >= 16 and len(Commandi) <= 23):
-			parts = Commandi.split(" ",3)
-			if (len(parts[3]) <= 5):
+		if (len(Commandi) >= 20 and len(Commandi) <= 30): #16 and 23 for piece to intersect
+			parts = Commandi.split(" ",4)
+			if (len(parts[4]) <= 5 and parts[0]+parts[1] != parts[3]+parts[4]):
 				convert = 1
 				speak = 0
 			else:
@@ -76,15 +78,17 @@ while 1:
 	if convert:
 		#convert to usable format
 		#listenled.off() # processing
-		piece = " "
-		number = " "
-		piecewtol(parts, piece)
-		numberwtod(parts, number)
-		Commando = player[0].lower()+piece+parts[2][0].lower()+number+"\n"
-		if player == "WHITE":
-			player = "BLACK"
-		else:
-			player = "WHITE"
+		#piece, ex = piecewtol(parts)
+		number, ex = numberwtod(parts, 1)
+		number1, ex = numberwtod(parts, 4)
+		if ex:
+			ex = 0
+			continue
+		Commando = parts[1][0].lower()+number+" "+parts[3][0].lower()+number1+"\n"
+#		if player == "WHITE":
+#			player = "BLACK"
+#		else:
+#			player = "WHITE"
 		
 		print("Commando is " + Commando + "\n\n")
 		
