@@ -4,7 +4,51 @@ from time import sleep
 player = "WHITE"
 convert = 0
 speak = 0
+#number = " "
+#piece = " "
 
+
+def numberwtod(parts, number):
+	if parts[3] == "ONE":
+		number = "1"
+	elif parts[3] == "TWO":
+		number = "2"
+	elif parts[3] == "THREE":
+		number = "3"
+	elif parts[3] == "FOUR":
+		number = "4"
+	elif parts[3] == "FIVE":
+		number = "5"
+	elif parts[3] == "SIX":
+		number = "6"
+	elif parts[3] == "SEVEN":
+		number = "7"
+	elif parts[3] == "EIGHT":
+		number = "8"
+	#elif parts[3] == "TO"
+		#number = "2"
+	else:
+		print("N CONVERSION ERROR\n")
+		sleep(1)
+	return 
+
+def piecewtol(str, piece):
+	if parts[0] == "PAWN":
+		piece = "p"
+	elif parts[0] == "ROOK":
+		piece = "r"
+	elif parts[0] == "KNIGHT":
+		piece = "n"
+	elif parts[0] == "BISHOP":
+		piece = "b"
+	elif parts[0] == "QUEEN":
+		piece = "q"
+	elif parts[0] == "KING":
+		piece = "k"
+	else:
+		print("P CONVERSION ERROR\n")
+		sleep(1)
+	return 
 
 
 while 1:
@@ -32,44 +76,10 @@ while 1:
 	if convert:
 		#convert to usable format
 		#listenled.off() # processing
-		if parts[3] == "ONE":
-			number = "1"
-		elif parts[3] == "TWO":
-			number = "2"
-		elif parts[3] == "THREE":
-			number = "3"
-		elif parts[3] == "FOUR":
-			number = "4"
-		elif parts[3] == "FIVE":
-			number = "5"
-		elif parts[3] == "SIX":
-			number = "6"
-		elif parts[3] == "SEVEN":
-			number = "7"
-		elif parts[3] == "EIGHT":
-			number = "8"
-		# elif parts[3] == "TO"
-			# number = "2"
-		else:
-			print("N CONVERSION ERROR\n")
-			sleep(1)
-			continue
-		if parts[0] == "PAWN":
-			piece = "p"
-		elif parts[0] == "ROOK":
-			piece = "r"
-		elif parts[0] == "KNIGHT":
-			piece = "n"
-		elif parts[0] == "BISHOP":
-			piece = "b"
-		elif parts[0] == "QUEEN":
-			piece = "q"
-		elif parts[0] == "KING":
-			piece = "k"
-		else:
-			print("P CONVERSION ERROR\n")
-			sleep(1)
-			continue	
+		piece = " "
+		number = " "
+		piecewtol(parts, piece)
+		numberwtod(parts, number)
 		Commando = player[0].lower()+piece+parts[2][0].lower()+number+"\n"
 		if player == "WHITE":
 			player = "BLACK"

@@ -15,8 +15,9 @@ void zero( void);
 #include <XPD.h>
 #include <GPIO.h>
 #include <Thread.h>
-#include <UARTPin.h>
+#include <UART.h>
 #include <string.h>
+#include <UARTPin.h>
 
 
 #include "main.h"
@@ -27,7 +28,10 @@ void zero( void);
 void UART_RECEIVEstring ( char* );
 void long_wait( void );
 
+ //UART_Pin_Pair uart_pair1;
 
+//uart_pair1.rx.port = GPIO_B;
+//uart_pair1.rx.io_port = io_PB0;
 
 // Setting up a UART RX/TX pair on PC1/PC2 at 115200 baud
 //  using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 115200>;
@@ -52,12 +56,12 @@ int main(void){
     uint16_t count = 0;
     while (true){
 
-        using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 19200>;
-        using TX = UARTPin<GPIO_C, 2, SYS_FREQ / 19200>;
-        TX::
+        //using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 19200>;
+        //using TX = UARTPin<GPIO_C, 2, SYS_FREQ / 19200>;
+        //TX::
 
-        //UART_RECEIVEstring(movein);
-        //xpd_puts("uart recieved below\n");
+        UART_RECEIVEstring(movein);
+        xpd_puts("uart recieved below\n");
         //movein[0] = '1';
         xpd_puts(movein);
         xpd_putc('\n');
@@ -74,8 +78,8 @@ int main(void){
 }
 
 void UART_RECEIVEstring ( char *receive){
-    using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 19200>;
-    using TX = UARTPin<GPIO_C, 2, SYS_FREQ / 19200>;
+    using RX = UARTPin<GPIO_C, 1, SYS_FREQ / 9600>;
+    using TX = UARTPin<GPIO_C, 2, SYS_FREQ / 9600>;
     int i=0;
     while (i<BUFFER_SIZE){
         receive[i] = RX::readByte();
@@ -83,7 +87,7 @@ void UART_RECEIVEstring ( char *receive){
             receive[i]='\0';
             break;
         }
-      ++i;
+      i += 1;
       //xpd_echo_int(i, XPD_Flag_UnsignedDecimal);
     }
 }

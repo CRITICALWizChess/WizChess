@@ -78,6 +78,10 @@ while 1:
 			number = "6"
 		elif parts[3] == "SEVEN":
 			number = "7"
+		elif parts[3] == "EIGHT":
+			number = "8"
+		#elif parts[3] == "TO"
+			#number = "2"
 		else:
 			listenled.blink()
 			sleep(1)
