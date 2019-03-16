@@ -39,6 +39,8 @@ int main(void)
   // the GPIO pin number.
   gpio_set_config((0x01 << 9), GPIO_C);
 
+
+  // use PB0 for STEP and PB1 as DIR
   gpio_set_config((0x01 << 8), GPIO_B); // set pin PB0 as an output
   gpio_set_config((0x01 << 9), GPIO_B); // set pin Pb1 as an output
 
@@ -60,21 +62,22 @@ int main(void)
   // the number increments once per loop.
   // Also, toggle on and off an LED on the board.
   uint16_t count = 0;
+  gpio_write(0x02, GPIO_B); // set DIR for forward
   while (true) {
     xpd_putc('\n');
     xpd_puts("Loop counter is: ");
     xpd_echo_int(count, XPD_Flag_UnsignedDecimal);
     xpd_putc('\n');
     sys_clock_wait(10000);
-    count += 1;
-    
-    //gpio_write()
+    count += 1;    
 
     // Toggle the LED based on the loop counter
     if (count % 2) {
       gpio_write(0x02, GPIO_C);
+      gpio_write(0x03, GPIO_B); // set high for PB0, keep PB1 high
     } else {
       gpio_write(0x00, GPIO_C);
+      gpio_write(0x02, GPIO_B); // set low for PB0, keep PB1 high
     }
   }
 
