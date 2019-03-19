@@ -22,15 +22,15 @@ set(CMAKE_MAKEFILE_DEPENDS
   "D:/CMake/share/cmake-3.12/Modules/FindPythonInterp.cmake"
   "D:/CMake/share/cmake-3.12/Modules/Platform/Windows.cmake"
   "D:/CMake/share/cmake-3.12/Modules/Platform/WindowsPaths.cmake"
-  "../CMakeLists.txt"
-  "CMakeFiles/3.12.3/CMakeCCompiler.cmake"
-  "CMakeFiles/3.12.3/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.12.3/CMakeSystem.cmake"
   "D:/SXC/EeUtilConfig.cmake"
   "D:/SXC/EeUtilMacros.cmake"
   "D:/SXC/SXCConfig.cmake"
   "D:/SXC/SXCMacros.cmake"
   "D:/SXC/libspineConfig.cmake"
+  "../CMakeLists.txt"
+  "CMakeFiles/3.12.3/CMakeCCompiler.cmake"
+  "CMakeFiles/3.12.3/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.12.3/CMakeSystem.cmake"
   )
 
 # The corresponding makefile is:

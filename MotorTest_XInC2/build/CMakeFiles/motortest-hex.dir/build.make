@@ -42,10 +42,10 @@ RM = D:\CMake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Documents\MotorTest_XInC2
+CMAKE_SOURCE_DIR = D:\WizChess\MotorTest_XInC2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Documents\MotorTest_XInC2\build
+CMAKE_BINARY_DIR = D:\WizChess\MotorTest_XInC2\build
 
 # Utility rule file for motortest-hex.
 
@@ -58,27 +58,27 @@ CMakeFiles/motortest-hex: motortest.hex
 motortest.hex: motortest.main
 motortest.hex: code.asm
 motortest.hex: data.asm
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\Documents\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating motortest.hex"
-	D:\SXC\bin\sxc-xina.exe --out D:/Documents/MotorTest_XInC2/build/motortest.hex --in D:/Documents/MotorTest_XInC2/build/motortest.main
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating motortest.hex"
+	D:\SXC\bin\sxc-xina.exe --out D:/WizChess/MotorTest_XInC2/build/motortest.hex --in D:/WizChess/MotorTest_XInC2/build/motortest.main
 
 motortest.main: ../main.gen
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\Documents\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating motortest.main"
-	cmake -E env PYTHONPATH=D:/SXC/include/libspine/common/script;D:/SXC/include/libspine/hardware/script D:/Python/python.exe -m cogapp -d -D SRC_DIR=D:/Documents/MotorTest_XInC2 -D BUILD_DIR=D:/Documents/MotorTest_XInC2/build -D ART0_DIR=D:/SXC/include/sxc-art0 -D ART1_DIR= -D NAME=motortest -o D:/Documents/MotorTest_XInC2/build/motortest.main D:/Documents/MotorTest_XInC2/main.gen
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating motortest.main"
+	cmake -E env PYTHONPATH=D:/SXC/include/libspine/common/script;D:/SXC/include/libspine/hardware/script D:/Python/python.exe -m cogapp -d -D SRC_DIR=D:/WizChess/MotorTest_XInC2 -D BUILD_DIR=D:/WizChess/MotorTest_XInC2/build -D ART0_DIR=D:/SXC/include/sxc-art0 -D ART1_DIR= -D NAME=motortest -o D:/WizChess/MotorTest_XInC2/build/motortest.main D:/WizChess/MotorTest_XInC2/main.gen
 
 code.asm: motortest.s
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\Documents\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating code.asm, data.asm"
-	D:\SXC\bin\sxca.exe -i D:/Documents/MotorTest_XInC2/build/motortest.s -c D:/Documents/MotorTest_XInC2/build/code.asm -d D:/Documents/MotorTest_XInC2/build/data.asm
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating code.asm, data.asm"
+	D:\SXC\bin\sxca.exe -i D:/WizChess/MotorTest_XInC2/build/motortest.s -c D:/WizChess/MotorTest_XInC2/build/code.asm -d D:/WizChess/MotorTest_XInC2/build/data.asm
 
 data.asm: code.asm
 	@$(CMAKE_COMMAND) -E touch_nocreate data.asm
 
 motortest.s: motortest.opt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\Documents\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating motortest.s"
-	D:\SXC\bin\sxc-none-eabi-llc.exe D:/Documents/MotorTest_XInC2/build/motortest.opt -O3 -o D:/Documents/MotorTest_XInC2/build/motortest.s
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating motortest.s"
+	D:\SXC\bin\sxc-none-eabi-llc.exe D:/WizChess/MotorTest_XInC2/build/motortest.opt -O3 -o D:/WizChess/MotorTest_XInC2/build/motortest.s
 
 motortest.opt: motortest.a
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\Documents\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating motortest.opt"
-	D:\SXC\bin\sxc-none-eabi-opt.exe D:/Documents/MotorTest_XInC2/build/motortest.a -o D:/Documents/MotorTest_XInC2/build/motortest.opt -O3 -std-link-opts -loweratomic -unroll-threshold 20 -inline-threshold 15
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating motortest.opt"
+	D:\SXC\bin\sxc-none-eabi-opt.exe D:/WizChess/MotorTest_XInC2/build/motortest.a -o D:/WizChess/MotorTest_XInC2/build/motortest.opt -O3 -std-link-opts -loweratomic -unroll-threshold 20 -inline-threshold 15
 
 motortest-hex: CMakeFiles/motortest-hex
 motortest-hex: motortest.hex
@@ -101,6 +101,6 @@ CMakeFiles/motortest-hex.dir/clean:
 .PHONY : CMakeFiles/motortest-hex.dir/clean
 
 CMakeFiles/motortest-hex.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Documents\MotorTest_XInC2 D:\Documents\MotorTest_XInC2 D:\Documents\MotorTest_XInC2\build D:\Documents\MotorTest_XInC2\build D:\Documents\MotorTest_XInC2\build\CMakeFiles\motortest-hex.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\WizChess\MotorTest_XInC2 D:\WizChess\MotorTest_XInC2 D:\WizChess\MotorTest_XInC2\build D:\WizChess\MotorTest_XInC2\build D:\WizChess\MotorTest_XInC2\build\CMakeFiles\motortest-hex.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/motortest-hex.dir/depend
 

@@ -23,18 +23,18 @@ void setup() {
 }
 
 void loop() {
-  digitalWrite(DIRY,LOW);
-  digitalWrite(DIRX,LOW);
+  //digitalWrite(DIRY,LOW);
+  digitalWrite(DIRX,HIGH);
   delay(1000);
   //digitalWrite(DIRY,HIGH);
   //digitalWrite(DIRX,HIGH);
   
   for (int i = 0; i <= 10000; i++){
     digitalWrite(STEPX, HIGH);
-    digitalWrite(STEPY, HIGH);
+    //digitalWrite(STEPY, HIGH);
     delay(1);
     digitalWrite(STEPX, LOW);
-    digitalWrite(STEPY, LOW);
+    //digitalWrite(STEPY, LOW);
     delay(1);
   }
 

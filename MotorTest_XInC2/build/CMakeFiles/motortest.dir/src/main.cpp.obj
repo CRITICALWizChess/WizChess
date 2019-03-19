@@ -1,4 +1,4 @@
-; ModuleID = 'D:\Documents\MotorTest_XInC2\src\main.cpp'
+; ModuleID = 'D:\WizChess\MotorTest_XInC2\src\main.cpp'
 target datalayout = "e-p:16:16:16-i1:16:16-i8:16:16-i16:16:16-i32:16:16-a0:16:16-s0:16:16-n16"
 target triple = "XInC2"
 
@@ -64,26 +64,36 @@ define i16 @main() noreturn nounwind {
   store i16 %2, i16* @thrds_vector, align 1, !tbaa !0
   tail call void @llvm.XInC2.outp(i16 %2, i16 4) nounwind
   tail call void @llvm.XInC2.outp(i16 -32768, i16 6) nounwind
+  tail call void @llvm.XInC2.outp(i16 0, i16 34) nounwind
   br label %.backedge
 
-.backedge:                                        ; preds = %6, %7, %0
-  %count.0 = phi i16 [ 0, %0 ], [ %3, %7 ], [ %3, %6 ]
+.backedge:                                        ; preds = %6, %8, %0
+  %count.0 = phi i16 [ 0, %0 ], [ %3, %8 ], [ %3, %6 ]
   tail call void asm sideeffect "\09jsr\09r6, XPD_WriteByte", "{R1},~{R1},~{R6}"(i16 10) nounwind, !srcloc !3
   tail call void asm sideeffect "\09jsr\09r6, XPD_EchoString", "{R1},~{R1},~{R6}"(i16* getelementptr inbounds ([18 x i16]* @.str, i16 0, i16 0)) nounwind, !srcloc !4
   tail call void asm sideeffect "\09jsr\09r6, XPD_EchoUnsignedDec", "{R1},~{R1},~{R6}"(i16 %count.0) nounwind, !srcloc !5
   tail call void asm sideeffect "\09jsr\09r6, XPD_WriteByte", "{R1},~{R1},~{R6}"(i16 10) nounwind, !srcloc !3
   tail call void @_Z9long_waitv()
+  tail call void @_Z9long_waitv()
   %3 = add i16 %count.0, 1
   %4 = and i16 %3, 1
   %5 = icmp eq i16 %4, 0
-  br i1 %5, label %7, label %6
+  br i1 %5, label %8, label %6
 
 ; <label>:6                                       ; preds = %.backedge
   tail call void @llvm.XInC2.outp(i16 2, i16 36) nounwind
+  tail call void @llvm.XInC2.outp(i16 1, i16 34) nounwind
+  %7 = tail call i16 @llvm.XInC2.inp(i16 34) nounwind
+  tail call void asm sideeffect "\09jsr\09r6, XPD_EchoUnsignedDec", "{R1},~{R1},~{R6}"(i16 %7) nounwind, !srcloc !5
+  tail call void asm sideeffect "\09jsr\09r6, XPD_WriteByte", "{R1},~{R1},~{R6}"(i16 10) nounwind, !srcloc !3
   br label %.backedge
 
-; <label>:7                                       ; preds = %.backedge
+; <label>:8                                       ; preds = %.backedge
   tail call void @llvm.XInC2.outp(i16 0, i16 36) nounwind
+  tail call void @llvm.XInC2.outp(i16 0, i16 34) nounwind
+  %9 = tail call i16 @llvm.XInC2.inp(i16 34) nounwind
+  tail call void asm sideeffect "\09jsr\09r6, XPD_EchoUnsignedDec", "{R1},~{R1},~{R6}"(i16 %9) nounwind, !srcloc !5
+  tail call void asm sideeffect "\09jsr\09r6, XPD_WriteByte", "{R1},~{R1},~{R6}"(i16 10) nounwind, !srcloc !3
   br label %.backedge
 }
 
@@ -94,6 +104,6 @@ declare i16 @llvm.XInC2.inp(i16) nounwind
 !0 = metadata !{metadata !"int", metadata !1}
 !1 = metadata !{metadata !"omnipotent char", metadata !2}
 !2 = metadata !{metadata !"Simple C/C++ TBAA"}
-!3 = metadata !{i32 -2147396691}                  
-!4 = metadata !{i32 -2147396350}                  
-!5 = metadata !{i32 -2147395653}                  
+!3 = metadata !{i32 -2147396089}                  
+!4 = metadata !{i32 -2147395748}                  
+!5 = metadata !{i32 -2147395051}                  

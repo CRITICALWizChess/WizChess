@@ -876,7 +876,7 @@ ADDR   | VALUES        | LINE  | SOURCE CODE
 0xC01B |               | 00027 |   sxc___main_constructor_loop_exit:
        |               | 00028 |     
 0xC01B | 0x7FFF        | 00029 |     sub  sp, sp, 1
-0xC01C | 0x33EC 0xC046 | 00030 |     jsr  r6, sxc_main
+0xC01C | 0x33EC 0xC053 | 00030 |     jsr  r6, sxc_main
 0xC01E | 0x01FF        | 00031 |     bra  @
 
                                  //
@@ -885,7 +885,7 @@ ADDR   | VALUES        | LINE  | SOURCE CODE
                                  // "motortest.main"
                                  //
 
-       |               | 00009 | #include "D:/Documents/MotorTest_XInC2/build\code.asm"
+       |               | 00009 | #include "D:/WizChess/MotorTest_XInC2/build\code.asm"
 
                                  //
                                  // "motortest.main"
@@ -893,7 +893,7 @@ ADDR   | VALUES        | LINE  | SOURCE CODE
                                  // "motortest.main" -> "code.asm"
                                  //
 
-       |               | 00001 | 	// .file	"D:/Documents/MotorTest_XInC2/build/motortest.opt"
+       |               | 00001 | 	// .file	"D:/WizChess/MotorTest_XInC2/build/motortest.opt"
        |               | 00002 | //	.section	//.text,"xr"
        |               | 00003 | //align
        |               | 00004 | @ = (@ + 1-1)  & -1
@@ -937,232 +937,259 @@ ADDR   | VALUES        | LINE  | SOURCE CODE
        |               | 00042 | 
        |               | 00043 | //align
        |               | 00044 | @ = (@ + 1-1)  & -1
-0xC03D |               | 00045 | sxc__Z21button_reading_threadPv:        // @_Z21button_reading_threadPv
+0xC03D |               | 00045 | sxc__Z9long_waitv:                      // @_Z9long_waitv
        |               | 00046 | // BB#0:
 0xC03D | 0x0380        | 00047 | 	mov	r0, 0x0
-0xC03E | 0x1381        | 00048 | 	mov	r2, 0x1
-0xC03F | 0x0101        | 00049 | 	bra	BB1_1
-0xC040 |               | 00050 | BB1_2:                                  //   in Loop: Header=BB1_1 Depth=1
-0xC040 | 0x12A0        | 00051 | 	outp	r2, 0x20
-0xC041 |               | 00052 | BB1_1:                                  // %.backedge
-       |               | 00053 |                                         // =>This Inner Loop Header: Depth=1
-0xC041 | 0x0A26        | 00054 | 	inp	r1, 0x26
-0xC042 | 0x0EB1        | 00055 | 	bic	r1, r1, 0x6
-       |               | 00056 | 	//cmp	r1, 0x0
-0xC043 | 0x04FC        | 00057 | 	bc	VS, BB1_2
-       |               | 00058 | // BB#3:                                //   in Loop: Header=BB1_1 Depth=1
-0xC044 | 0x02A0        | 00059 | 	outp	r0, 0x20
-0xC045 | 0x01FB        | 00060 | 	bra	BB1_1
-       |               | 00061 | 
-       |               | 00062 | //sxc_main
-       |               | 00063 | //align
-       |               | 00064 | @ = (@ + 1-1)  & -1
-0xC046 |               | 00065 | sxc_main:                               // @main
-       |               | 00066 | // BB#0:
-0xC046 | 0x7F01        | 00067 | 	add	sp, sp, 0x1
-0xC047 | 0xF7FF        | 00068 | 	st	r6, sp, 0xffff          // 1-byte Folded Spill
-0xC048 | 0x03E8 0x0200 | 00069 | 	mov	r0, 0x200
-0xC04A | 0x02A5        | 00070 | 	outp	r0, 0x25
-0xC04B | 0x0BE8 0x0100 | 00071 | 	mov	r1, 0x100
-0xC04D | 0x0AA3        | 00072 | 	outp	r1, 0x23
-0xC04E | 0x02A3        | 00073 | 	outp	r0, 0x23
-0xC04F | 0x0AA1        | 00074 | 	outp	r1, 0x21
-0xC050 | 0x1380        | 00075 | 	mov	r2, 0x0
-0xC051 | 0x12A7        | 00076 | 	outp	r2, 0x27
-0xC052 | 0x03E8 0x8000 | 00077 | 	mov	r0, 0x8000
-0xC054 | 0x0287        | 00078 | 	outp	r0, 0x7
-0xC055 | 0x0B8A        | 00079 | 	mov	r1, 0xa
-0xC056 | 0x0A83        | 00080 | 	outp	r1, 0x3
-0xC057 | 0x1280        | 00081 | 	outp	r2, 0x0
-0xC058 | 0x0BE8 0xC03D | 00082 | 	mov	r1, sxc__Z21button_reading_threadPv
-0xC05A | 0x0A81        | 00083 | 	outp	r1, 0x1
-0xC05B | 0x0286        | 00084 | 	outp	r0, 0x6
-0xC05C | 0x0287        | 00085 | 	outp	r0, 0x7
-0xC05D | 0x0BEA 0xCA08 | 00086 | 	ld	r1, thrds_vector
-0xC05F | 0x0E89        | 00087 | 	and	r1, r1, 0xfffd
-0xC060 | 0x0BEB 0xCA08 | 00088 | 	st	r1, thrds_vector
-0xC062 | 0x0A84        | 00089 | 	outp	r1, 0x4
-0xC063 | 0x0286        | 00090 | 	outp	r0, 0x6
-0xC064 | 0x1BE8 0xD8F0 | 00091 | 	mov	r3, 0xd8f0
-0xC066 | 0x2382        | 00092 | 	mov	r4, 0x2
-0xC067 | 0x0380        | 00093 | 	mov	r0, 0x0
-0xC068 | 0x0101        | 00094 | 	bra	BB2_1
-0xC069 |               | 00095 | BB2_6:                                  //   in Loop: Header=BB2_1 Depth=1
-0xC069 | 0x22A4        | 00096 | 	outp	r4, 0x24
-0xC06A |               | 00097 | BB2_1:                                  // %.backedge
-       |               | 00098 |                                         // =>This Loop Header: Depth=1
-       |               | 00099 |                                         //     Child Loop BB2_2 Depth 2
-       |               | 00100 |                                         //       Child Loop BB2_3 Depth 3
-0xC06A | 0x0B8A        | 00101 | 	mov	r1, 0xa
-       |               | 00102 | 	//APP
-0xC06B | 0x33EC 0x1867 | 00103 | 		jsr	r6, XPD_WriteByte
-       |               | 00104 | 	//NO_APP
-0xC06D | 0x0BE8 0xCA09 | 00105 | 	mov	r1, sxc_.str
-       |               | 00106 | 	//APP
-0xC06F | 0x33EC 0x18BB | 00107 | 		jsr	r6, XPD_EchoString
-       |               | 00108 | 	//NO_APP
-0xC071 | 0x4800        | 00109 | 	add	r1, r0, 0x0
-       |               | 00110 | 	//APP
-0xC072 | 0x33EC 0x18CB | 00111 | 		jsr	r6, XPD_EchoUnsignedDec
-       |               | 00112 | 	//NO_APP
-0xC074 | 0x0B8A        | 00113 | 	mov	r1, 0xa
-       |               | 00114 | 	//APP
-0xC075 | 0x33EC 0x1867 | 00115 | 		jsr	r6, XPD_WriteByte
-       |               | 00116 | 	//NO_APP
-0xC077 | 0x2B80        | 00117 | 	mov	r5, 0x0
-0xC078 |               | 00118 | BB2_2:                                  //   Parent Loop BB2_1 Depth=1
-       |               | 00119 |                                         // =>  This Loop Header: Depth=2
-       |               | 00120 |                                         //       Child Loop BB2_3 Depth 3
-0xC078 | 0x0A03        | 00121 | 	inp	r1, 0x3
-0xC079 | 0x334B        | 00122 | 	sub	r6, r3, r1
-0xC07A |               | 00123 | BB2_3:                                  //   Parent Loop BB2_1 Depth=1
-       |               | 00124 |                                         //     Parent Loop BB2_2 Depth=2
-       |               | 00125 |                                         // =>    This Inner Loop Header: Depth=3
-0xC07A | 0x0A03        | 00126 | 	inp	r1, 0x3
-0xC07B | 0x0B0E        | 00127 | 	add	r1, r6, r1
-       |               | 00128 | 	//cmp	r1, 0x0
-0xC07C | 0x0CFD        | 00129 | 	bc	LT0, BB2_3
-       |               | 00130 | // BB#4:                                // %_Z14sys_clock_waitj.exit.i
-       |               | 00131 |                                         //   in Loop: Header=BB2_2 Depth=2
-0xC07D | 0x6D01        | 00132 | 	add	r5, r5, 0x1
-0xC07E | 0x0BC5 0xEC78 | 00133 | 	sub	r1, r5, 0x1388
-0xC080 | 0x28F7        | 00134 | 	bc	NE, BB2_2
-       |               | 00135 | // BB#5:                                // %_Z9long_waitv.exit
-       |               | 00136 |                                         //   in Loop: Header=BB2_1 Depth=1
-0xC081 | 0x4001        | 00137 | 	add	r0, r0, 0x1
-0xC082 | 0x0BC8 0x0001 | 00138 | 	and	r1, r0, 0x1
-       |               | 00139 | 	//cmp	r1, 0x0
-0xC084 | 0x28E4        | 00140 | 	bc	ZC, BB2_6
-       |               | 00141 | // BB#7:                                //   in Loop: Header=BB2_1 Depth=1
-0xC085 | 0x12A4        | 00142 | 	outp	r2, 0x24
-0xC086 | 0x01E3        | 00143 | 	bra	BB2_1
-       |               | 00144 | 
-       |               | 00145 | //align
-       |               | 00146 | @ = (@ + 1-1)  & -1
-0xC087 |               | 00147 | sxc___xinc_udiv:                        // @__xinc_udiv
-       |               | 00148 | // BB#0:
-0xC087 | 0x7F01        | 00149 | 	add	sp, sp, 0x1
-0xC088 | 0xF7FF        | 00150 | 	st	r6, sp, 0xffff          // 1-byte Folded Spill
-0xC089 | 0x4A00        | 00151 | 	add	r1, r2, 0x0
-0xC08A | 0x5300        | 00152 | 	add	r2, r3, 0x0
-       |               | 00153 | 	//APP
-0xC08B | 0x33EC 0x1816 | 00154 | 	jsr	r6, UnsignedDivide
-       |               | 00155 | 	//NO_APP
-0xC08D | 0x4100        | 00156 | 	add	r0, r1, 0x0
-0xC08E | 0xB7FF        | 00157 | 	ld	r6, sp, 0xffff          // 1-byte Folded Reload
-0xC08F | 0x7FFF        | 00158 | 	sub	sp, sp, 0x1
-0xC090 | 0x33E6        | 00159 | 	jsr	r6, r6
-       |               | 00160 | 
-       |               | 00161 | //align
-       |               | 00162 | @ = (@ + 1-1)  & -1
-0xC091 |               | 00163 | sxc___xinc_umod:                        // @__xinc_umod
-       |               | 00164 | // BB#0:
-0xC091 | 0x7F01        | 00165 | 	add	sp, sp, 0x1
-0xC092 | 0xF7FF        | 00166 | 	st	r6, sp, 0xffff          // 1-byte Folded Spill
-0xC093 | 0x4A00        | 00167 | 	add	r1, r2, 0x0
-0xC094 | 0x5300        | 00168 | 	add	r2, r3, 0x0
-       |               | 00169 | 	//APP
-0xC095 | 0x33EC 0x1816 | 00170 | 	jsr	r6, UnsignedDivide
-       |               | 00171 | 	//NO_APP
-0xC097 | 0x4200        | 00172 | 	add	r0, r2, 0x0
-0xC098 | 0xB7FF        | 00173 | 	ld	r6, sp, 0xffff          // 1-byte Folded Reload
-0xC099 | 0x7FFF        | 00174 | 	sub	sp, sp, 0x1
-0xC09A | 0x33E6        | 00175 | 	jsr	r6, r6
-       |               | 00176 | 
-       |               | 00177 | //align
-       |               | 00178 | @ = (@ + 1-1)  & -1
-0xC09B |               | 00179 | sxc_memset:                             // @memset
-       |               | 00180 | // BB#0:
-0xC09B | 0x4C00        | 00181 | 	sub	r1, r4, 0x0
-0xC09C | 0x0805        | 00182 | 	bc	EQ, BB5_3
-       |               | 00183 | // BB#1:
-0xC09D | 0x4200        | 00184 | 	add	r0, r2, 0x0
-0xC09E |               | 00185 | BB5_2:                                  // %.lr.ph
-       |               | 00186 |                                         // =>This Inner Loop Header: Depth=1
-0xC09E | 0xD800        | 00187 | 	st	r3, r0, 0x0
-0xC09F | 0x4001        | 00188 | 	add	r0, r0, 0x1
-0xC0A0 | 0x64FF        | 00189 | 	add	r4, r4, 0xffff
-       |               | 00190 | 	//cmp	r4, 0x0
-0xC0A1 | 0x28FC        | 00191 | 	bc	ZC, BB5_2
-0xC0A2 |               | 00192 | BB5_3:                                  // %._crit_edge
-0xC0A2 | 0x4200        | 00193 | 	add	r0, r2, 0x0
-0xC0A3 | 0x33E6        | 00194 | 	jsr	r6, r6
-       |               | 00195 | 
-       |               | 00196 | //align
-       |               | 00197 | @ = (@ + 1-1)  & -1
-0xC0A4 |               | 00198 | sxc_memcpy:                             // @memcpy
-       |               | 00199 | // BB#0:
-0xC0A4 | 0x0B5A        | 00200 | 	sub	r1, r2, r3
-0xC0A5 | 0x0809        | 00201 | 	bc	EQ, BB6_4
-       |               | 00202 | // BB#1:
-0xC0A6 | 0x4C00        | 00203 | 	sub	r1, r4, 0x0
-0xC0A7 | 0x0807        | 00204 | 	bc	EQ, BB6_4
-       |               | 00205 | // BB#2:
-0xC0A8 | 0x4200        | 00206 | 	add	r0, r2, 0x0
-0xC0A9 |               | 00207 | BB6_3:                                  // %.lr.ph.i
-       |               | 00208 |                                         // =>This Inner Loop Header: Depth=1
-0xC0A9 | 0x8B00        | 00209 | 	ld	r1, r3, 0x0
-0xC0AA | 0xC800        | 00210 | 	st	r1, r0, 0x0
-0xC0AB | 0x5B01        | 00211 | 	add	r3, r3, 0x1
-0xC0AC | 0x4001        | 00212 | 	add	r0, r0, 0x1
-0xC0AD | 0x64FF        | 00213 | 	add	r4, r4, 0xffff
-       |               | 00214 | 	//cmp	r4, 0x0
-0xC0AE | 0x28FA        | 00215 | 	bc	ZC, BB6_3
-0xC0AF |               | 00216 | BB6_4:                                  // %memcpy_base.exit
-0xC0AF | 0x4200        | 00217 | 	add	r0, r2, 0x0
-0xC0B0 | 0x33E6        | 00218 | 	jsr	r6, r6
-       |               | 00219 | 
-       |               | 00220 | //align
-       |               | 00221 | @ = (@ + 1-1)  & -1
-0xC0B1 |               | 00222 | sxc_memmove:                            // @memmove
-       |               | 00223 | // BB#0:
-0xC0B1 | 0x0381        | 00224 | 	mov	r0, 0x1
-0xC0B2 | 0x2B81        | 00225 | 	mov	r5, 0x1
-0xC0B3 | 0x4C00        | 00226 | 	sub	r1, r4, 0x0
-0xC0B4 | 0x0801        | 00227 | 	bc	EQ, @ + 1 + 0x1
-0xC0B5 | 0x2B80        | 00228 | 	mov	r5, 0x0 //Select--False
-0xC0B6 | 0x0B5A        | 00229 | 	sub	r1, r2, r3
-0xC0B7 | 0x0801        | 00230 | 	bc	EQ, @ + 1 + 0x1
-0xC0B8 | 0x0380        | 00231 | 	mov	r0, 0x0 //Select--False
-0xC0B9 | 0x05A8        | 00232 | 	ior	r0, r0, r5
-0xC0BA | 0x0B53        | 00233 | 	sub	r1, r3, r2
-0xC0BB | 0x200D        | 00234 | 	bc	UGE, BB7_1
-       |               | 00235 | // BB#4:
-0xC0BC | 0x03C8 0x0001 | 00236 | 	and	r0, r0, 0x1
-       |               | 00237 | 	//cmp	r0, 0x0
-0xC0BE | 0x2814        | 00238 | 	bc	ZC, BB7_7
-       |               | 00239 | // BB#5:                                // %.lr.ph23.i.preheader
-0xC0BF | 0x0381        | 00240 | 	mov	r0, 0x1
-0xC0C0 | 0x0360        | 00241 | 	sub	r0, r0, r4
-0xC0C1 |               | 00242 | BB7_6:                                  // %.lr.ph23.i
-       |               | 00243 |                                         // =>This Inner Loop Header: Depth=1
-0xC0C1 | 0x0B42        | 00244 | 	sub	r1, r2, r0
-0xC0C2 | 0x2343        | 00245 | 	sub	r4, r3, r0
-0xC0C3 | 0xA400        | 00246 | 	ld	r4, r4, 0x0
-0xC0C4 | 0xE100        | 00247 | 	st	r4, r1, 0x0
-0xC0C5 | 0x4001        | 00248 | 	add	r0, r0, 0x1
-0xC0C6 | 0x48FF        | 00249 | 	sub	r1, r0, 0x1
-0xC0C7 | 0x28F9        | 00250 | 	bc	NE, BB7_6
-0xC0C8 | 0x010A        | 00251 | 	bra	BB7_7
-0xC0C9 |               | 00252 | BB7_1:
-0xC0C9 | 0x03C8 0x0001 | 00253 | 	and	r0, r0, 0x1
-       |               | 00254 | 	//cmp	r0, 0x0
-0xC0CB | 0x2807        | 00255 | 	bc	ZC, BB7_7
-       |               | 00256 | // BB#2:
-0xC0CC | 0x4200        | 00257 | 	add	r0, r2, 0x0
-0xC0CD |               | 00258 | BB7_3:                                  // %.lr.ph.i
-       |               | 00259 |                                         // =>This Inner Loop Header: Depth=1
-0xC0CD | 0x8B00        | 00260 | 	ld	r1, r3, 0x0
-0xC0CE | 0xC800        | 00261 | 	st	r1, r0, 0x0
-0xC0CF | 0x5B01        | 00262 | 	add	r3, r3, 0x1
-0xC0D0 | 0x4001        | 00263 | 	add	r0, r0, 0x1
-0xC0D1 | 0x64FF        | 00264 | 	add	r4, r4, 0xffff
-       |               | 00265 | 	//cmp	r4, 0x0
-0xC0D2 | 0x28FA        | 00266 | 	bc	ZC, BB7_3
-0xC0D3 |               | 00267 | BB7_7:                                  // %memcpy_base.exit
-0xC0D3 | 0x4200        | 00268 | 	add	r0, r2, 0x0
-0xC0D4 | 0x33E6        | 00269 | 	jsr	r6, r6
-       |               | 00270 | 
+0xC03E | 0x13E8 0xD8F0 | 00048 | 	mov	r2, 0xd8f0
+0xC040 |               | 00049 | BB1_1:                                  // =>This Loop Header: Depth=1
+       |               | 00050 |                                         //     Child Loop BB1_2 Depth 2
+0xC040 | 0x0A03        | 00051 | 	inp	r1, 0x3
+0xC041 | 0x1B4A        | 00052 | 	sub	r3, r2, r1
+0xC042 |               | 00053 | BB1_2:                                  //   Parent Loop BB1_1 Depth=1
+       |               | 00054 |                                         // =>  This Inner Loop Header: Depth=2
+0xC042 | 0x0A03        | 00055 | 	inp	r1, 0x3
+0xC043 | 0x0B0B        | 00056 | 	add	r1, r3, r1
+       |               | 00057 | 	//cmp	r1, 0x0
+0xC044 | 0x0CFD        | 00058 | 	bc	LT0, BB1_2
+       |               | 00059 | // BB#3:                                // %_Z14sys_clock_waitj.exit
+       |               | 00060 |                                         //   in Loop: Header=BB1_1 Depth=1
+0xC045 | 0x4001        | 00061 | 	add	r0, r0, 0x1
+0xC046 | 0x0BC0 0xEC78 | 00062 | 	sub	r1, r0, 0x1388
+0xC048 | 0x28F7        | 00063 | 	bc	NE, BB1_1
+       |               | 00064 | // BB#4:
+0xC049 | 0x33E6        | 00065 | 	jsr	r6, r6
+       |               | 00066 | 
+       |               | 00067 | //align
+       |               | 00068 | @ = (@ + 1-1)  & -1
+0xC04A |               | 00069 | sxc__Z21button_reading_threadPv:        // @_Z21button_reading_threadPv
+       |               | 00070 | // BB#0:
+0xC04A | 0x0380        | 00071 | 	mov	r0, 0x0
+0xC04B | 0x1381        | 00072 | 	mov	r2, 0x1
+0xC04C | 0x0101        | 00073 | 	bra	BB2_1
+0xC04D |               | 00074 | BB2_2:                                  //   in Loop: Header=BB2_1 Depth=1
+0xC04D | 0x12A0        | 00075 | 	outp	r2, 0x20
+0xC04E |               | 00076 | BB2_1:                                  // %.backedge
+       |               | 00077 |                                         // =>This Inner Loop Header: Depth=1
+0xC04E | 0x0A26        | 00078 | 	inp	r1, 0x26
+0xC04F | 0x0EB1        | 00079 | 	bic	r1, r1, 0x6
+       |               | 00080 | 	//cmp	r1, 0x0
+0xC050 | 0x04FC        | 00081 | 	bc	VS, BB2_2
+       |               | 00082 | // BB#3:                                //   in Loop: Header=BB2_1 Depth=1
+0xC051 | 0x02A0        | 00083 | 	outp	r0, 0x20
+0xC052 | 0x01FB        | 00084 | 	bra	BB2_1
+       |               | 00085 | 
+       |               | 00086 | //sxc_main
+       |               | 00087 | //align
+       |               | 00088 | @ = (@ + 1-1)  & -1
+0xC053 |               | 00089 | sxc_main:                               // @main
+       |               | 00090 | // BB#0:
+0xC053 | 0x7F02        | 00091 | 	add	sp, sp, 0x2
+0xC054 | 0xF7FE        | 00092 | 	st	r6, sp, 0xfffe          // 1-byte Folded Spill
+0xC055 | 0x03E8 0x0200 | 00093 | 	mov	r0, 0x200
+0xC057 | 0x02A5        | 00094 | 	outp	r0, 0x25
+0xC058 | 0x0BE8 0x0100 | 00095 | 	mov	r1, 0x100
+0xC05A | 0x0AA3        | 00096 | 	outp	r1, 0x23
+0xC05B | 0x02A3        | 00097 | 	outp	r0, 0x23
+0xC05C | 0x0AA1        | 00098 | 	outp	r1, 0x21
+0xC05D | 0x1380        | 00099 | 	mov	r2, 0x0
+0xC05E | 0x12A7        | 00100 | 	outp	r2, 0x27
+0xC05F | 0x03E8 0x8000 | 00101 | 	mov	r0, 0x8000
+0xC061 | 0x0287        | 00102 | 	outp	r0, 0x7
+0xC062 | 0x0B8A        | 00103 | 	mov	r1, 0xa
+0xC063 | 0x0A83        | 00104 | 	outp	r1, 0x3
+0xC064 | 0x1280        | 00105 | 	outp	r2, 0x0
+0xC065 | 0x0BE8 0xC04A | 00106 | 	mov	r1, sxc__Z21button_reading_threadPv
+0xC067 | 0x0A81        | 00107 | 	outp	r1, 0x1
+0xC068 | 0x0286        | 00108 | 	outp	r0, 0x6
+0xC069 | 0x0287        | 00109 | 	outp	r0, 0x7
+0xC06A | 0x0BEA 0xCA08 | 00110 | 	ld	r1, thrds_vector
+0xC06C | 0x0E89        | 00111 | 	and	r1, r1, 0xfffd
+0xC06D | 0x0BEB 0xCA08 | 00112 | 	st	r1, thrds_vector
+0xC06F | 0x0A84        | 00113 | 	outp	r1, 0x4
+0xC070 | 0x0286        | 00114 | 	outp	r0, 0x6
+0xC071 | 0x12A2        | 00115 | 	outp	r2, 0x22
+0xC072 | 0x1381        | 00116 | 	mov	r2, 0x1
+0xC073 | 0x010A        | 00117 | 	bra	BB3_1
+0xC074 |               | 00118 | BB3_4:                                  //   in Loop: Header=BB3_1 Depth=1
+0xC074 | 0x0380        | 00119 | 	mov	r0, 0x0
+0xC075 | 0x02A4        | 00120 | 	outp	r0, 0x24
+0xC076 | 0x02A2        | 00121 | 	outp	r0, 0x22
+0xC077 | 0x0A22        | 00122 | 	inp	r1, 0x22
+       |               | 00123 | 	//APP
+0xC078 | 0x33EC 0x18CB | 00124 | 		jsr	r6, XPD_EchoUnsignedDec
+       |               | 00125 | 	//NO_APP
+0xC07A | 0x0B8A        | 00126 | 	mov	r1, 0xa
+       |               | 00127 | 	//APP
+0xC07B | 0x33EC 0x1867 | 00128 | 		jsr	r6, XPD_WriteByte
+       |               | 00129 | 	//NO_APP
+0xC07D | 0x5201        | 00130 | 	add	r2, r2, 0x1
+0xC07E |               | 00131 | BB3_1:                                  // %.backedge
+       |               | 00132 |                                         // =>This Inner Loop Header: Depth=1
+0xC07E | 0xD7FF        | 00133 | 	st	r2, sp, 0xffff          // 1-byte Folded Spill
+0xC07F | 0x0B8A        | 00134 | 	mov	r1, 0xa
+       |               | 00135 | 	//APP
+0xC080 | 0x33EC 0x1867 | 00136 | 		jsr	r6, XPD_WriteByte
+       |               | 00137 | 	//NO_APP
+0xC082 | 0x0BE8 0xCA09 | 00138 | 	mov	r1, sxc_.str
+       |               | 00139 | 	//APP
+0xC084 | 0x33EC 0x18BB | 00140 | 		jsr	r6, XPD_EchoString
+       |               | 00141 | 	//NO_APP
+0xC086 | 0x4AFF        | 00142 | 	add	r1, r2, 0xffff
+       |               | 00143 | 	//APP
+0xC087 | 0x33EC 0x18CB | 00144 | 		jsr	r6, XPD_EchoUnsignedDec
+       |               | 00145 | 	//NO_APP
+0xC089 | 0x0B8A        | 00146 | 	mov	r1, 0xa
+       |               | 00147 | 	//APP
+0xC08A | 0x33EC 0x1867 | 00148 | 		jsr	r6, XPD_WriteByte
+       |               | 00149 | 	//NO_APP
+0xC08C | 0x33EC 0xC03D | 00150 | 	jsr	r6, sxc__Z9long_waitv
+0xC08E | 0x33EC 0xC03D | 00151 | 	jsr	r6, sxc__Z9long_waitv
+0xC090 | 0x97FF        | 00152 | 	ld	r2, sp, 0xffff          // 1-byte Folded Reload
+0xC091 | 0x03CA 0x0001 | 00153 | 	and	r0, r2, 0x1
+       |               | 00154 | 	//cmp	r0, 0x0
+0xC093 | 0x08E0        | 00155 | 	bc	ZS, BB3_4
+       |               | 00156 | // BB#2:                                //   in Loop: Header=BB3_1 Depth=1
+0xC094 | 0x0382        | 00157 | 	mov	r0, 0x2
+0xC095 | 0x02A4        | 00158 | 	outp	r0, 0x24
+0xC096 | 0x0381        | 00159 | 	mov	r0, 0x1
+0xC097 | 0x02A2        | 00160 | 	outp	r0, 0x22
+0xC098 | 0x0A22        | 00161 | 	inp	r1, 0x22
+       |               | 00162 | 	//APP
+0xC099 | 0x33EC 0x18CB | 00163 | 		jsr	r6, XPD_EchoUnsignedDec
+       |               | 00164 | 	//NO_APP
+0xC09B | 0x0B8A        | 00165 | 	mov	r1, 0xa
+       |               | 00166 | 	//APP
+0xC09C | 0x33EC 0x1867 | 00167 | 		jsr	r6, XPD_WriteByte
+       |               | 00168 | 	//NO_APP
+0xC09E | 0x5201        | 00169 | 	add	r2, r2, 0x1
+0xC09F | 0x01DE        | 00170 | 	bra	BB3_1
+       |               | 00171 | 
+       |               | 00172 | //align
+       |               | 00173 | @ = (@ + 1-1)  & -1
+0xC0A0 |               | 00174 | sxc___xinc_udiv:                        // @__xinc_udiv
+       |               | 00175 | // BB#0:
+0xC0A0 | 0x7F01        | 00176 | 	add	sp, sp, 0x1
+0xC0A1 | 0xF7FF        | 00177 | 	st	r6, sp, 0xffff          // 1-byte Folded Spill
+0xC0A2 | 0x4A00        | 00178 | 	add	r1, r2, 0x0
+0xC0A3 | 0x5300        | 00179 | 	add	r2, r3, 0x0
+       |               | 00180 | 	//APP
+0xC0A4 | 0x33EC 0x1816 | 00181 | 	jsr	r6, UnsignedDivide
+       |               | 00182 | 	//NO_APP
+0xC0A6 | 0x4100        | 00183 | 	add	r0, r1, 0x0
+0xC0A7 | 0xB7FF        | 00184 | 	ld	r6, sp, 0xffff          // 1-byte Folded Reload
+0xC0A8 | 0x7FFF        | 00185 | 	sub	sp, sp, 0x1
+0xC0A9 | 0x33E6        | 00186 | 	jsr	r6, r6
+       |               | 00187 | 
+       |               | 00188 | //align
+       |               | 00189 | @ = (@ + 1-1)  & -1
+0xC0AA |               | 00190 | sxc___xinc_umod:                        // @__xinc_umod
+       |               | 00191 | // BB#0:
+0xC0AA | 0x7F01        | 00192 | 	add	sp, sp, 0x1
+0xC0AB | 0xF7FF        | 00193 | 	st	r6, sp, 0xffff          // 1-byte Folded Spill
+0xC0AC | 0x4A00        | 00194 | 	add	r1, r2, 0x0
+0xC0AD | 0x5300        | 00195 | 	add	r2, r3, 0x0
+       |               | 00196 | 	//APP
+0xC0AE | 0x33EC 0x1816 | 00197 | 	jsr	r6, UnsignedDivide
+       |               | 00198 | 	//NO_APP
+0xC0B0 | 0x4200        | 00199 | 	add	r0, r2, 0x0
+0xC0B1 | 0xB7FF        | 00200 | 	ld	r6, sp, 0xffff          // 1-byte Folded Reload
+0xC0B2 | 0x7FFF        | 00201 | 	sub	sp, sp, 0x1
+0xC0B3 | 0x33E6        | 00202 | 	jsr	r6, r6
+       |               | 00203 | 
+       |               | 00204 | //align
+       |               | 00205 | @ = (@ + 1-1)  & -1
+0xC0B4 |               | 00206 | sxc_memset:                             // @memset
+       |               | 00207 | // BB#0:
+0xC0B4 | 0x4C00        | 00208 | 	sub	r1, r4, 0x0
+0xC0B5 | 0x0805        | 00209 | 	bc	EQ, BB6_3
+       |               | 00210 | // BB#1:
+0xC0B6 | 0x4200        | 00211 | 	add	r0, r2, 0x0
+0xC0B7 |               | 00212 | BB6_2:                                  // %.lr.ph
+       |               | 00213 |                                         // =>This Inner Loop Header: Depth=1
+0xC0B7 | 0xD800        | 00214 | 	st	r3, r0, 0x0
+0xC0B8 | 0x4001        | 00215 | 	add	r0, r0, 0x1
+0xC0B9 | 0x64FF        | 00216 | 	add	r4, r4, 0xffff
+       |               | 00217 | 	//cmp	r4, 0x0
+0xC0BA | 0x28FC        | 00218 | 	bc	ZC, BB6_2
+0xC0BB |               | 00219 | BB6_3:                                  // %._crit_edge
+0xC0BB | 0x4200        | 00220 | 	add	r0, r2, 0x0
+0xC0BC | 0x33E6        | 00221 | 	jsr	r6, r6
+       |               | 00222 | 
+       |               | 00223 | //align
+       |               | 00224 | @ = (@ + 1-1)  & -1
+0xC0BD |               | 00225 | sxc_memcpy:                             // @memcpy
+       |               | 00226 | // BB#0:
+0xC0BD | 0x0B5A        | 00227 | 	sub	r1, r2, r3
+0xC0BE | 0x0809        | 00228 | 	bc	EQ, BB7_4
+       |               | 00229 | // BB#1:
+0xC0BF | 0x4C00        | 00230 | 	sub	r1, r4, 0x0
+0xC0C0 | 0x0807        | 00231 | 	bc	EQ, BB7_4
+       |               | 00232 | // BB#2:
+0xC0C1 | 0x4200        | 00233 | 	add	r0, r2, 0x0
+0xC0C2 |               | 00234 | BB7_3:                                  // %.lr.ph.i
+       |               | 00235 |                                         // =>This Inner Loop Header: Depth=1
+0xC0C2 | 0x8B00        | 00236 | 	ld	r1, r3, 0x0
+0xC0C3 | 0xC800        | 00237 | 	st	r1, r0, 0x0
+0xC0C4 | 0x5B01        | 00238 | 	add	r3, r3, 0x1
+0xC0C5 | 0x4001        | 00239 | 	add	r0, r0, 0x1
+0xC0C6 | 0x64FF        | 00240 | 	add	r4, r4, 0xffff
+       |               | 00241 | 	//cmp	r4, 0x0
+0xC0C7 | 0x28FA        | 00242 | 	bc	ZC, BB7_3
+0xC0C8 |               | 00243 | BB7_4:                                  // %memcpy_base.exit
+0xC0C8 | 0x4200        | 00244 | 	add	r0, r2, 0x0
+0xC0C9 | 0x33E6        | 00245 | 	jsr	r6, r6
+       |               | 00246 | 
+       |               | 00247 | //align
+       |               | 00248 | @ = (@ + 1-1)  & -1
+0xC0CA |               | 00249 | sxc_memmove:                            // @memmove
+       |               | 00250 | // BB#0:
+0xC0CA | 0x0381        | 00251 | 	mov	r0, 0x1
+0xC0CB | 0x2B81        | 00252 | 	mov	r5, 0x1
+0xC0CC | 0x4C00        | 00253 | 	sub	r1, r4, 0x0
+0xC0CD | 0x0801        | 00254 | 	bc	EQ, @ + 1 + 0x1
+0xC0CE | 0x2B80        | 00255 | 	mov	r5, 0x0 //Select--False
+0xC0CF | 0x0B5A        | 00256 | 	sub	r1, r2, r3
+0xC0D0 | 0x0801        | 00257 | 	bc	EQ, @ + 1 + 0x1
+0xC0D1 | 0x0380        | 00258 | 	mov	r0, 0x0 //Select--False
+0xC0D2 | 0x05A8        | 00259 | 	ior	r0, r0, r5
+0xC0D3 | 0x0B53        | 00260 | 	sub	r1, r3, r2
+0xC0D4 | 0x200D        | 00261 | 	bc	UGE, BB8_1
+       |               | 00262 | // BB#4:
+0xC0D5 | 0x03C8 0x0001 | 00263 | 	and	r0, r0, 0x1
+       |               | 00264 | 	//cmp	r0, 0x0
+0xC0D7 | 0x2814        | 00265 | 	bc	ZC, BB8_7
+       |               | 00266 | // BB#5:                                // %.lr.ph23.i.preheader
+0xC0D8 | 0x0381        | 00267 | 	mov	r0, 0x1
+0xC0D9 | 0x0360        | 00268 | 	sub	r0, r0, r4
+0xC0DA |               | 00269 | BB8_6:                                  // %.lr.ph23.i
+       |               | 00270 |                                         // =>This Inner Loop Header: Depth=1
+0xC0DA | 0x0B42        | 00271 | 	sub	r1, r2, r0
+0xC0DB | 0x2343        | 00272 | 	sub	r4, r3, r0
+0xC0DC | 0xA400        | 00273 | 	ld	r4, r4, 0x0
+0xC0DD | 0xE100        | 00274 | 	st	r4, r1, 0x0
+0xC0DE | 0x4001        | 00275 | 	add	r0, r0, 0x1
+0xC0DF | 0x48FF        | 00276 | 	sub	r1, r0, 0x1
+0xC0E0 | 0x28F9        | 00277 | 	bc	NE, BB8_6
+0xC0E1 | 0x010A        | 00278 | 	bra	BB8_7
+0xC0E2 |               | 00279 | BB8_1:
+0xC0E2 | 0x03C8 0x0001 | 00280 | 	and	r0, r0, 0x1
+       |               | 00281 | 	//cmp	r0, 0x0
+0xC0E4 | 0x2807        | 00282 | 	bc	ZC, BB8_7
+       |               | 00283 | // BB#2:
+0xC0E5 | 0x4200        | 00284 | 	add	r0, r2, 0x0
+0xC0E6 |               | 00285 | BB8_3:                                  // %.lr.ph.i
+       |               | 00286 |                                         // =>This Inner Loop Header: Depth=1
+0xC0E6 | 0x8B00        | 00287 | 	ld	r1, r3, 0x0
+0xC0E7 | 0xC800        | 00288 | 	st	r1, r0, 0x0
+0xC0E8 | 0x5B01        | 00289 | 	add	r3, r3, 0x1
+0xC0E9 | 0x4001        | 00290 | 	add	r0, r0, 0x1
+0xC0EA | 0x64FF        | 00291 | 	add	r4, r4, 0xffff
+       |               | 00292 | 	//cmp	r4, 0x0
+0xC0EB | 0x28FA        | 00293 | 	bc	ZC, BB8_3
+0xC0EC |               | 00294 | BB8_7:                                  // %memcpy_base.exit
+0xC0EC | 0x4200        | 00295 | 	add	r0, r2, 0x0
+0xC0ED | 0x33E6        | 00296 | 	jsr	r6, r6
+       |               | 00297 | 
 
                                  //
                                  // "motortest.main" -> "code.asm"
@@ -1242,7 +1269,7 @@ ADDR   | VALUES        | LINE  | SOURCE CODE
                                  // "motortest.main"
                                  //
 
-       |               | 00012 | #include "D:/Documents/MotorTest_XInC2/build\data.asm"
+       |               | 00012 | #include "D:/WizChess/MotorTest_XInC2/build\data.asm"
 
                                  //
                                  // "motortest.main"

@@ -1,4 +1,4 @@
-	// .file	"D:/Documents/MotorTest_XInC2/build/motortest.opt"
+	// .file	"D:/WizChess/MotorTest_XInC2/build/motortest.opt"
 //	.section	//.text,"xr"
 //align
 @ = (@ + 1-1)  & -1
@@ -42,30 +42,54 @@ BB0_5:                                  // =>This Inner Loop Header: Depth=1
 
 //align
 @ = (@ + 1-1)  & -1
+sxc__Z9long_waitv:                      // @_Z9long_waitv
+// BB#0:
+	mov	r0, 0x0
+	mov	r2, 0xd8f0
+BB1_1:                                  // =>This Loop Header: Depth=1
+                                        //     Child Loop BB1_2 Depth 2
+	inp	r1, 0x3
+	sub	r3, r2, r1
+BB1_2:                                  //   Parent Loop BB1_1 Depth=1
+                                        // =>  This Inner Loop Header: Depth=2
+	inp	r1, 0x3
+	add	r1, r3, r1
+	//cmp	r1, 0x0
+	bc	LT0, BB1_2
+// BB#3:                                // %_Z14sys_clock_waitj.exit
+                                        //   in Loop: Header=BB1_1 Depth=1
+	add	r0, r0, 0x1
+	sub	r1, r0, 0x1388
+	bc	NE, BB1_1
+// BB#4:
+	jsr	r6, r6
+
+//align
+@ = (@ + 1-1)  & -1
 sxc__Z21button_reading_threadPv:        // @_Z21button_reading_threadPv
 // BB#0:
 	mov	r0, 0x0
 	mov	r2, 0x1
-	bra	BB1_1
-BB1_2:                                  //   in Loop: Header=BB1_1 Depth=1
+	bra	BB2_1
+BB2_2:                                  //   in Loop: Header=BB2_1 Depth=1
 	outp	r2, 0x20
-BB1_1:                                  // %.backedge
+BB2_1:                                  // %.backedge
                                         // =>This Inner Loop Header: Depth=1
 	inp	r1, 0x26
 	bic	r1, r1, 0x6
 	//cmp	r1, 0x0
-	bc	VS, BB1_2
-// BB#3:                                //   in Loop: Header=BB1_1 Depth=1
+	bc	VS, BB2_2
+// BB#3:                                //   in Loop: Header=BB2_1 Depth=1
 	outp	r0, 0x20
-	bra	BB1_1
+	bra	BB2_1
 
 //sxc_main
 //align
 @ = (@ + 1-1)  & -1
 sxc_main:                               // @main
 // BB#0:
-	add	sp, sp, 0x1
-	st	r6, sp, 0xffff          // 1-byte Folded Spill
+	add	sp, sp, 0x2
+	st	r6, sp, 0xfffe          // 1-byte Folded Spill
 	mov	r0, 0x200
 	outp	r0, 0x25
 	mov	r1, 0x100
@@ -88,16 +112,25 @@ sxc_main:                               // @main
 	st	r1, thrds_vector
 	outp	r1, 0x4
 	outp	r0, 0x6
-	mov	r3, 0xd8f0
-	mov	r4, 0x2
+	outp	r2, 0x22
+	mov	r2, 0x1
+	bra	BB3_1
+BB3_4:                                  //   in Loop: Header=BB3_1 Depth=1
 	mov	r0, 0x0
-	bra	BB2_1
-BB2_6:                                  //   in Loop: Header=BB2_1 Depth=1
-	outp	r4, 0x24
-BB2_1:                                  // %.backedge
-                                        // =>This Loop Header: Depth=1
-                                        //     Child Loop BB2_2 Depth 2
-                                        //       Child Loop BB2_3 Depth 3
+	outp	r0, 0x24
+	outp	r0, 0x22
+	inp	r1, 0x22
+	//APP
+		jsr	r6, XPD_EchoUnsignedDec
+	//NO_APP
+	mov	r1, 0xa
+	//APP
+		jsr	r6, XPD_WriteByte
+	//NO_APP
+	add	r2, r2, 0x1
+BB3_1:                                  // %.backedge
+                                        // =>This Inner Loop Header: Depth=1
+	st	r2, sp, 0xffff          // 1-byte Folded Spill
 	mov	r1, 0xa
 	//APP
 		jsr	r6, XPD_WriteByte
@@ -106,7 +139,7 @@ BB2_1:                                  // %.backedge
 	//APP
 		jsr	r6, XPD_EchoString
 	//NO_APP
-	add	r1, r0, 0x0
+	add	r1, r2, 0xffff
 	//APP
 		jsr	r6, XPD_EchoUnsignedDec
 	//NO_APP
@@ -114,33 +147,27 @@ BB2_1:                                  // %.backedge
 	//APP
 		jsr	r6, XPD_WriteByte
 	//NO_APP
-	mov	r5, 0x0
-BB2_2:                                  //   Parent Loop BB2_1 Depth=1
-                                        // =>  This Loop Header: Depth=2
-                                        //       Child Loop BB2_3 Depth 3
-	inp	r1, 0x3
-	sub	r6, r3, r1
-BB2_3:                                  //   Parent Loop BB2_1 Depth=1
-                                        //     Parent Loop BB2_2 Depth=2
-                                        // =>    This Inner Loop Header: Depth=3
-	inp	r1, 0x3
-	add	r1, r6, r1
-	//cmp	r1, 0x0
-	bc	LT0, BB2_3
-// BB#4:                                // %_Z14sys_clock_waitj.exit.i
-                                        //   in Loop: Header=BB2_2 Depth=2
-	add	r5, r5, 0x1
-	sub	r1, r5, 0x1388
-	bc	NE, BB2_2
-// BB#5:                                // %_Z9long_waitv.exit
-                                        //   in Loop: Header=BB2_1 Depth=1
-	add	r0, r0, 0x1
-	and	r1, r0, 0x1
-	//cmp	r1, 0x0
-	bc	ZC, BB2_6
-// BB#7:                                //   in Loop: Header=BB2_1 Depth=1
-	outp	r2, 0x24
-	bra	BB2_1
+	jsr	r6, sxc__Z9long_waitv
+	jsr	r6, sxc__Z9long_waitv
+	ld	r2, sp, 0xffff          // 1-byte Folded Reload
+	and	r0, r2, 0x1
+	//cmp	r0, 0x0
+	bc	ZS, BB3_4
+// BB#2:                                //   in Loop: Header=BB3_1 Depth=1
+	mov	r0, 0x2
+	outp	r0, 0x24
+	mov	r0, 0x1
+	outp	r0, 0x22
+	inp	r1, 0x22
+	//APP
+		jsr	r6, XPD_EchoUnsignedDec
+	//NO_APP
+	mov	r1, 0xa
+	//APP
+		jsr	r6, XPD_WriteByte
+	//NO_APP
+	add	r2, r2, 0x1
+	bra	BB3_1
 
 //align
 @ = (@ + 1-1)  & -1
@@ -179,17 +206,17 @@ sxc___xinc_umod:                        // @__xinc_umod
 sxc_memset:                             // @memset
 // BB#0:
 	sub	r1, r4, 0x0
-	bc	EQ, BB5_3
+	bc	EQ, BB6_3
 // BB#1:
 	add	r0, r2, 0x0
-BB5_2:                                  // %.lr.ph
+BB6_2:                                  // %.lr.ph
                                         // =>This Inner Loop Header: Depth=1
 	st	r3, r0, 0x0
 	add	r0, r0, 0x1
 	add	r4, r4, 0xffff
 	//cmp	r4, 0x0
-	bc	ZC, BB5_2
-BB5_3:                                  // %._crit_edge
+	bc	ZC, BB6_2
+BB6_3:                                  // %._crit_edge
 	add	r0, r2, 0x0
 	jsr	r6, r6
 
@@ -198,13 +225,13 @@ BB5_3:                                  // %._crit_edge
 sxc_memcpy:                             // @memcpy
 // BB#0:
 	sub	r1, r2, r3
-	bc	EQ, BB6_4
+	bc	EQ, BB7_4
 // BB#1:
 	sub	r1, r4, 0x0
-	bc	EQ, BB6_4
+	bc	EQ, BB7_4
 // BB#2:
 	add	r0, r2, 0x0
-BB6_3:                                  // %.lr.ph.i
+BB7_3:                                  // %.lr.ph.i
                                         // =>This Inner Loop Header: Depth=1
 	ld	r1, r3, 0x0
 	st	r1, r0, 0x0
@@ -212,8 +239,8 @@ BB6_3:                                  // %.lr.ph.i
 	add	r0, r0, 0x1
 	add	r4, r4, 0xffff
 	//cmp	r4, 0x0
-	bc	ZC, BB6_3
-BB6_4:                                  // %memcpy_base.exit
+	bc	ZC, BB7_3
+BB7_4:                                  // %memcpy_base.exit
 	add	r0, r2, 0x0
 	jsr	r6, r6
 
@@ -231,15 +258,15 @@ sxc_memmove:                            // @memmove
 	mov	r0, 0x0 //Select--False
 	ior	r0, r0, r5
 	sub	r1, r3, r2
-	bc	UGE, BB7_1
+	bc	UGE, BB8_1
 // BB#4:
 	and	r0, r0, 0x1
 	//cmp	r0, 0x0
-	bc	ZC, BB7_7
+	bc	ZC, BB8_7
 // BB#5:                                // %.lr.ph23.i.preheader
 	mov	r0, 0x1
 	sub	r0, r0, r4
-BB7_6:                                  // %.lr.ph23.i
+BB8_6:                                  // %.lr.ph23.i
                                         // =>This Inner Loop Header: Depth=1
 	sub	r1, r2, r0
 	sub	r4, r3, r0
@@ -247,15 +274,15 @@ BB7_6:                                  // %.lr.ph23.i
 	st	r4, r1, 0x0
 	add	r0, r0, 0x1
 	sub	r1, r0, 0x1
-	bc	NE, BB7_6
-	bra	BB7_7
-BB7_1:
+	bc	NE, BB8_6
+	bra	BB8_7
+BB8_1:
 	and	r0, r0, 0x1
 	//cmp	r0, 0x0
-	bc	ZC, BB7_7
+	bc	ZC, BB8_7
 // BB#2:
 	add	r0, r2, 0x0
-BB7_3:                                  // %.lr.ph.i
+BB8_3:                                  // %.lr.ph.i
                                         // =>This Inner Loop Header: Depth=1
 	ld	r1, r3, 0x0
 	st	r1, r0, 0x0
@@ -263,8 +290,8 @@ BB7_3:                                  // %.lr.ph.i
 	add	r0, r0, 0x1
 	add	r4, r4, 0xffff
 	//cmp	r4, 0x0
-	bc	ZC, BB7_3
-BB7_7:                                  // %memcpy_base.exit
+	bc	ZC, BB8_3
+BB8_7:                                  // %memcpy_base.exit
 	add	r0, r2, 0x0
 	jsr	r6, r6
 

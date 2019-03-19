@@ -42,10 +42,10 @@ RM = D:\CMake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Documents\MotorTest_XInC2
+CMAKE_SOURCE_DIR = D:\WizChess\MotorTest_XInC2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Documents\MotorTest_XInC2\build
+CMAKE_BINARY_DIR = D:\WizChess\MotorTest_XInC2\build
 
 # Utility rule file for motortest-main.
 
@@ -56,8 +56,8 @@ CMakeFiles/motortest-main: motortest.main
 
 
 motortest.main: ../main.gen
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\Documents\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating motortest.main"
-	cmake -E env PYTHONPATH=D:/SXC/include/libspine/common/script;D:/SXC/include/libspine/hardware/script D:/Python/python.exe -m cogapp -d -D SRC_DIR=D:/Documents/MotorTest_XInC2 -D BUILD_DIR=D:/Documents/MotorTest_XInC2/build -D ART0_DIR=D:/SXC/include/sxc-art0 -D ART1_DIR= -D NAME=motortest -o D:/Documents/MotorTest_XInC2/build/motortest.main D:/Documents/MotorTest_XInC2/main.gen
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating motortest.main"
+	cmake -E env PYTHONPATH=D:/SXC/include/libspine/common/script;D:/SXC/include/libspine/hardware/script D:/Python/python.exe -m cogapp -d -D SRC_DIR=D:/WizChess/MotorTest_XInC2 -D BUILD_DIR=D:/WizChess/MotorTest_XInC2/build -D ART0_DIR=D:/SXC/include/sxc-art0 -D ART1_DIR= -D NAME=motortest -o D:/WizChess/MotorTest_XInC2/build/motortest.main D:/WizChess/MotorTest_XInC2/main.gen
 
 motortest-main: CMakeFiles/motortest-main
 motortest-main: motortest.main
@@ -75,6 +75,6 @@ CMakeFiles/motortest-main.dir/clean:
 .PHONY : CMakeFiles/motortest-main.dir/clean
 
 CMakeFiles/motortest-main.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Documents\MotorTest_XInC2 D:\Documents\MotorTest_XInC2 D:\Documents\MotorTest_XInC2\build D:\Documents\MotorTest_XInC2\build D:\Documents\MotorTest_XInC2\build\CMakeFiles\motortest-main.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\WizChess\MotorTest_XInC2 D:\WizChess\MotorTest_XInC2 D:\WizChess\MotorTest_XInC2\build D:\WizChess\MotorTest_XInC2\build D:\WizChess\MotorTest_XInC2\build\CMakeFiles\motortest-main.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/motortest-main.dir/depend
 

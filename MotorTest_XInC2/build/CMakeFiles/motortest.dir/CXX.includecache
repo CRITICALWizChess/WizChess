@@ -8,18 +8,6 @@
 
 ../inc/main.h
 
-D:/Documents/MotorTest_XInC2/src/main.cpp
-SystemClock.h
--
-XPD.h
--
-GPIO.h
--
-Thread.h
--
-main.h
-D:/Documents/MotorTest_XInC2/src/main.h
-
 D:/SXC/include/sxc-lib/GPIO.h
 Semaphore.h
 D:/SXC/include/sxc-lib/Semaphore.h
@@ -305,4 +293,16 @@ signal.h
 D:/SXC/include/sxc-newlib/unistd.h
 sys/unistd.h
 -
+
+D:/WizChess/MotorTest_XInC2/src/main.cpp
+SystemClock.h
+-
+XPD.h
+-
+GPIO.h
+-
+Thread.h
+-
+main.h
+D:/WizChess/MotorTest_XInC2/src/main.h
 

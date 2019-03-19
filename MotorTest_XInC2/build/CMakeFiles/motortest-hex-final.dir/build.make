@@ -42,10 +42,10 @@ RM = D:\CMake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Documents\MotorTest_XInC2
+CMAKE_SOURCE_DIR = D:\WizChess\MotorTest_XInC2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Documents\MotorTest_XInC2\build
+CMAKE_BINARY_DIR = D:\WizChess\MotorTest_XInC2\build
 
 # Utility rule file for motortest-hex-final.
 
@@ -70,6 +70,6 @@ CMakeFiles/motortest-hex-final.dir/clean:
 .PHONY : CMakeFiles/motortest-hex-final.dir/clean
 
 CMakeFiles/motortest-hex-final.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\Documents\MotorTest_XInC2 D:\Documents\MotorTest_XInC2 D:\Documents\MotorTest_XInC2\build D:\Documents\MotorTest_XInC2\build D:\Documents\MotorTest_XInC2\build\CMakeFiles\motortest-hex-final.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\WizChess\MotorTest_XInC2 D:\WizChess\MotorTest_XInC2 D:\WizChess\MotorTest_XInC2\build D:\WizChess\MotorTest_XInC2\build D:\WizChess\MotorTest_XInC2\build\CMakeFiles\motortest-hex-final.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/motortest-hex-final.dir/depend
 

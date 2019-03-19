@@ -6,5 +6,5 @@ CXX_FLAGS =      -mllvm -unroll-threshold=20     -mllvm -inline-threshold=15    
 
 CXX_DEFINES = -DNDEBUG
 
-CXX_INCLUDES = -ID:\Documents\MotorTest_XInC2\inc -ID:\SXC\include\sxc-newlib -ID:\SXC\include\sxc-newlib\machine -ID:\SXC\include\sxc-newlib\rpc -ID:\SXC\include\sxc-newlib\sys -ID:\SXC\include\sxc-libcxx -ID:\SXC\include\sxc-libcxx\support\solaris -ID:\SXC\include\sxc-libcxx\support\win32 -ID:\SXC\include\sxc-lib -ID:\SXC\include\libspine\common\inc -ID:\SXC\include\libspine\common\inc\data_structures -ID:\SXC\include\libspine\common\inc\gpio -ID:\SXC\include\libspine\common\inc\interfaces -ID:\SXC\include\libspine\hardware\inc -ID:\SXC\include\libspine\hardware\inc\thread -ID:\SXC\include\libspine\test\inc 
+CXX_INCLUDES = -ID:\WizChess\MotorTest_XInC2\inc -ID:\SXC\include\sxc-newlib -ID:\SXC\include\sxc-newlib\machine -ID:\SXC\include\sxc-newlib\rpc -ID:\SXC\include\sxc-newlib\sys -ID:\SXC\include\sxc-libcxx -ID:\SXC\include\sxc-libcxx\support\solaris -ID:\SXC\include\sxc-libcxx\support\win32 -ID:\SXC\include\sxc-lib -ID:\SXC\include\libspine\common\inc -ID:\SXC\include\libspine\common\inc\data_structures -ID:\SXC\include\libspine\common\inc\gpio -ID:\SXC\include\libspine\common\inc\interfaces -ID:\SXC\include\libspine\hardware\inc -ID:\SXC\include\libspine\hardware\inc\thread -ID:\SXC\include\libspine\test\inc 
 

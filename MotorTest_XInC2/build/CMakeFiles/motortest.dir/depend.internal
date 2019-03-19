@@ -3,7 +3,6 @@
 
 CMakeFiles/motortest.dir/src/Initialization.cpp.obj
  ../inc/main.h
- D:/Documents/MotorTest_XInC2/src/Initialization.cpp
  D:/SXC/include/sxc-lib/IOConfig.h
  D:/SXC/include/sxc-lib/SXC.h
  D:/SXC/include/sxc-lib/SystemClock.h
@@ -19,9 +18,9 @@ CMakeFiles/motortest.dir/src/Initialization.cpp.obj
  D:/SXC/include/sxc-newlib/stdint.h
  D:/SXC/include/sxc-newlib/sys/config.h
  D:/SXC/include/sxc-newlib/sys/features.h
+ D:/WizChess/MotorTest_XInC2/src/Initialization.cpp
 CMakeFiles/motortest.dir/src/main.cpp.obj
  ../inc/main.h
- D:/Documents/MotorTest_XInC2/src/main.cpp
  D:/SXC/include/sxc-lib/GPIO.h
  D:/SXC/include/sxc-lib/SFU.h
  D:/SXC/include/sxc-lib/SXC.h
@@ -67,3 +66,4 @@ CMakeFiles/motortest.dir/src/main.cpp.obj
  D:/SXC/include/sxc-newlib/sys/unistd.h
  D:/SXC/include/sxc-newlib/time.h
  D:/SXC/include/sxc-newlib/unistd.h
+ D:/WizChess/MotorTest_XInC2/src/main.cpp
