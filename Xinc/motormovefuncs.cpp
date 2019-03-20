@@ -6,6 +6,10 @@
 
 #define SQUAREDIST 1000
 #define DIAGDIST 1300 //is this even needed?
+#define N_NW 0x04
+#define NE 0x0C
+#define E_SE 0x08
+#define S_SW_W 0x00
 
 void stepdelay(){
     for (int i = 0; i < 5000; i++){
@@ -14,7 +18,7 @@ void stepdelay(){
 }
 
 void north( int ){ // go one square north
-    gpio_write(0x04, GPIO_A); // sets direction, whatever forward is
+    gpio_write(N_NW, GPIO_A); // sets direction, whatever forward is
     for (int i = 0; i <= SQUAREDIST; i++){
         gpio_write(0x01, GPIO_A); //replace with the pin config you plan on changing
         stepdelay();
@@ -24,7 +28,7 @@ void north( int ){ // go one square north
     
 }
 void east(){ // go one square east
-    gpio_write(0x08, GPIO_A); // sets direction, whatever forward is
+    gpio_write(E_SE, GPIO_A); // sets direction, whatever forward is
     for (int i = 0; i <= SQUAREDIST; i++){
         gpio_write(0x02, GPIO_A); //replace with the pin config you plan on changing
         stepdelay();
@@ -34,7 +38,7 @@ void east(){ // go one square east
     
 }
 void south(){ // go one square south
-    gpio_write(0x00, GPIO_A); // sets direction, whatever reverse is
+    gpio_write(S_SW_W, GPIO_A); // sets direction, whatever reverse is
     for (int i = 0; i <= SQUAREDIST; i++){
         gpio_write(0x01, GPIO_A); //replace with the pin config you plan on changing
         stepdelay();
@@ -44,7 +48,7 @@ void south(){ // go one square south
     
 }
 void west(){ // go one square west
-    gpio_write(0x00, GPIO_A); // sets direction, whatever reverse is
+    gpio_write(S_SW_W, GPIO_A); // sets direction, whatever reverse is
     for (int i = 0; i <= SQUAREDIST; i++){
         gpio_write(0x02, GPIO_A); //replace with the pin config you plan on changing
         stepdelay();
@@ -54,7 +58,7 @@ void west(){ // go one square west
     
 }
 void northeast(){ // go one square northeast
-    gpio_write(0x0C, GPIO_A); // sets direction, whatever forward|forward is
+    gpio_write(NE, GPIO_A); // sets direction, whatever forward|forward is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
         stepdelay();
@@ -64,7 +68,7 @@ void northeast(){ // go one square northeast
     
 }
 void southeast(){ // go one square southeast
-    gpio_write(0x08, GPIO_A); // sets direction, whatever forward|reverse is
+    gpio_write(E_SE, GPIO_A); // sets direction, whatever forward|reverse is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
         stepdelay();
@@ -74,7 +78,7 @@ void southeast(){ // go one square southeast
     
 }
 void southwest(){ // go one square southwest
-    gpio_write(0x00, GPIO_A); // sets direction, whatever reverse|reverse is
+    gpio_write(S_SW_W, GPIO_A); // sets direction, whatever reverse|reverse is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
         stepdelay();
@@ -83,7 +87,7 @@ void southwest(){ // go one square southwest
     }
     
 }
-void northeast(){ // go one square northwest
+void northwest(){ // go one square northwest
     gpio_write(0x04, GPIO_A); // sets direction, whatever reverse|forward is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
@@ -114,6 +118,7 @@ void knorth(){ //knight to forward right
         stepdelay();
         gpio_write(0x00, GPIO_A);
         stepdelay();
+    }
 }
 void knortheast(){ //knight to right forward
     gpio_write(0x0C, GPIO_A); //whatever dir NE is
@@ -136,6 +141,7 @@ void knortheast(){ //knight to right forward
         stepdelay();
         gpio_write(0x00, GPIO_A);
         stepdelay();
+    }
 }
 void keast(){ // knight to right backward
     gpio_write(0x08, GPIO_A); //whatever dir SE is
@@ -158,6 +164,7 @@ void keast(){ // knight to right backward
         stepdelay();
         gpio_write(0x00, GPIO_A);
         stepdelay();
+    }
 }
 void ksoutheast(){ // FINISH THIS
     gpio_write(0x0C, GPIO_A); //whatever dir NE is
@@ -180,4 +187,5 @@ void ksoutheast(){ // FINISH THIS
         stepdelay();
         gpio_write(0x00, GPIO_A);
         stepdelay();
+    }
 }
