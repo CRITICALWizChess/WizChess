@@ -8,8 +8,8 @@
 #define DIAGDIST 1300 //is this even needed?
 #define N_NW 0x04 // north direction
 #define NE 0x0C //whatever dir NE is
-#define E_SE 0x08
-#define S_SW_W 0x00
+#define E_SE 0x08 //etc
+#define S_SW_W 0x00 // honestly we can probably just pick a convention and wire the motors accordingly
 
 void stepdelay(){
     for (int i = 0; i < 5000; i++){
@@ -280,4 +280,24 @@ void knorthwest(){ // knight to forward left
         stepdelay();
     }
 }
-void zero()
+void zero(){
+    // space for flags if break doesn't work
+    while(true)
+    uint16_t port_b_state = gpio_read(GPIO_B);
+    bool is_NS_pressed = (port_b_state & (1<<2)); //supposedly read pin 2 
+    bool is_EW_pressed = (port_b_state & (1<<3)); //supposedly 3
+    gpio_write(0x08, GPIO_A); //towards the motors, we are going to have to figure this out
+    if (!is_NS_pressed){ // moves if NS axis !zeroed
+        gpio_write(0x01, GPIO_A);
+        stepdelay();
+    }
+    if (!is_EW_pressed){ // moves if EW axis !zeroed
+        gpio_write(0x02, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x00, GPIO_A);
+    stepdelay();
+    if (is_NS_pressed && is_EW_pressed){
+        break;
+    }
+}
