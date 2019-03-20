@@ -159,7 +159,7 @@ void keast(){ // knight to right backward
         gpio_write(0x00, GPIO_A);
         stepdelay();
 }
-void ksoutheast(){
+void ksoutheast(){ // FINISH THIS
     gpio_write(0x0C, GPIO_A); //whatever dir NE is
     for (int i = 0; i <= (DIAGDIST/2); i++){
         gpio_write(0x03, GPIO_A);
