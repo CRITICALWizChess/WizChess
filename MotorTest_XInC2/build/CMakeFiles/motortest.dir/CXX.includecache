@@ -8,9 +8,21 @@
 
 ../inc/main.h
 
+../inc/struct_aliases.h
+
+../inc/time_funcs.h
+SystemClock.h
+-
+
 D:/SXC/include/sxc-lib/GPIO.h
 Semaphore.h
 D:/SXC/include/sxc-lib/Semaphore.h
+
+D:/SXC/include/sxc-lib/IOConfig.h
+SXC.h
+D:/SXC/include/sxc-lib/SXC.h
+register_consts.h
+D:/SXC/include/sxc-lib/register_consts.h
 
 D:/SXC/include/sxc-lib/SFU.h
 SXC.h
@@ -33,6 +45,12 @@ SXC.h
 D:/SXC/include/sxc-lib/SXC.h
 register_consts.h
 D:/SXC/include/sxc-lib/register_consts.h
+
+D:/SXC/include/sxc-lib/Structs.h
+IOConfig.h
+D:/SXC/include/sxc-lib/IOConfig.h
+GPIO.h
+D:/SXC/include/sxc-lib/GPIO.h
 
 D:/SXC/include/sxc-lib/SystemClock.h
 Timer.h
@@ -295,7 +313,9 @@ sys/unistd.h
 -
 
 D:/WizChess/MotorTest_XInC2/src/main.cpp
-SystemClock.h
+IOConfig.h
+-
+Structs.h
 -
 XPD.h
 -
@@ -303,6 +323,10 @@ GPIO.h
 -
 Thread.h
 -
+time_funcs.h
+D:/WizChess/MotorTest_XInC2/src/time_funcs.h
+struct_aliases.h
+D:/WizChess/MotorTest_XInC2/src/struct_aliases.h
 main.h
 D:/WizChess/MotorTest_XInC2/src/main.h
 

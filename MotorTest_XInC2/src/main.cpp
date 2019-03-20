@@ -1,7 +1,16 @@
-#include <SystemClock.h>
+// David Gingles
+// Code for a gpio pin to toggle and move a single motor
+// last update 19/3/19
+
+#include <IOConfig.h>
+#include <Structs.h>
 #include <XPD.h>
 #include <GPIO.h>
 #include <Thread.h>
+
+
+#include "time_funcs.h"
+#include "struct_aliases.h"
 
 #include "main.h"
 
@@ -13,6 +22,13 @@ void long_wait()
     sys_clock_wait(10000);
   }
 }
+
+static const size_t kMsPerCycle = 1000; // one second delay for toggle
+static const size_t STEP = io_PB0; // idk
+
+// Initializes toggle pin
+io_set_config( DEFAULT_IO_CFG, STEP.io_port); // set output for pin toggle
+globalPin_set_dir(PinDir_Output, &STEP); //set stuff. dont really understand
 
 // Thread that reads the state of a button and turns on an LED if the button
 // is pressed.
@@ -34,6 +50,8 @@ void *button_reading_thread(void *)
 // main() runs in thread 0
 int main(void)
 {
+  init_clock();
+
   // Set pin PC0 as output
   // Pins are set as an output by setting a 1 in position N+8, where N is
   // the GPIO pin number.
@@ -62,9 +80,10 @@ int main(void)
   // the number increments once per loop.
   // Also, toggle on and off an LED on the board.
   uint16_t count = 0;
-  uint16_t value_gpio = 0;
+  int16_t value_gpio = 0;
   gpio_write(0x00, GPIO_B); // set DIR for forward and Logic low
-  while (true) {
+  // Escape loop when counter = 4
+  while (count <= 4) {
     xpd_putc('\n');
     xpd_puts("Loop counter is: ");
     xpd_echo_int(count, XPD_Flag_UnsignedDecimal);
@@ -88,6 +107,14 @@ int main(void)
       xpd_echo_int(value_gpio, XPD_Flag_UnsignedDecimal);
       xpd_putc('\n');
     }
+  }
+
+  enum PinLogicState old_state = OFF;
+  while(1) {
+    enum PinLogicState new_state = !old_state; /* invert the current pin status */
+    globalPin_write(new_state, &STEP);
+    old_state = new_state; // flippy flop states
+    wait_ms(kMsPerCycle); // one second
   }
 
   return 0;

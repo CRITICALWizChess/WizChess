@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/WizChess/MotorTest_XInC2/src/Initialization.cpp" "D:/WizChess/MotorTest_XInC2/build/CMakeFiles/motortest.dir/src/Initialization.cpp.obj"
   "D:/WizChess/MotorTest_XInC2/src/main.cpp" "D:/WizChess/MotorTest_XInC2/build/CMakeFiles/motortest.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "SXC")

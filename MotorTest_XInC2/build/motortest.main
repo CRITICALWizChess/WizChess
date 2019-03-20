@@ -1,9 +1,0 @@
-#include "D:/SXC/include/sxc-art0\XInC2.asm"
-@ = 0xC000
-bra ProgramSPIEEPROM
-39237
-#include "D:/SXC/include/sxc-art0\XInC2_Entry.asm"
-#include "D:/WizChess/MotorTest_XInC2/build\code.asm"
-@ = (@ + 0x0800-1) & -0x0800
-#include "D:/SXC/include/sxc-art0\XInC2_Thread_Definitions.asm"
-#include "D:/WizChess/MotorTest_XInC2/build\data.asm"

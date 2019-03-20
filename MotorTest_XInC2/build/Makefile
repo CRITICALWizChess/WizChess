@@ -200,33 +200,6 @@ motortest-hex-final/fast:
 	$(MAKE) -f CMakeFiles\motortest-hex-final.dir\build.make CMakeFiles/motortest-hex-final.dir/build
 .PHONY : motortest-hex-final/fast
 
-src/Initialization.obj: src/Initialization.cpp.obj
-
-.PHONY : src/Initialization.obj
-
-# target to build an object file
-src/Initialization.cpp.obj:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/src/Initialization.cpp.obj
-.PHONY : src/Initialization.cpp.obj
-
-src/Initialization.i: src/Initialization.cpp.i
-
-.PHONY : src/Initialization.i
-
-# target to preprocess a source file
-src/Initialization.cpp.i:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/src/Initialization.cpp.i
-.PHONY : src/Initialization.cpp.i
-
-src/Initialization.s: src/Initialization.cpp.s
-
-.PHONY : src/Initialization.s
-
-# target to generate assembly for a file
-src/Initialization.cpp.s:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/src/Initialization.cpp.s
-.PHONY : src/Initialization.cpp.s
-
 src/main.obj: src/main.cpp.obj
 
 .PHONY : src/main.obj
@@ -269,9 +242,6 @@ help:
 	@echo ... motortest-asm
 	@echo ... motortest-hex-final
 	@echo ... rebuild_cache
-	@echo ... src/Initialization.obj
-	@echo ... src/Initialization.i
-	@echo ... src/Initialization.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

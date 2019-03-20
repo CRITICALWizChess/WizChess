@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/motortest.dir/src/Initialization.cpp.obj"
   "CMakeFiles/motortest.dir/src/main.cpp.obj"
   "motortest.pdb"
   "motortest.a"
