@@ -282,22 +282,33 @@ void knorthwest(){ // knight to forward left
 }
 void zero(){
     // space for flags if break doesn't work
-    while(true)
-    uint16_t port_b_state = gpio_read(GPIO_B);
-    bool is_NS_pressed = (port_b_state & (1<<2)); //supposedly read pin 2 
-    bool is_EW_pressed = (port_b_state & (1<<3)); //supposedly 3
-    gpio_write(0x08, GPIO_A); //towards the motors, we are going to have to figure this out
-    if (!is_NS_pressed){ // moves if NS axis !zeroed
-        gpio_write(0x01, GPIO_A);
+    while(true){
+        uint16_t port_b_state = gpio_read(GPIO_B);
+        bool is_NS_pressed = (port_b_state & (1<<2)); //supposedly read pin 2 
+        bool is_EW_pressed = (port_b_state & (1<<3)); //supposedly 3
+        gpio_write(0x08, GPIO_A); //towards the motors, we are going to have to figure this out
+        if (!is_NS_pressed){ // moves if NS axis !zeroed
+            gpio_write(0x01, GPIO_A);
+            stepdelay();
+        }
+        if (!is_EW_pressed){ // moves if EW axis !zeroed
+            gpio_write(0x02, GPIO_A);
+            stepdelay();
+        }
+        gpio_write(0x00, GPIO_A);
         stepdelay();
+        if (is_NS_pressed && is_EW_pressed){
+            break;
+        }
     }
-    if (!is_EW_pressed){ // moves if EW axis !zeroed
-        gpio_write(0x02, GPIO_A);
-        stepdelay();
-    }
-    gpio_write(0x00, GPIO_A);
-    stepdelay();
-    if (is_NS_pressed && is_EW_pressed){
-        break;
+}
+uint16_t movementbuild(uint16_t direct, uint16_t squares){
+    if (squares > 0){
+        switch(direct){
+            case 1:
+                for (int i = 0; i <= squares; i++){
+                    
+                }
+        }
     }
 }
