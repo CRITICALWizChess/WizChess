@@ -23,7 +23,7 @@ void north( int ){ // go one square north
     }
     
 }
-void east( int ){ // go one square east
+void east(){ // go one square east
     gpio_write(0x08, GPIO_A); // sets direction, whatever forward is
     for (int i = 0; i <= SQUAREDIST; i++){
         gpio_write(0x02, GPIO_A); //replace with the pin config you plan on changing
@@ -33,7 +33,7 @@ void east( int ){ // go one square east
     }
     
 }
-void south( int ){ // go one square south
+void south(){ // go one square south
     gpio_write(0x00, GPIO_A); // sets direction, whatever reverse is
     for (int i = 0; i <= SQUAREDIST; i++){
         gpio_write(0x01, GPIO_A); //replace with the pin config you plan on changing
@@ -43,7 +43,7 @@ void south( int ){ // go one square south
     }
     
 }
-void west( int ){ // go one square west
+void west(){ // go one square west
     gpio_write(0x00, GPIO_A); // sets direction, whatever reverse is
     for (int i = 0; i <= SQUAREDIST; i++){
         gpio_write(0x02, GPIO_A); //replace with the pin config you plan on changing
@@ -53,7 +53,7 @@ void west( int ){ // go one square west
     }
     
 }
-void northeast( int ){ // go one square northeast
+void northeast(){ // go one square northeast
     gpio_write(0x0C, GPIO_A); // sets direction, whatever forward|forward is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
@@ -63,7 +63,7 @@ void northeast( int ){ // go one square northeast
     }
     
 }
-void southeast( int ){ // go one square southeast
+void southeast(){ // go one square southeast
     gpio_write(0x08, GPIO_A); // sets direction, whatever forward|reverse is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
@@ -73,7 +73,7 @@ void southeast( int ){ // go one square southeast
     }
     
 }
-void southwest( int ){ // go one square southwest
+void southwest(){ // go one square southwest
     gpio_write(0x00, GPIO_A); // sets direction, whatever reverse|reverse is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
@@ -83,7 +83,7 @@ void southwest( int ){ // go one square southwest
     }
     
 }
-void northeast( int ){ // go one square northwest
+void northeast(){ // go one square northwest
     gpio_write(0x04, GPIO_A); // sets direction, whatever reverse|forward is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
@@ -92,4 +92,92 @@ void northeast( int ){ // go one square northwest
         stepdelay();
     }
     
+}
+void knorth(){ //knight to forward right
+    gpio_write(0x0C, GPIO_A); //whatever dir NE is
+    for (int i = 0; i <= (DIAGDIST/2); i++){
+        gpio_write(0x03, GPIO_A);
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x04, GPIO_A); // whatever direction N is
+    for (int i = 0; i <= SQUAREDIST; i++){
+        gpio_write(0x01, GPIO_A); //replace with the pin config you plan on changing
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x0C, GPIO_A); //whatever dir NE is
+    for (int i = 0; i <= (DIAGDIST/2); i++){
+        gpio_write(0x03, GPIO_A);
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+}
+void knortheast(){ //knight to right forward
+    gpio_write(0x0C, GPIO_A); //whatever dir NE is
+    for (int i = 0; i <= (DIAGDIST/2); i++){
+        gpio_write(0x03, GPIO_A);
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x08, GPIO_A); // whatever direction E is
+    for (int i = 0; i <= SQUAREDIST; i++){
+        gpio_write(0x01, GPIO_A); //replace with the pin config you plan on changing
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x0C, GPIO_A); //whatever dir NE is
+    for (int i = 0; i <= (DIAGDIST/2); i++){
+        gpio_write(0x03, GPIO_A);
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+}
+void keast(){ // knight to right backward
+    gpio_write(0x08, GPIO_A); //whatever dir SE is
+    for (int i = 0; i <= (DIAGDIST/2); i++){
+        gpio_write(0x03, GPIO_A);
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x08, GPIO_A); // whatever direction 8 is
+    for (int i = 0; i <= SQUAREDIST; i++){
+        gpio_write(0x01, GPIO_A); //replace with the pin config you plan on changing
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x08, GPIO_A); //whatever dir SE is
+    for (int i = 0; i <= (DIAGDIST/2); i++){
+        gpio_write(0x03, GPIO_A);
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+}
+void ksoutheast(){
+    gpio_write(0x0C, GPIO_A); //whatever dir NE is
+    for (int i = 0; i <= (DIAGDIST/2); i++){
+        gpio_write(0x03, GPIO_A);
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x04, GPIO_A); // whatever direction N is
+    for (int i = 0; i <= SQUAREDIST; i++){
+        gpio_write(0x01, GPIO_A); //replace with the pin config you plan on changing
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
+    }
+    gpio_write(0x0C, GPIO_A); //whatever dir NE is
+    for (int i = 0; i <= (DIAGDIST/2); i++){
+        gpio_write(0x03, GPIO_A);
+        stepdelay();
+        gpio_write(0x00, GPIO_A);
+        stepdelay();
 }
