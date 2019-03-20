@@ -4,7 +4,7 @@
 set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type...")
 set(SXC_CROSS_COMPILE ON)
 
-set(PROJECT_NAME "motortest")
+set(PROJECT_NAME "MotorTest2")
 cmake_minimum_required(VERSION 3.3)
 project(${PROJECT_NAME} NONE)
 

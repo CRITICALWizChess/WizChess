@@ -22,15 +22,15 @@ set(CMAKE_MAKEFILE_DEPENDS
   "D:/CMake/share/cmake-3.12/Modules/FindPythonInterp.cmake"
   "D:/CMake/share/cmake-3.12/Modules/Platform/Windows.cmake"
   "D:/CMake/share/cmake-3.12/Modules/Platform/WindowsPaths.cmake"
+  "../CMakeLists.txt"
+  "CMakeFiles/3.12.3/CMakeCCompiler.cmake"
+  "CMakeFiles/3.12.3/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.12.3/CMakeSystem.cmake"
   "D:/SXC/EeUtilConfig.cmake"
   "D:/SXC/EeUtilMacros.cmake"
   "D:/SXC/SXCConfig.cmake"
   "D:/SXC/SXCMacros.cmake"
   "D:/SXC/libspineConfig.cmake"
-  "../CMakeLists.txt"
-  "CMakeFiles/3.12.3/CMakeCCompiler.cmake"
-  "CMakeFiles/3.12.3/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.12.3/CMakeSystem.cmake"
   )
 
 # The corresponding makefile is:
@@ -46,11 +46,11 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/motortest-opt.dir/DependInfo.cmake"
-  "CMakeFiles/motortest-hex.dir/DependInfo.cmake"
-  "CMakeFiles/motortest-s.dir/DependInfo.cmake"
-  "CMakeFiles/motortest.dir/DependInfo.cmake"
-  "CMakeFiles/motortest-main.dir/DependInfo.cmake"
-  "CMakeFiles/motortest-asm.dir/DependInfo.cmake"
-  "CMakeFiles/motortest-hex-final.dir/DependInfo.cmake"
+  "CMakeFiles/MotorTest2-hex.dir/DependInfo.cmake"
+  "CMakeFiles/MotorTest2.dir/DependInfo.cmake"
+  "CMakeFiles/MotorTest2-s.dir/DependInfo.cmake"
+  "CMakeFiles/MotorTest2-opt.dir/DependInfo.cmake"
+  "CMakeFiles/MotorTest2-asm.dir/DependInfo.cmake"
+  "CMakeFiles/MotorTest2-main.dir/DependInfo.cmake"
+  "CMakeFiles/MotorTest2-hex-final.dir/DependInfo.cmake"
   )

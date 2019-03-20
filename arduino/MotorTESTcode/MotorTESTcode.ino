@@ -29,7 +29,7 @@ void loop() {
   //digitalWrite(DIRY,HIGH);
   //digitalWrite(DIRX,HIGH);
   
-  for (int i = 0; i <= 10000; i++){
+  for (int i = 0; i <= 1000; i++){
     digitalWrite(STEPX, HIGH);
     //digitalWrite(STEPY, HIGH);
     delay(1);

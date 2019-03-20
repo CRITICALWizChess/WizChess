@@ -47,10 +47,10 @@ RM = D:\CMake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\WizChess\MotorTest_XInC2
+CMAKE_SOURCE_DIR = D:\Documents\motorTest_V2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\WizChess\MotorTest_XInC2\build
+CMAKE_BINARY_DIR = D:\Documents\motorTest_V2\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles D:\WizChess\MotorTest_XInC2\build\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles D:\Documents\motorTest_V2\build\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -110,95 +110,122 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named motortest-opt
+# Target rules for targets named MotorTest2-hex
 
 # Build rule for target.
-motortest-opt: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 motortest-opt
-.PHONY : motortest-opt
+MotorTest2-hex: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 MotorTest2-hex
+.PHONY : MotorTest2-hex
 
 # fast build rule for target.
-motortest-opt/fast:
-	$(MAKE) -f CMakeFiles\motortest-opt.dir\build.make CMakeFiles/motortest-opt.dir/build
-.PHONY : motortest-opt/fast
+MotorTest2-hex/fast:
+	$(MAKE) -f CMakeFiles\MotorTest2-hex.dir\build.make CMakeFiles/MotorTest2-hex.dir/build
+.PHONY : MotorTest2-hex/fast
 
 #=============================================================================
-# Target rules for targets named motortest-hex
+# Target rules for targets named MotorTest2
 
 # Build rule for target.
-motortest-hex: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 motortest-hex
-.PHONY : motortest-hex
+MotorTest2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 MotorTest2
+.PHONY : MotorTest2
 
 # fast build rule for target.
-motortest-hex/fast:
-	$(MAKE) -f CMakeFiles\motortest-hex.dir\build.make CMakeFiles/motortest-hex.dir/build
-.PHONY : motortest-hex/fast
+MotorTest2/fast:
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/build
+.PHONY : MotorTest2/fast
 
 #=============================================================================
-# Target rules for targets named motortest-s
+# Target rules for targets named MotorTest2-s
 
 # Build rule for target.
-motortest-s: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 motortest-s
-.PHONY : motortest-s
+MotorTest2-s: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 MotorTest2-s
+.PHONY : MotorTest2-s
 
 # fast build rule for target.
-motortest-s/fast:
-	$(MAKE) -f CMakeFiles\motortest-s.dir\build.make CMakeFiles/motortest-s.dir/build
-.PHONY : motortest-s/fast
+MotorTest2-s/fast:
+	$(MAKE) -f CMakeFiles\MotorTest2-s.dir\build.make CMakeFiles/MotorTest2-s.dir/build
+.PHONY : MotorTest2-s/fast
 
 #=============================================================================
-# Target rules for targets named motortest
+# Target rules for targets named MotorTest2-opt
 
 # Build rule for target.
-motortest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 motortest
-.PHONY : motortest
+MotorTest2-opt: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 MotorTest2-opt
+.PHONY : MotorTest2-opt
 
 # fast build rule for target.
-motortest/fast:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/build
-.PHONY : motortest/fast
+MotorTest2-opt/fast:
+	$(MAKE) -f CMakeFiles\MotorTest2-opt.dir\build.make CMakeFiles/MotorTest2-opt.dir/build
+.PHONY : MotorTest2-opt/fast
 
 #=============================================================================
-# Target rules for targets named motortest-main
+# Target rules for targets named MotorTest2-asm
 
 # Build rule for target.
-motortest-main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 motortest-main
-.PHONY : motortest-main
+MotorTest2-asm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 MotorTest2-asm
+.PHONY : MotorTest2-asm
 
 # fast build rule for target.
-motortest-main/fast:
-	$(MAKE) -f CMakeFiles\motortest-main.dir\build.make CMakeFiles/motortest-main.dir/build
-.PHONY : motortest-main/fast
+MotorTest2-asm/fast:
+	$(MAKE) -f CMakeFiles\MotorTest2-asm.dir\build.make CMakeFiles/MotorTest2-asm.dir/build
+.PHONY : MotorTest2-asm/fast
 
 #=============================================================================
-# Target rules for targets named motortest-asm
+# Target rules for targets named MotorTest2-main
 
 # Build rule for target.
-motortest-asm: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 motortest-asm
-.PHONY : motortest-asm
+MotorTest2-main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 MotorTest2-main
+.PHONY : MotorTest2-main
 
 # fast build rule for target.
-motortest-asm/fast:
-	$(MAKE) -f CMakeFiles\motortest-asm.dir\build.make CMakeFiles/motortest-asm.dir/build
-.PHONY : motortest-asm/fast
+MotorTest2-main/fast:
+	$(MAKE) -f CMakeFiles\MotorTest2-main.dir\build.make CMakeFiles/MotorTest2-main.dir/build
+.PHONY : MotorTest2-main/fast
 
 #=============================================================================
-# Target rules for targets named motortest-hex-final
+# Target rules for targets named MotorTest2-hex-final
 
 # Build rule for target.
-motortest-hex-final: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 motortest-hex-final
-.PHONY : motortest-hex-final
+MotorTest2-hex-final: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 MotorTest2-hex-final
+.PHONY : MotorTest2-hex-final
 
 # fast build rule for target.
-motortest-hex-final/fast:
-	$(MAKE) -f CMakeFiles\motortest-hex-final.dir\build.make CMakeFiles/motortest-hex-final.dir/build
-.PHONY : motortest-hex-final/fast
+MotorTest2-hex-final/fast:
+	$(MAKE) -f CMakeFiles\MotorTest2-hex-final.dir\build.make CMakeFiles/MotorTest2-hex-final.dir/build
+.PHONY : MotorTest2-hex-final/fast
+
+src/Initialization.obj: src/Initialization.cpp.obj
+
+.PHONY : src/Initialization.obj
+
+# target to build an object file
+src/Initialization.cpp.obj:
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/src/Initialization.cpp.obj
+.PHONY : src/Initialization.cpp.obj
+
+src/Initialization.i: src/Initialization.cpp.i
+
+.PHONY : src/Initialization.i
+
+# target to preprocess a source file
+src/Initialization.cpp.i:
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/src/Initialization.cpp.i
+.PHONY : src/Initialization.cpp.i
+
+src/Initialization.s: src/Initialization.cpp.s
+
+.PHONY : src/Initialization.s
+
+# target to generate assembly for a file
+src/Initialization.cpp.s:
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/src/Initialization.cpp.s
+.PHONY : src/Initialization.cpp.s
 
 src/main.obj: src/main.cpp.obj
 
@@ -206,7 +233,7 @@ src/main.obj: src/main.cpp.obj
 
 # target to build an object file
 src/main.cpp.obj:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/src/main.cpp.obj
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/src/main.cpp.obj
 .PHONY : src/main.cpp.obj
 
 src/main.i: src/main.cpp.i
@@ -215,7 +242,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/src/main.cpp.i
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -224,7 +251,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/src/main.cpp.s
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -233,15 +260,18 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
-	@echo ... motortest-opt
-	@echo ... motortest-hex
-	@echo ... motortest-s
-	@echo ... motortest
 	@echo ... edit_cache
-	@echo ... motortest-main
-	@echo ... motortest-asm
-	@echo ... motortest-hex-final
+	@echo ... MotorTest2-hex
+	@echo ... MotorTest2
+	@echo ... MotorTest2-s
+	@echo ... MotorTest2-opt
+	@echo ... MotorTest2-asm
+	@echo ... MotorTest2-main
 	@echo ... rebuild_cache
+	@echo ... MotorTest2-hex-final
+	@echo ... src/Initialization.obj
+	@echo ... src/Initialization.i
+	@echo ... src/Initialization.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

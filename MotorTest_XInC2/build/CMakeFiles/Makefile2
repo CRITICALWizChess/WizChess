@@ -58,249 +58,249 @@ RM = D:\CMake\bin\cmake.exe -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\WizChess\MotorTest_XInC2
+CMAKE_SOURCE_DIR = D:\Documents\motorTest_V2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\WizChess\MotorTest_XInC2\build
+CMAKE_BINARY_DIR = D:\Documents\motorTest_V2\build
 
 #=============================================================================
-# Target rules for target CMakeFiles/motortest-opt.dir
+# Target rules for target CMakeFiles/MotorTest2-hex.dir
 
 # All Build rule for target.
-CMakeFiles/motortest-opt.dir/all: CMakeFiles/motortest.dir/all
-	$(MAKE) -f CMakeFiles\motortest-opt.dir\build.make CMakeFiles/motortest-opt.dir/depend
-	$(MAKE) -f CMakeFiles\motortest-opt.dir\build.make CMakeFiles/motortest-opt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=12 "Built target motortest-opt"
-.PHONY : CMakeFiles/motortest-opt.dir/all
+CMakeFiles/MotorTest2-hex.dir/all: CMakeFiles/MotorTest2-opt.dir/all
+CMakeFiles/MotorTest2-hex.dir/all: CMakeFiles/MotorTest2-asm.dir/all
+CMakeFiles/MotorTest2-hex.dir/all: CMakeFiles/MotorTest2-main.dir/all
+CMakeFiles/MotorTest2-hex.dir/all: CMakeFiles/MotorTest2.dir/all
+CMakeFiles/MotorTest2-hex.dir/all: CMakeFiles/MotorTest2-s.dir/all
+	$(MAKE) -f CMakeFiles\MotorTest2-hex.dir\build.make CMakeFiles/MotorTest2-hex.dir/depend
+	$(MAKE) -f CMakeFiles\MotorTest2-hex.dir\build.make CMakeFiles/MotorTest2-hex.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Documents\motorTest_V2\build\CMakeFiles --progress-num=7,8,9,10,11 "Built target MotorTest2-hex"
+.PHONY : CMakeFiles/MotorTest2-hex.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/motortest-opt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 3
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/motortest-opt.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 0
-.PHONY : CMakeFiles/motortest-opt.dir/rule
+CMakeFiles/MotorTest2-hex.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 15
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/MotorTest2-hex.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 0
+.PHONY : CMakeFiles/MotorTest2-hex.dir/rule
 
 # Convenience name for target.
-motortest-opt: CMakeFiles/motortest-opt.dir/rule
+MotorTest2-hex: CMakeFiles/MotorTest2-hex.dir/rule
 
-.PHONY : motortest-opt
-
-# clean rule for target.
-CMakeFiles/motortest-opt.dir/clean:
-	$(MAKE) -f CMakeFiles\motortest-opt.dir\build.make CMakeFiles/motortest-opt.dir/clean
-.PHONY : CMakeFiles/motortest-opt.dir/clean
+.PHONY : MotorTest2-hex
 
 # clean rule for target.
-clean: CMakeFiles/motortest-opt.dir/clean
+CMakeFiles/MotorTest2-hex.dir/clean:
+	$(MAKE) -f CMakeFiles\MotorTest2-hex.dir\build.make CMakeFiles/MotorTest2-hex.dir/clean
+.PHONY : CMakeFiles/MotorTest2-hex.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/MotorTest2-hex.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/motortest-hex.dir
+# Target rules for target CMakeFiles/MotorTest2.dir
 
 # All Build rule for target.
-CMakeFiles/motortest-hex.dir/all: CMakeFiles/motortest-asm.dir/all
-CMakeFiles/motortest-hex.dir/all: CMakeFiles/motortest-s.dir/all
-CMakeFiles/motortest-hex.dir/all: CMakeFiles/motortest.dir/all
-CMakeFiles/motortest-hex.dir/all: CMakeFiles/motortest-opt.dir/all
-CMakeFiles/motortest-hex.dir/all: CMakeFiles/motortest-main.dir/all
-	$(MAKE) -f CMakeFiles\motortest-hex.dir\build.make CMakeFiles/motortest-hex.dir/depend
-	$(MAKE) -f CMakeFiles\motortest-hex.dir\build.make CMakeFiles/motortest-hex.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=6,7,8,9,10 "Built target motortest-hex"
-.PHONY : CMakeFiles/motortest-hex.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/motortest-hex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 14
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/motortest-hex.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 0
-.PHONY : CMakeFiles/motortest-hex.dir/rule
-
-# Convenience name for target.
-motortest-hex: CMakeFiles/motortest-hex.dir/rule
-
-.PHONY : motortest-hex
-
-# clean rule for target.
-CMakeFiles/motortest-hex.dir/clean:
-	$(MAKE) -f CMakeFiles\motortest-hex.dir\build.make CMakeFiles/motortest-hex.dir/clean
-.PHONY : CMakeFiles/motortest-hex.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/motortest-hex.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/motortest-s.dir
-
-# All Build rule for target.
-CMakeFiles/motortest-s.dir/all: CMakeFiles/motortest.dir/all
-CMakeFiles/motortest-s.dir/all: CMakeFiles/motortest-opt.dir/all
-	$(MAKE) -f CMakeFiles\motortest-s.dir\build.make CMakeFiles/motortest-s.dir/depend
-	$(MAKE) -f CMakeFiles\motortest-s.dir\build.make CMakeFiles/motortest-s.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=13,14 "Built target motortest-s"
-.PHONY : CMakeFiles/motortest-s.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/motortest-s.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 5
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/motortest-s.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 0
-.PHONY : CMakeFiles/motortest-s.dir/rule
-
-# Convenience name for target.
-motortest-s: CMakeFiles/motortest-s.dir/rule
-
-.PHONY : motortest-s
-
-# clean rule for target.
-CMakeFiles/motortest-s.dir/clean:
-	$(MAKE) -f CMakeFiles\motortest-s.dir\build.make CMakeFiles/motortest-s.dir/clean
-.PHONY : CMakeFiles/motortest-s.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/motortest-s.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/motortest.dir
-
-# All Build rule for target.
-CMakeFiles/motortest.dir/all:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/depend
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=1,2 "Built target motortest"
-.PHONY : CMakeFiles/motortest.dir/all
+CMakeFiles/MotorTest2.dir/all:
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/depend
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Documents\motorTest_V2\build\CMakeFiles --progress-num=1,2,3 "Built target MotorTest2"
+.PHONY : CMakeFiles/MotorTest2.dir/all
 
 # Include target in all.
-all: CMakeFiles/motortest.dir/all
+all: CMakeFiles/MotorTest2.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/motortest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 2
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/motortest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 0
-.PHONY : CMakeFiles/motortest.dir/rule
+CMakeFiles/MotorTest2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 3
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/MotorTest2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 0
+.PHONY : CMakeFiles/MotorTest2.dir/rule
 
 # Convenience name for target.
-motortest: CMakeFiles/motortest.dir/rule
+MotorTest2: CMakeFiles/MotorTest2.dir/rule
 
-.PHONY : motortest
-
-# clean rule for target.
-CMakeFiles/motortest.dir/clean:
-	$(MAKE) -f CMakeFiles\motortest.dir\build.make CMakeFiles/motortest.dir/clean
-.PHONY : CMakeFiles/motortest.dir/clean
+.PHONY : MotorTest2
 
 # clean rule for target.
-clean: CMakeFiles/motortest.dir/clean
+CMakeFiles/MotorTest2.dir/clean:
+	$(MAKE) -f CMakeFiles\MotorTest2.dir\build.make CMakeFiles/MotorTest2.dir/clean
+.PHONY : CMakeFiles/MotorTest2.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/MotorTest2.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/motortest-main.dir
+# Target rules for target CMakeFiles/MotorTest2-s.dir
 
 # All Build rule for target.
-CMakeFiles/motortest-main.dir/all:
-	$(MAKE) -f CMakeFiles\motortest-main.dir\build.make CMakeFiles/motortest-main.dir/depend
-	$(MAKE) -f CMakeFiles\motortest-main.dir\build.make CMakeFiles/motortest-main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=11 "Built target motortest-main"
-.PHONY : CMakeFiles/motortest-main.dir/all
+CMakeFiles/MotorTest2-s.dir/all: CMakeFiles/MotorTest2-opt.dir/all
+CMakeFiles/MotorTest2-s.dir/all: CMakeFiles/MotorTest2.dir/all
+	$(MAKE) -f CMakeFiles\MotorTest2-s.dir\build.make CMakeFiles/MotorTest2-s.dir/depend
+	$(MAKE) -f CMakeFiles\MotorTest2-s.dir\build.make CMakeFiles/MotorTest2-s.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Documents\motorTest_V2\build\CMakeFiles --progress-num=14,15 "Built target MotorTest2-s"
+.PHONY : CMakeFiles/MotorTest2-s.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/motortest-main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 1
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/motortest-main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 0
-.PHONY : CMakeFiles/motortest-main.dir/rule
+CMakeFiles/MotorTest2-s.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 6
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/MotorTest2-s.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 0
+.PHONY : CMakeFiles/MotorTest2-s.dir/rule
 
 # Convenience name for target.
-motortest-main: CMakeFiles/motortest-main.dir/rule
+MotorTest2-s: CMakeFiles/MotorTest2-s.dir/rule
 
-.PHONY : motortest-main
-
-# clean rule for target.
-CMakeFiles/motortest-main.dir/clean:
-	$(MAKE) -f CMakeFiles\motortest-main.dir\build.make CMakeFiles/motortest-main.dir/clean
-.PHONY : CMakeFiles/motortest-main.dir/clean
+.PHONY : MotorTest2-s
 
 # clean rule for target.
-clean: CMakeFiles/motortest-main.dir/clean
+CMakeFiles/MotorTest2-s.dir/clean:
+	$(MAKE) -f CMakeFiles\MotorTest2-s.dir\build.make CMakeFiles/MotorTest2-s.dir/clean
+.PHONY : CMakeFiles/MotorTest2-s.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/MotorTest2-s.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/motortest-asm.dir
+# Target rules for target CMakeFiles/MotorTest2-opt.dir
 
 # All Build rule for target.
-CMakeFiles/motortest-asm.dir/all: CMakeFiles/motortest-s.dir/all
-CMakeFiles/motortest-asm.dir/all: CMakeFiles/motortest.dir/all
-CMakeFiles/motortest-asm.dir/all: CMakeFiles/motortest-opt.dir/all
-	$(MAKE) -f CMakeFiles\motortest-asm.dir\build.make CMakeFiles/motortest-asm.dir/depend
-	$(MAKE) -f CMakeFiles\motortest-asm.dir\build.make CMakeFiles/motortest-asm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num=3,4,5 "Built target motortest-asm"
-.PHONY : CMakeFiles/motortest-asm.dir/all
+CMakeFiles/MotorTest2-opt.dir/all: CMakeFiles/MotorTest2.dir/all
+	$(MAKE) -f CMakeFiles\MotorTest2-opt.dir\build.make CMakeFiles/MotorTest2-opt.dir/depend
+	$(MAKE) -f CMakeFiles\MotorTest2-opt.dir\build.make CMakeFiles/MotorTest2-opt.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Documents\motorTest_V2\build\CMakeFiles --progress-num=13 "Built target MotorTest2-opt"
+.PHONY : CMakeFiles/MotorTest2-opt.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/motortest-asm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 8
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/motortest-asm.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 0
-.PHONY : CMakeFiles/motortest-asm.dir/rule
+CMakeFiles/MotorTest2-opt.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 4
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/MotorTest2-opt.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 0
+.PHONY : CMakeFiles/MotorTest2-opt.dir/rule
 
 # Convenience name for target.
-motortest-asm: CMakeFiles/motortest-asm.dir/rule
+MotorTest2-opt: CMakeFiles/MotorTest2-opt.dir/rule
 
-.PHONY : motortest-asm
-
-# clean rule for target.
-CMakeFiles/motortest-asm.dir/clean:
-	$(MAKE) -f CMakeFiles\motortest-asm.dir\build.make CMakeFiles/motortest-asm.dir/clean
-.PHONY : CMakeFiles/motortest-asm.dir/clean
+.PHONY : MotorTest2-opt
 
 # clean rule for target.
-clean: CMakeFiles/motortest-asm.dir/clean
+CMakeFiles/MotorTest2-opt.dir/clean:
+	$(MAKE) -f CMakeFiles\MotorTest2-opt.dir\build.make CMakeFiles/MotorTest2-opt.dir/clean
+.PHONY : CMakeFiles/MotorTest2-opt.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/MotorTest2-opt.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/motortest-hex-final.dir
+# Target rules for target CMakeFiles/MotorTest2-asm.dir
 
 # All Build rule for target.
-CMakeFiles/motortest-hex-final.dir/all: CMakeFiles/motortest-hex.dir/all
-	$(MAKE) -f CMakeFiles\motortest-hex-final.dir\build.make CMakeFiles/motortest-hex-final.dir/depend
-	$(MAKE) -f CMakeFiles\motortest-hex-final.dir\build.make CMakeFiles/motortest-hex-final.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\WizChess\MotorTest_XInC2\build\CMakeFiles --progress-num= "Built target motortest-hex-final"
-.PHONY : CMakeFiles/motortest-hex-final.dir/all
+CMakeFiles/MotorTest2-asm.dir/all: CMakeFiles/MotorTest2-opt.dir/all
+CMakeFiles/MotorTest2-asm.dir/all: CMakeFiles/MotorTest2.dir/all
+CMakeFiles/MotorTest2-asm.dir/all: CMakeFiles/MotorTest2-s.dir/all
+	$(MAKE) -f CMakeFiles\MotorTest2-asm.dir\build.make CMakeFiles/MotorTest2-asm.dir/depend
+	$(MAKE) -f CMakeFiles\MotorTest2-asm.dir\build.make CMakeFiles/MotorTest2-asm.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Documents\motorTest_V2\build\CMakeFiles --progress-num=4,5,6 "Built target MotorTest2-asm"
+.PHONY : CMakeFiles/MotorTest2-asm.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/MotorTest2-asm.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 9
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/MotorTest2-asm.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 0
+.PHONY : CMakeFiles/MotorTest2-asm.dir/rule
+
+# Convenience name for target.
+MotorTest2-asm: CMakeFiles/MotorTest2-asm.dir/rule
+
+.PHONY : MotorTest2-asm
+
+# clean rule for target.
+CMakeFiles/MotorTest2-asm.dir/clean:
+	$(MAKE) -f CMakeFiles\MotorTest2-asm.dir\build.make CMakeFiles/MotorTest2-asm.dir/clean
+.PHONY : CMakeFiles/MotorTest2-asm.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/MotorTest2-asm.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/MotorTest2-main.dir
+
+# All Build rule for target.
+CMakeFiles/MotorTest2-main.dir/all:
+	$(MAKE) -f CMakeFiles\MotorTest2-main.dir\build.make CMakeFiles/MotorTest2-main.dir/depend
+	$(MAKE) -f CMakeFiles\MotorTest2-main.dir\build.make CMakeFiles/MotorTest2-main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Documents\motorTest_V2\build\CMakeFiles --progress-num=12 "Built target MotorTest2-main"
+.PHONY : CMakeFiles/MotorTest2-main.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/MotorTest2-main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 1
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/MotorTest2-main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 0
+.PHONY : CMakeFiles/MotorTest2-main.dir/rule
+
+# Convenience name for target.
+MotorTest2-main: CMakeFiles/MotorTest2-main.dir/rule
+
+.PHONY : MotorTest2-main
+
+# clean rule for target.
+CMakeFiles/MotorTest2-main.dir/clean:
+	$(MAKE) -f CMakeFiles\MotorTest2-main.dir\build.make CMakeFiles/MotorTest2-main.dir/clean
+.PHONY : CMakeFiles/MotorTest2-main.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/MotorTest2-main.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/MotorTest2-hex-final.dir
+
+# All Build rule for target.
+CMakeFiles/MotorTest2-hex-final.dir/all: CMakeFiles/MotorTest2-hex.dir/all
+	$(MAKE) -f CMakeFiles\MotorTest2-hex-final.dir\build.make CMakeFiles/MotorTest2-hex-final.dir/depend
+	$(MAKE) -f CMakeFiles\MotorTest2-hex-final.dir\build.make CMakeFiles/MotorTest2-hex-final.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Documents\motorTest_V2\build\CMakeFiles --progress-num= "Built target MotorTest2-hex-final"
+.PHONY : CMakeFiles/MotorTest2-hex-final.dir/all
 
 # Include target in all.
-all: CMakeFiles/motortest-hex-final.dir/all
+all: CMakeFiles/MotorTest2-hex-final.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/motortest-hex-final.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 14
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/motortest-hex-final.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\WizChess\MotorTest_XInC2\build\CMakeFiles 0
-.PHONY : CMakeFiles/motortest-hex-final.dir/rule
+CMakeFiles/MotorTest2-hex-final.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 15
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/MotorTest2-hex-final.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Documents\motorTest_V2\build\CMakeFiles 0
+.PHONY : CMakeFiles/MotorTest2-hex-final.dir/rule
 
 # Convenience name for target.
-motortest-hex-final: CMakeFiles/motortest-hex-final.dir/rule
+MotorTest2-hex-final: CMakeFiles/MotorTest2-hex-final.dir/rule
 
-.PHONY : motortest-hex-final
-
-# clean rule for target.
-CMakeFiles/motortest-hex-final.dir/clean:
-	$(MAKE) -f CMakeFiles\motortest-hex-final.dir\build.make CMakeFiles/motortest-hex-final.dir/clean
-.PHONY : CMakeFiles/motortest-hex-final.dir/clean
+.PHONY : MotorTest2-hex-final
 
 # clean rule for target.
-clean: CMakeFiles/motortest-hex-final.dir/clean
+CMakeFiles/MotorTest2-hex-final.dir/clean:
+	$(MAKE) -f CMakeFiles\MotorTest2-hex-final.dir\build.make CMakeFiles/MotorTest2-hex-final.dir/clean
+.PHONY : CMakeFiles/MotorTest2-hex-final.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/MotorTest2-hex-final.dir/clean
 
 .PHONY : clean
 
