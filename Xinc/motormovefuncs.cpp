@@ -302,13 +302,31 @@ void zero(){
         }
     }
 }
-uint16_t movementbuild(uint16_t direct, uint16_t squares){
-    if (squares > 0){
+// moves the electromagnet to specified square. does not activate magnet
+uint16_t movementbuild(uint16_t direct, uint16_t squares){ 
+    
         switch(direct){
             case 1:
                 for (int i = 0; i <= squares; i++){
-                    
+                    north();
+                }
+                if (squares = 0){
+                    knorth();
+                }
+            case 2:
+                for (int i = 0; i <= squares; i++){
+                    northeast();
+                }
+                if (squares = 0){
+                    knortheast();
+                }
+            case 3:
+                for (int i = 0; i <= squares; i++){
+                    neast();
+                }
+                if (squares = 0){
+                    keast();
                 }
         }
-    }
+    
 }
