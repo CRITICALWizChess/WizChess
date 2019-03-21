@@ -314,6 +314,7 @@ void movementbuild(uint16_t direct, uint16_t squares){
                 if (squares = 0){
                     knorth();
                 }
+                break;
             case 2:
                 for (int i = 0; i <= squares; i++){
                     northeast();
@@ -321,6 +322,7 @@ void movementbuild(uint16_t direct, uint16_t squares){
                 if (squares = 0){
                     knortheast();
                 }
+                break;
             case 3:
                 for (int i = 0; i <= squares; i++){
                     neast();
@@ -328,6 +330,7 @@ void movementbuild(uint16_t direct, uint16_t squares){
                 if (squares = 0){
                     keast();
                 }
+                break;
             case 4:
                 for (int i = 0; i <= squares; i++){
                     southeast();
@@ -342,6 +345,7 @@ void movementbuild(uint16_t direct, uint16_t squares){
                 if (squares = 0){
                     ksouth();
                 }
+                break;
             case 6:
                 for (int i = 0; i <= squares; i++){
                     southwest();
@@ -349,6 +353,7 @@ void movementbuild(uint16_t direct, uint16_t squares){
                 if (squares = 0){
                     ksouthwest();
                 }
+                break;
             case 7:
                 for (int i = 0; i <= squares; i++){
                     west();
@@ -356,6 +361,7 @@ void movementbuild(uint16_t direct, uint16_t squares){
                 if (squares = 0){
                     kwest();
                 }
+                break;
             case 8:
                 for (int i = 0; i <= squares; i++){
                     northwest();
@@ -363,6 +369,7 @@ void movementbuild(uint16_t direct, uint16_t squares){
                 if (squares = 0){
                     knorthwest();
                 }
+                break;
         }
     
 }
