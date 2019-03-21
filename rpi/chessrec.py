@@ -31,19 +31,19 @@ while 1:
 	if (readyspeak.is_pressed or speak ):
 		listenled.on()
 	    # obtain audio from the microphone
-        r = sr.Recognizer()
-        with sr.Microphone() as source:
-            print("Listening")
-            audio = r.listen(source)
+		r = sr.Recognizer()
+		with sr.Microphone() as source:
+			print("Listening")
+			audio = r.listen(source)
         
         # recognize speech using Sphinx
-        try:
-            Commandi = r.recognize_sphinx(audio) # save command as variable
-            print(Commandi = "\n") # print variable, this will not be in the final version
-        except sr.UnknownValueError:
-            print("Sphinx could not understand audio")
-        except sr.RequestError as e:
-            print("Sphinx error; {0}".format(e))
+		try:
+			Commandi = r.recognize_sphinx(audio) # save command as variable
+			print(Commandi = "\n") # print variable, this will not be in the final version
+		except sr.UnknownValueError:
+			print("Sphinx could not understand audio")
+		except sr.RequestError as e:
+			print("Sphinx error; {0}".format(e))
                 
 		
 		#checks if string is usable (add a flag or summon to invoke the listen loop) 

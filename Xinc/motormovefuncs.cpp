@@ -17,7 +17,7 @@ void stepdelay(){
     }
 }
 
-void north( int ){ // go one square north
+void north(){ // go one square north
     gpio_write(N_NW, GPIO_A); // sets direction, whatever forward is
     for (int i = 0; i <= SQUAREDIST; i++){
         gpio_write(0x01, GPIO_A); //replace with the pin config you plan on changing
@@ -280,6 +280,7 @@ void knorthwest(){ // knight to forward left
         stepdelay();
     }
 }
+// zeros the motors to a known position
 void zero(){
     // space for flags if break doesn't work
     while(true){
@@ -364,4 +365,9 @@ void movementbuild(uint16_t direct, uint16_t squares){
                 }
         }
     
+}
+uint16_t gameplaymove(){
+    //i honestly don't know where I want to go with this at this point
+    error = 0;
+    return error;
 }
