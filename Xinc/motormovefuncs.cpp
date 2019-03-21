@@ -87,7 +87,7 @@ void southwest(){ // go one square southwest
     }
     
 }
-void northwest(){ // go one square northwest
+void northwest(){ // summons kanye go one square northwest
     gpio_write(N_NW, GPIO_A); // sets direction, whatever reverse|forward is
     for (int i = 0; i <= DIAGDIST; i++){
         gpio_write(0x03, GPIO_A); //replace with the pin config you plan on changing
@@ -366,8 +366,14 @@ void movementbuild(uint16_t direct, uint16_t squares){
         }
     
 }
+// this function will take whatever input the chess code gives it and use that to call movementbuild()
+// make sure you turn on the electromagnet at the right time 
 uint16_t gameplaymove(){
     //i honestly don't know where I want to go with this at this point
     error = 0;
     return error;
+}
+// this function will remove a piece from the specified coordinate. Not sure how to implement this
+void removepiece(){
+    //code here
 }
