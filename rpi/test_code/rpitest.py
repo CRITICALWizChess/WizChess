@@ -84,12 +84,12 @@ while 1:
 		if ex:
 			ex = 0
 			continue
-		Commando = parts[1][0].lower()+number+" "+parts[3][0].lower()+number1+"\n"
+		Commando = parts[1][0].lower()+number+parts[3][0].lower()+number1+"\n"
 #		if player == "WHITE":
 #			player = "BLACK"
 #		else:
 #			player = "WHITE"
 		
-		print("Commando is " + Commando + "\n\n")
+		print("Commando is " + Commando + "\n")
 		
 		convert = 0

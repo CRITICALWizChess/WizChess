@@ -30,8 +30,8 @@ class Player(object):
         self.colour   = colour
         self.nature   = nature
         self.name     = name
-        self.can_castle_long_this_turn  = False
-        self.can_castle_short_this_turn = False
+        # self.can_castle_long_this_turn  = False
+        # self.can_castle_short_this_turn = False
         self.playedturns = 0
     def __str__(self):
         if self.nature is 'AI':
@@ -49,42 +49,42 @@ class Player(object):
             if board[mine].piecename is 'k':
                 return mine
     def validmoves(self, board):
-        self.set_castling_flags(board)
+    #     self.set_castling_flags(board)
         mypieces=self.getpieces(board)
         for mine in mypieces:
             for target in self.potentialtargets(mypieces):
                 if self.canmoveto(board, mine, target):
                     if not self.makesuscheck(mine, target, board):
                         yield (mine, target)
-    def set_castling_flags(self, board):
-        kingpos = self.kingpos(board)
-        if self.king_can_castle(board, kingpos):
-            if self.rook_can_castle_long(board, kingpos):
-                self.can_castle_long_this_turn = True
-            else:
-                self.can_castle_long_this_turn = False
-            if self.rook_can_castle_short(board, kingpos):
-                self.can_castle_short_this_turn = True
-            else:
-                self.can_castle_short_this_turn = False
-        else:
-            self.can_castle_long_this_turn = False
-            self.can_castle_short_this_turn = False
-    def king_can_castle(self, board, kingpos):
-        if board[kingpos].nrofmoves is 0 and not self.isincheck(board):
-            return True
-    def rook_can_castle_long(self, board, kingpos):
-        if self.longrook in board and board[self.longrook].nrofmoves is 0:
-            if self.hasclearpath(self.longrook, kingpos, board):
-                tmptarget = (kingpos[0],kingpos[1]-1)
-                if not self.makesuscheck(kingpos, tmptarget, board):
-                    return True
-    def rook_can_castle_short(self, board, kingpos):
-        if self.shortrook in board and board[self.shortrook].nrofmoves is 0:
-            if self.hasclearpath(self.shortrook, kingpos, board):
-                tmptarget = (kingpos[0],kingpos[1]+1)
-                if not self.makesuscheck(kingpos, tmptarget, board):
-                    return True
+    # def set_castling_flags(self, board):
+    #     kingpos = self.kingpos(board)
+    #     if self.king_can_castle(board, kingpos):
+    #         if self.rook_can_castle_long(board, kingpos):
+    #             self.can_castle_long_this_turn = True
+    #         else:
+    #             self.can_castle_long_this_turn = False
+    #         if self.rook_can_castle_short(board, kingpos):
+    #             self.can_castle_short_this_turn = True
+    #         else:
+    #             self.can_castle_short_this_turn = False
+    #     else:
+    #         self.can_castle_long_this_turn = False
+    #         self.can_castle_short_this_turn = False
+    # def king_can_castle(self, board, kingpos):
+    #     if board[kingpos].nrofmoves is 0 and not self.isincheck(board):
+    #         return True
+    # def rook_can_castle_long(self, board, kingpos):
+    #     if self.longrook in board and board[self.longrook].nrofmoves is 0:
+    #         if self.hasclearpath(self.longrook, kingpos, board):
+    #             tmptarget = (kingpos[0],kingpos[1]-1)
+    #             if not self.makesuscheck(kingpos, tmptarget, board):
+    #                 return True
+    # def rook_can_castle_short(self, board, kingpos):
+    #     if self.shortrook in board and board[self.shortrook].nrofmoves is 0:
+    #         if self.hasclearpath(self.shortrook, kingpos, board):
+    #             tmptarget = (kingpos[0],kingpos[1]+1)
+    #             if not self.makesuscheck(kingpos, tmptarget, board):
+    #                 return True
     def getposition(self, move):
         startcol  = int(ord(move[0].lower())-97)
         startrow  = int(move[1])-1
@@ -124,6 +124,7 @@ class Player(object):
                 return random.choice(list(self.validmoves(board)))
             else:
                 # Player is human, get a move from input
+                ##### USE THIS SECTION FOR CALLING MOVE INPUT FUNCTION ########
                 move=raw_input("\nMake a move : ")
                 if move == 'exit':
                     break
@@ -209,8 +210,9 @@ class Player(object):
         else:
             promoteto = 'empty'
             while promoteto.lower() not in ['kn','q']:
-                promoteto = \
-                raw_input("You may promote your pawn:\n[Kn]ight [Q]ueen : ")
+                promoteto = "Q" #IN THE FUTURE this could be replaced with another speech input 
+                # promoteto = \
+                # raw_input("You may promote your pawn:\n[Kn]ight [Q]ueen : ")
         board[target].promote(promoteto)
     def hasclearpath(self, start, target, board):
         startcol, startrow = start[1], start[0]
@@ -300,20 +302,20 @@ class Player(object):
                     if abs(target[0]-start[0]) == 2:
                         return True
             # 2nd exception to the rule, en passant
-            if start[0] == self.enpassantrow:
-                if abs(target[0]-start[0]) == 1:
-                    if abs(target[1]-start[1]) == 1:
-                        if target[1]-start[1] == -1:
-                            passant_victim = (start[0], start[1]-1)
-                        elif target[1]-start[1] == 1:
-                            passant_victim = (start[0], start[1]+1)
-                        if passant_victim in board and \
-                        board[passant_victim].colour is not self.colour and \
-                        board[passant_victim].piecename is 'p'and \
-                        board[passant_victim].nrofmoves == 1 and \
-                        board[passant_victim].turn_moved_twosquares == \
-                        self.playedturns-1:
-                            return True
+            # if start[0] == self.enpassantrow:
+            #     if abs(target[0]-start[0]) == 1:
+            #         if abs(target[1]-start[1]) == 1:
+            #             if target[1]-start[1] == -1:
+            #                 passant_victim = (start[0], start[1]-1)
+            #             elif target[1]-start[1] == 1:
+            #                 passant_victim = (start[0], start[1]+1)
+            #             if passant_victim in board and \
+            #             board[passant_victim].colour is not self.colour and \
+            #             board[passant_victim].piecename is 'p'and \
+            #             board[passant_victim].nrofmoves == 1 and \
+            #             board[passant_victim].turn_moved_twosquares == \
+            #             self.playedturns-1:
+            #                 return True
     def check_bishop(self, start, target):
         # Check for non-horizontal/vertical and linear movement
         if abs(target[1]-start[1]) == abs(target[0]-start[0]):
@@ -327,12 +329,12 @@ class Player(object):
         if abs(target[0]-start[0]) <= 1 and abs(target[1]-start[1]) <= 1:
             return True
         # ..except when castling
-        if self.can_castle_short_this_turn:
-            if target[1]-start[1] == 2 and start[0] == target[0]:
-                return True
-        if self.can_castle_long_this_turn:
-            if target[1]-start[1] == -2 and start[0] == target[0]:
-                return True
+        # if self.can_castle_short_this_turn:
+        #     if target[1]-start[1] == 2 and start[0] == target[0]:
+        #         return True
+        # if self.can_castle_long_this_turn:
+        #     if target[1]-start[1] == -2 and start[0] == target[0]:
+        #         return True
 class Piece(object):
     def __init__(self, piecename, position, player):
         self.colour    = player.colour
@@ -478,7 +480,7 @@ def newgame():
     Player B: %s (lowercase)
     (Use moves on form 'a2b3' or type 'exit' at any time.) """
     print infostring % (playera.name, playerb.name, playera, playerb)
-    raw_input("\n\nPress [Enter] when ready")
+    #raw_input("\n\nPress [Enter] when ready")
     # WHITE starts
     player = playera
     try:
@@ -491,12 +493,14 @@ def newgame():
         raw_input("\n\nPress any key to continue")
 def getplayers():
     ainames = ['chesschick','foxysquare']
-    name1 = raw_input("\nPlayer A (white): ")
+    name1 = "player1"
+    #name1 = raw_input("\nPlayer A (white): ")
     if not name1:
         playera = Player('white', 'AI', ainames[0])
     else:
         playera = Player('white', 'human', name1)
-    name2 = raw_input("\nPlayer B (black): ")
+    name2 = "player2"
+    #name2 = raw_input("\nPlayer B (black): ")
     if not name2:
         playerb = Player('black', 'AI', ainames[1])
     else:
