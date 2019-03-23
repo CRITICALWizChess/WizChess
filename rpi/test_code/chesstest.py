@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os,sys,random
+from time import sleep
 # Chessmastah, started Jan 2012 by Svein Arne Roed
 #
 # Available at https://sites.google.com/site/marsarsite/files
@@ -103,14 +104,16 @@ class Player(object):
             if self.nature is 'AI':
                 return True
             else:
-                if raw_input("Call a draw? (yes/no) : ") in ['yes','y','Yes']:
-                    return True
+                return True
+                # if raw_input("Call a draw? (yes/no) : ") in ['yes','y','Yes']:
+                #     return True
     def ischeckmate(self, board):
         if not list(self.validmoves(board)) and self.isincheck(board):
             return True
     def turn(self, board):
        
         turnstring = "\n%s's turn," % self.name
+        # LCD Integration opportunity
         warning = " *** Your King is in check *** "
         if self.isincheck(board):
             turnstring = turnstring + warning
@@ -460,14 +463,14 @@ class Game(object):
         return endstring
 def newgame():
     os.system('clear')
-    print """
-      Welcome to Chessmastah, the fantastic console chess environment.
-      Please type in the name of the contestants.
-      If you want to play against the computer, leave one name blank
-      and press [Enter].
-      Or if you fancy, leave both names blank and watch the computer
-      duke it out with itself.
-      """
+    # print """
+    #   Welcome to Chessmastah, the fantastic console chess environment.
+    #   Please type in the name of the contestants.
+    #   If you want to play against the computer, leave one name blank
+    #   and press [Enter].
+    #   Or if you fancy, leave both names blank and watch the computer
+    #   duke it out with itself.
+    #   """
     playera, playerb = getplayers()
     playera.set_opponent(playerb)
     playerb.set_opponent(playera)
@@ -489,18 +492,20 @@ def newgame():
         # No result if user exit
         pass
     else:
+        # another opportunity to use the screens here
         print game.end(player, result)
-        raw_input("\n\nPress any key to continue")
+        sleep(10)
+        #raw_input("\n\nPress any key to continue")
 def getplayers():
     ainames = ['chesschick','foxysquare']
-    name1 = "player1"
-    #name1 = raw_input("\nPlayer A (white): ")
+    #name1 = "player1"
+    name1 = raw_input("\nPlayer A (white): ")
     if not name1:
         playera = Player('white', 'AI', ainames[0])
     else:
         playera = Player('white', 'human', name1)
-    name2 = "player2"
-    #name2 = raw_input("\nPlayer B (black): ")
+    #name2 = "player2"
+    name2 = raw_input("\nPlayer B (black): ")
     if not name2:
         playerb = Player('black', 'AI', ainames[1])
     else:
@@ -515,7 +520,8 @@ def main():
     try:
         while True:
             newgame()
-            choice=raw_input(menu)
+            choice = " "
+            #choice=raw_input(menu)
             if choice == 'exit':
                 print "\nAs you wish. Welcome back!"
                 break
