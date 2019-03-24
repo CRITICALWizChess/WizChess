@@ -74,6 +74,7 @@ def piecewtol(parts, i):
 def speechinput():
 	speak = 1
 	# Input goes here yo
+	print("before while")
 	while(speak):
 		if (readyspeak.is_pressed):
 			listenled.on()
