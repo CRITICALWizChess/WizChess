@@ -533,6 +533,8 @@ def main():
                 break
     except KeyboardInterrupt:
         sys.exit("\n\nOkok. Aborting.")
-if __name__ == '__main__':
+    except:
+        print("unknown error")    
+    if __name__ == '__main__':
     #cProfile.run('main()')
     main()
