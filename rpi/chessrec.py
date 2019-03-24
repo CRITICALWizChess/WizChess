@@ -113,6 +113,7 @@ def moveinputconvert():
 	if (True):
 		parts = speechinput()
 	if True:
+		print(converting)
 		#convert to usable format
 		#listenled.off() # processing
 		#piece, ex = piecewtol(parts)
