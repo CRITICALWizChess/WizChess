@@ -94,7 +94,7 @@ def speechinput():
 			# recognize speech using Sphinx
 			try:
 				Commandi = r.recognize_sphinx(audio) # save command as variable
-				print(Commandi = "\n") # print variable, this will not be in the final version
+				print(Commandi + "\n") # print variable, this will not be in the final version
 			except sr.UnknownValueError:
 				print("Sphinx could not understand audio")
 				Commandi = "nope"
