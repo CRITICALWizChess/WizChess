@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os,sys,random
 from time import sleep
-import rpitest
+import chessrec
 # Chessmastah, started Jan 2012 by Svein Arne Roed
 #
 # Available at https://sites.google.com/site/marsarsite/files
@@ -129,7 +129,7 @@ class Player(object):
             else:
                 # Player is human, get a move from input
                 ##### USE THIS SECTION FOR CALLING MOVE INPUT FUNCTION ########
-                move = rpitest.moveinputconvert()
+                move = chessrec.moveinputconvert()
                 #move=raw_input("\nMake a move : ")
                 if move == 'exit':
                     break

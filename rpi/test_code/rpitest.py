@@ -1,9 +1,7 @@
 from time import sleep
-	
+
+
 #initialize variables
-#player = "WHITE"
-convert = 0
-speak = 0
 
 
 def numberwtod(parts, i):
@@ -24,12 +22,14 @@ def numberwtod(parts, i):
 		number = "7"
 	elif parts[i] == "EIGHT":
 		number = "8"
+		#uncomment below in final version
 	#elif parts[i] == "TO"
 		#number = "2"
 	else:
 		print("N CONVERSION ERROR\n")
 		sleep(1)
 		exit = 1
+		number = "9"
 	return number, exit
 
 def piecewtol(parts, i):
@@ -50,21 +50,20 @@ def piecewtol(parts, i):
 		print("P CONVERSION ERROR\n")
 		sleep(1)
 		exit = 1
+		piece = "lol"
 	return piece, exit
 
-
-while 1:
-
-	if (1 or speak ):
-
+def speechinput():
+	speak = 1
+	# Input goes here yo
+	while(speak):
 		Commandi = raw_input("Type your input\n") # save command as variable
-		print("Input is " + Commandi) # print variable, this will not be in the final version		
+		#print("Input is " + Commandi) # print variable, this will not be in the final version		
 		
 		#checks if string is usable (add a flag or summon to invoke the listen loop) 
 		if (len(Commandi) >= 20 and len(Commandi) <= 30): #16 and 23 for piece to intersect
 			parts = Commandi.split(" ",4)
 			if (len(parts[4]) <= 5 and parts[0]+parts[1] != parts[3]+parts[4]):
-				convert = 1
 				speak = 0
 			else:
 				print("ERROR 3")
@@ -74,22 +73,30 @@ while 1:
 			print("ERROR 1")
 			sleep(1)
 			speak = 1
-			
-	if convert:
+	return parts
+
+def moveinputconvert():
+	if (True):
+		parts = speechinput()
+	if True:
 		#convert to usable format
 		#listenled.off() # processing
 		#piece, ex = piecewtol(parts)
 		number, ex = numberwtod(parts, 1)
 		number1, ex = numberwtod(parts, 4)
-		if ex:
-			ex = 0
-			continue
-		Commando = parts[1][0].lower()+number+parts[3][0].lower()+number1+"\n"
-#		if player == "WHITE":
-#			player = "BLACK"
-#		else:
-#			player = "WHITE"
+		if (not ex):
+			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
+			print("Commando is " + Commando + "\n")
 		
-		print("Commando is " + Commando + "\n")
+		ex = 0
+		return Commando	
 		
-		convert = 0
+
+
+
+# while 1:
+
+# 	move = moveinputconvert()
+			
+		
+		
