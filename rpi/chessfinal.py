@@ -523,18 +523,18 @@ def main():
     menu="""
     Thanks for playing the Chessmastah, would you like to go again?
     Press [Enter] to play again or type 'exit'.  >>  """
-    try:
-        while True:
-            newgame()
-            choice = " "
-            #choice=raw_input(menu)
-            if choice == 'exit':
-                print "\nAs you wish. Welcome back!"
-                break
-    except KeyboardInterrupt:
-        sys.exit("\n\nOkok. Aborting.")
-    except:
-        print("unknown error")    
+    #try:
+    while True:
+        newgame()
+        choice = " "
+        #choice=raw_input(menu)
+        if choice == 'exit':
+            print "\nAs you wish. Welcome back!"
+            break
+    # except KeyboardInterrupt:
+    #     sys.exit("\n\nOkok. Aborting.")
+    # except:
+    #     print("unknown error")    
 if __name__ == '__main__':
     #cProfile.run('main()')
     main()
