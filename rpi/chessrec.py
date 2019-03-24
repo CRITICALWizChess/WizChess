@@ -41,14 +41,44 @@ def numberwtod(parts, i):
 	elif parts[i] == "EIGHT":
 		number = "8"
 		#uncomment below in final version
-	#elif parts[i] == "TO"
-		#number = "2"
+	elif parts[i] == "TO":
+		number = "2"
 	else:
 		print("N CONVERSION ERROR\n")
 		sleep(1)
 		exit = 1
 		number = "9"
 	return number, exit
+
+def natotod(parts):
+	exit = 0
+	i = 0
+	for x in range(0,2):
+		if parts[i] == "ALPHA":
+			number = "1"
+		elif parts[i] == "BRAVO":
+			number = "2"
+		elif parts[i] == "CHARLIE":
+			number = "3"
+		elif parts[i] == "DELTA":
+			number = "4"
+		elif parts[i] == "ECHO":
+			number = "5"
+		elif parts[i] == "FOXTROT":
+			number = "6"
+		elif parts[i] == "GOLF":
+			number = "7"
+		elif parts[i] == "HOTEL":
+			number = "8"
+		else:
+			print("N CONVERSION ERROR\n")
+			sleep(1)
+			exit = 1
+			number = "9"
+		if (x == 0):
+			number0 = number
+			i = 3
+	return number0, number, exit
 
 def piecewtol(parts, i):
 	exit = 0
@@ -119,9 +149,11 @@ def moveinputconvert():
 		#piece, ex = piecewtol(parts)
 		number, ex = numberwtod(parts, 1)
 		number1, ex = numberwtod(parts, 4)
+		nat, nat1, ex = natotod(parts)
 		if (not ex):
 			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
-			serialsend(Commando)
+			Commandser = nat+number+nat1+number1
+			serialsend(Commandser)
 			sleep(1)
 		
 		ex = 0
