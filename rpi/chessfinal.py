@@ -518,7 +518,6 @@ def getplayers():
         playerb = Player('black', 'human', name2)
     return playera, playerb
 def main():
-    chessrec.serialinit()
     """ Kickstart everything. Display menu after game has ended. """
     
     menu="""

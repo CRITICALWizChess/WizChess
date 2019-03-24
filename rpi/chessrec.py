@@ -5,24 +5,16 @@ import serial
 from gpiozero import Button, LED
 
 # initialize serial
-def serialinit():
-	ser = serial.Serial(            
+def serialsend(sending):
+	serial.Serial(            
 		port='/dev/serial0',
 		baudrate = 19200,
 		parity=serial.PARITY_NONE,
 		stopbits=serial.STOPBITS_ONE,
 		bytesize=serial.EIGHTBITS,
 		timeout=1
-		)
+		).write(sending)
 
-ser = serial.Serial(            
-		port='/dev/serial0',
-		baudrate = 19200,
-		parity=serial.PARITY_NONE,
-		stopbits=serial.STOPBITS_ONE,
-		bytesize=serial.EIGHTBITS,
-		timeout=1
-		)
 #initialize inputs & outputs (14 and 15 are taken by UART)
 readyspeak = Button(2)
 listenled = LED(4)
@@ -128,7 +120,7 @@ def moveinputconvert():
 		number1, ex = numberwtod(parts, 4)
 		if (not ex):
 			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
-			ser.write(Commando)
+			serialsend(Commando)
 			sleep(1)
 		
 		ex = 0
