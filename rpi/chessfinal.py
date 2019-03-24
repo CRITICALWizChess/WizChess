@@ -2,6 +2,10 @@
 import os,sys,random
 from time import sleep
 import chessrec
+
+#This is a program modified by Matthew Vandermeer for 
+#University of Alberta capstone 2019
+
 # Chessmastah, started Jan 2012 by Svein Arne Roed
 #
 # Available at https://sites.google.com/site/marsarsite/files
@@ -514,6 +518,7 @@ def getplayers():
         playerb = Player('black', 'human', name2)
     return playera, playerb
 def main():
+    serialinit()
     """ Kickstart everything. Display menu after game has ended. """
     
     menu="""

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #This is a program modified by Matthew Vandermeer for 
-#University of Alberta 
+#University of Alberta capstone 2019
 #--------------------------------------
 #
 #  lcd2004.py
