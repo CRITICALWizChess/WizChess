@@ -76,7 +76,7 @@ def speechinput():
 	# Input goes here yo
 	print("before while")
 	while(speak):
-		if (readyspeak.is_pressed):
+		if (readyspeak.is_pressed or 1): # remove when button added
 			listenled.on()
 			# obtain audio from the microphone
 			r = sr.Recognizer()
