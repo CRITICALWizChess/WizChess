@@ -1,6 +1,7 @@
 import speech_recognition as sr
 from time import sleep
 import serial
+
 from gpiozero import Button, LED
 
 # initialize serial
@@ -13,7 +14,15 @@ def serialinit():
 		bytesize=serial.EIGHTBITS,
 		timeout=1
 		)
-	
+
+ser = serial.Serial(            
+		port='/dev/serial0',
+		baudrate = 19200,
+		parity=serial.PARITY_NONE,
+		stopbits=serial.STOPBITS_ONE,
+		bytesize=serial.EIGHTBITS,
+		timeout=1
+		)
 #initialize inputs & outputs (14 and 15 are taken by UART)
 readyspeak = Button(2)
 listenled = LED(4)
@@ -108,6 +117,7 @@ def speechinput():
 	return parts
 
 def moveinputconvert():
+	
 	if (True):
 		parts = speechinput()
 	if True:
