@@ -535,6 +535,6 @@ def main():
         sys.exit("\n\nOkok. Aborting.")
     except:
         print("unknown error")    
-    if __name__ == '__main__':
+if __name__ == '__main__':
     #cProfile.run('main()')
     main()
