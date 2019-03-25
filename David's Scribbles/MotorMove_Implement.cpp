@@ -15,6 +15,8 @@ int16_t diffY
 int16_t moveX
 int16_t moveY
 
+enum PieceColor {white, Black};
+
 // assign start position (Make sure Row and Column values have been converted to hex)
 startX = present.iRow;
 startY = present.iColumn;
@@ -25,6 +27,17 @@ finishY = future.iColumn;
 // find difference for move
 diffX = startX - finishX;
 diffY = startY - finishY;
+
+// Steps = diff * 1000 
+moveX = 1000*diffX;
+moveY = 1000*diffY;
+
+
+
+// Is the knight moving?
+if ((diffX != 0) && (diffY != 0) && (diffX != diffY)){
+	//knight is moving somewhere
+}
 
 // analyze the X or row direction
 switch (diffX)
@@ -59,8 +72,4 @@ switch (diffY)
 		// dont change DIR pin
 	}
 }
-
-// Steps = diff * 1000 
-moveX = 1000*diffX;
-moveY = 1000*diffY;
 
