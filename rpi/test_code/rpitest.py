@@ -57,7 +57,7 @@ def speechinput():
 	speak = 1
 	# Input goes here yo
 	while(speak):
-		Commandi = raw_input("Type your input\n") # save command as variable
+		Commandi = raw_input("Type your input\n").upper() # save command as variable
 		#print("Input is " + Commandi) # print variable, this will not be in the final version		
 		
 		#checks if string is usable (add a flag or summon to invoke the listen loop) 
