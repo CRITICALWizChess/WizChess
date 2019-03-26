@@ -5,7 +5,7 @@ from time import sleep
 
 
 def numberwtod(parts, i):
-	exit = 0
+	ext = 0
 	if parts[i] == "ONE":
 		number = "1"
 	elif parts[i] == "TWO":
@@ -28,12 +28,42 @@ def numberwtod(parts, i):
 	else:
 		print("N CONVERSION ERROR\n")
 		sleep(1)
-		exit = 1
+		ext = 1
 		number = "9"
-	return number, exit
+	return number, ext
+
+def natotod(parts):
+	ext = 0
+	i = 0
+	for x in range(0,2):
+		if parts[i] == "ALPHA":
+			number = "1"
+		elif parts[i] == "BRAVO":
+			number = "2"
+		elif parts[i] == "CHARLIE":
+			number = "3"
+		elif parts[i] == "DELTA":
+			number = "4"
+		elif parts[i] == "ECHO":
+			number = "5"
+		elif parts[i] == "FOXTROT":
+			number = "6"
+		elif parts[i] == "GOLF":
+			number = "7"
+		elif parts[i] == "HOTEL":
+			number = "8"
+		else:
+			print("N CONVERSION ERROR\n")
+			sleep(1)
+			ext = 1
+			number = "9"
+		if (x == 0):
+			number0 = number
+			i = 3
+	return number0, number, ext
 
 def piecewtol(parts, i):
-	exit = 0
+	ext = 0
 	if parts[i] == "PAWN":
 		piece = "p"
 	elif parts[i] == "ROOK":
@@ -49,9 +79,9 @@ def piecewtol(parts, i):
 	else:
 		print("P CONVERSION ERROR\n")
 		sleep(1)
-		exit = 1
+		ext = 1
 		piece = "lol"
-	return piece, exit
+	return piece, ext
 
 def speechinput():
 	speak = 1
@@ -84,9 +114,14 @@ def moveinputconvert():
 		#piece, ex = piecewtol(parts)
 		number, ex = numberwtod(parts, 1)
 		number1, ex = numberwtod(parts, 4)
+		nat, nat1, ex = natotod(parts)
+		Commando = " "
 		if (not ex):
 			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
+			Commandser = int(nat+number+nat1+number1)
 			print("Commando is " + Commando + "\n")
+			print(Commandser)
+			
 		
 		ex = 0
 		return Commando	
@@ -94,9 +129,8 @@ def moveinputconvert():
 
 
 
-# while 1:
-
-# 	move = moveinputconvert()
+while 1:
+ 	move = moveinputconvert()
 			
 		
 		

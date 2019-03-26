@@ -23,7 +23,7 @@ listenled = LED(4)
 #its gonna be frikken cool
 
 def numberwtod(parts, i):
-	exit = 0
+	ext = 0
 	if parts[i] == "ONE":
 		number = "1"
 	elif parts[i] == "TWO":
@@ -40,18 +40,17 @@ def numberwtod(parts, i):
 		number = "7"
 	elif parts[i] == "EIGHT":
 		number = "8"
-		#uncomment below in final version
 	elif parts[i] == "TO":
 		number = "2"
 	else:
 		print("N CONVERSION ERROR\n")
 		sleep(1)
-		exit = 1
+		ext = 1
 		number = "9"
-	return number, exit
+	return number, ext
 
 def natotod(parts):
-	exit = 0
+	ext = 0
 	i = 0
 	for x in range(0,2):
 		if parts[i] == "ALPHA":
@@ -73,7 +72,7 @@ def natotod(parts):
 		else:
 			print("N CONVERSION ERROR\n")
 			sleep(1)
-			exit = 1
+			ext = 1
 			number = "9"
 		if (x == 0):
 			number0 = number
@@ -81,7 +80,7 @@ def natotod(parts):
 	return number0, number, exit
 
 def piecewtol(parts, i):
-	exit = 0
+	ext = 0
 	if parts[i] == "PAWN":
 		piece = "p"
 	elif parts[i] == "ROOK":
@@ -99,7 +98,7 @@ def piecewtol(parts, i):
 		sleep(1)
 		exit = 1
 		piece = "lol"
-	return piece, exit
+	return piece, ext
 
 def speechinput():
 	speak = 1
