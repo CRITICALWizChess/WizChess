@@ -2,6 +2,7 @@ import speech_recognition as sr
 from time import sleep
 import serial
 import spidev
+import sys
 
 from gpiozero import Button, LED
 
