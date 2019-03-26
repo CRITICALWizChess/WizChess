@@ -1,10 +1,21 @@
 import speech_recognition as sr
 from time import sleep
 import serial
+import spidev
 
 from gpiozero import Button, LED
 
-# initialize serial
+	
+
+#initialize inputs & outputs (14 and 15 are taken by UART)
+readyspeak = Button(2)
+listenled = LED(4)
+
+#put startup tone here, pygame suggested solution
+#its gonna be frikken cool (actually this would go 
+# n the main program but the function would be here)
+
+#sends over UART if enabled
 def serialsend(sending):
 	serial.Serial(            
 		port='/dev/serial0',
@@ -15,12 +26,13 @@ def serialsend(sending):
 		timeout=1
 		).write(sending)
 
-#initialize inputs & outputs (14 and 15 are taken by UART)
-readyspeak = Button(2)
-listenled = LED(4)
+def spisend(sending):
+	spidev.SpiDev().open(0,0)
+	spidev.SpiDev().max_speed_hz = 500000
+	spidev.SpiDev().mode = 0
+	msg = [int(sending[0:2]), int(sending[2:4])]
+	spidev.SpiDev().xfer2(msg)
 
-#put startup tone here, pygame suggested solution
-#its gonna be frikken cool
 
 def numberwtod(parts, i):
 	ext = 0
@@ -152,7 +164,7 @@ def moveinputconvert():
 		if (not ex):
 			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
 			Commandser = nat+number+nat1+number1
-			serialsend(Commandser)
+			spisend(Commandser)
 			sleep(1)
 		
 		ex = 0

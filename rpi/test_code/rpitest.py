@@ -118,7 +118,7 @@ def moveinputconvert():
 		Commando = " "
 		if (not ex):
 			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
-			Commandser = int(nat+number+nat1+number1)
+			Commandser = nat+number+nat1+number1
 			print("Commando is " + Commando + "\n")
 			print(Commandser)
 			
