@@ -17,21 +17,24 @@ listenled = LED(4)
 
 #sends over UART if enabled
 def serialsend(sending):
-	serial.Serial(            
+	ser = serial.Serial(            
 		port='/dev/serial0',
 		baudrate = 19200,
 		parity=serial.PARITY_NONE,
 		stopbits=serial.STOPBITS_ONE,
 		bytesize=serial.EIGHTBITS,
 		timeout=1
-		).write(sending)
+		)
+	ser.write(sending)
 
 def spisend(sending):
-	spidev.SpiDev().open(0,0)
-	spidev.SpiDev().max_speed_hz = 500000
-	spidev.SpiDev().mode = 0
+	spi = spidev.SpiDev()
+	spi.open(0,0)
+	spi.max_speed_hz = 500000
+	spi.mode = 0
 	msg = [int(sending[0:2]), int(sending[2:4])]
-	spidev.SpiDev().xfer2(msg)
+	spi.xfer2(msg)
+	spi.close()
 
 
 def numberwtod(parts, i):
@@ -89,7 +92,7 @@ def natotod(parts):
 		if (x == 0):
 			number0 = number
 			i = 3
-	return number0, number, exit
+	return number0, number, ext
 
 def piecewtol(parts, i):
 	ext = 0
