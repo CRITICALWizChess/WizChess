@@ -1,4 +1,5 @@
 import chessrec
+import sys
 
 try:
     while True:
