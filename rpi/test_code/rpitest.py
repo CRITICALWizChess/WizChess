@@ -129,8 +129,8 @@ def moveinputconvert():
 
 
 
-while 1:
- 	move = moveinputconvert()
+#while 1:
+ 	#move = moveinputconvert()
 			
 		
 		
