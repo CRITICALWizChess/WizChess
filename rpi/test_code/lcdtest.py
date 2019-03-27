@@ -3,14 +3,7 @@ import func as lcdfunc
 import time
 
 select = 0
-col = 0
-row = 0
-col1 = 0
-row1 = 0
-coli = 0
-rowi = 0
-col1i = 0
-row1i = 0
+
 columns = ["ALPHA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL"]
 rows = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT"]
 
@@ -33,6 +26,8 @@ if (select == 2):
     print("and end intersection")
     print("Right to go next")
     print("or middle to confirm")
+    col = row = col1 = row1 = 0
+    coli = rowi = col1i = row1i = 0
     while(row1 == 0):
         while(col1 == 0):
             while(row == 0):
