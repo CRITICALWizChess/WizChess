@@ -69,16 +69,16 @@ def setuplcd():
   GPIO.setup(LCD_D7, GPIO.OUT) # DB7
   GPIO.setup(LED_ON, GPIO.OUT) # Backlight enable
  
-# Initialise display
-lcd_init()
+  # Initialise display
+  lcd_init()
  
-# Toggle backlight on-off-on
-lcd_backlight(True)
-time.sleep(0.5)
-lcd_backlight(False)
-time.sleep(0.5)
-lcd_backlight(True)
-time.sleep(0.5)
+  # Toggle backlight on-off-on
+  lcd_backlight(True)
+  time.sleep(0.5)
+  lcd_backlight(False)
+  time.sleep(0.5)
+  lcd_backlight(True)
+  time.sleep(0.5)
  
 #   while True:
  
