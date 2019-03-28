@@ -34,7 +34,7 @@ import time
 # Define GPIO to LCD mapping
 LCD_RS = 21 #pin 40
 LCD_E  = 20 #pin 38
-LCD_D4 = 16 #pin 11
+LCD_D4 = 16 #pin 36
 LCD_D5 = 12 #pin 32
 LCD_D6 = 7 #pin 26
 LCD_D7 = 25 #pin 22
