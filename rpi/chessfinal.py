@@ -29,7 +29,7 @@ import chessrec
 #
 # Thanks to python-forum.org's users Akavall and Micseydel
 # for constructive feedback.
-firsttime = 0
+
 
 class Player(object):
     allsquares = [(x, y) for x in range(8) for y in range(8)]
@@ -522,6 +522,7 @@ def getplayers():
         playerb = Player('black', 'human', name2)
     return playera, playerb
 def main():
+    firsttime = 0
     """ Kickstart everything. Display menu after game has ended. """
     menu="""
     Thanks for playing the Chessmastah, would you like to go again?
