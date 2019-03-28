@@ -7,9 +7,6 @@ import lcdfunc
 
 from gpiozero import Button, LED
 
-#initialize variables
-global selectabc = 0
-
 #initialize inputs & outputs (14 and 15 are taken by UART)
 readyspeak = Button(2) # pin 3
 enter = Button(3) # pin 5
@@ -19,6 +16,11 @@ listenled = LED(17) # pin 11
 #put startup tone here, pygame suggested solution
 #its gonna be frikken cool (actually this would go 
 # n the main program but the function would be here)
+
+class SpecialParameters:
+	firsttime = 0
+
+FirstTimeCheck = SpecialParameters()
 
 #sends over UART if enabled
 def serialsend(sending):
@@ -225,19 +227,21 @@ def manualinput():
 	return parts
 
 def moveinputconvert():
+	select = 0
 	lcdfunc.setuplcd()
-	while(selectabc == 0):
+	while(select == 0 and FirstTimeCheck.firsttime == 0):
+		FirstTimeCheck.firsttime = 1
 		senddisplay("press left for voice", "or middle for manual", " ", " ")
 		sleep(2) #change this for final version
 		if (readyspeak.is_pressed):
-			selectabc = 1
+			select = 1
 			break
 		if (enter.is_pressed):
-			selectabc = 2
+			select = 2
 			break
-	if (selectabc == 1):
+	if (select == 1):
 		parts = speechinput()
-	if (selectabc == 2):
+	if (select == 2):
 		parts = manualinput()
 	if True:
 		print("converting")
