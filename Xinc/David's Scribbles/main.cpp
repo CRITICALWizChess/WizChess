@@ -286,7 +286,7 @@ int main(void){
     // Initiate Board
     int16_t board[8][12] =
     {
-        {0, 0, 2, 3, 4, 5, 6, 4, 3, 2, 0, 0},
+        {0, 0,  2, 3, 4, 5, 6, 4, 3, 2, 0, 0},
         {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -395,7 +395,58 @@ int main(void){
         // Is the knight moving?  (diffX != 0) && (diffY != 0) && (diffX != diffY)
         if ((piece == 3) | (piece == 9)){
     	    //knight is moving somewhere
-
+            // 8 options for knight move, 4 to the north and 4 to the south
+            if (startY < finishY){
+                // 4 south options
+                // figure out east or west
+                if (startX < finishX){
+                    // SE, find difference on last two options
+                    moveToCorner(2); // move to SE corner
+                    if (diffX > diffY){
+                        moveStraight(2,1); // move east 1 square
+                    }
+                    else {
+                        moveStraight(3,1); // move south 1 square
+                    }
+                    moveToCorner(2); // move to center of square
+                }
+                else{
+                    // SW, find the last two options
+                    moveToCorner(3); // move to SW corner
+                    if (diffX > diffY){
+                        moveStraight(4,1); // west
+                    }
+                    else{
+                        moveStraight(3,1); // south
+                    }
+                    moveToCorner(3); // move back to center of square
+                }
+            }
+            else if (startY > finishY){
+                // 4 north options, figure out east or west
+                if (startX < finishX){
+                    // NE, find difference on last two
+                    moveToCorner(1);
+                    if (diffX > diffY){
+                        moveStraight(2,1); // East
+                    }
+                    else{
+                        moveStraight(1,1); // North
+                    }
+                    moveToCorner(1); // move back to center of square
+                }
+                else if (startX > finishX){
+                    // NW, find difference between last two
+                    moveToCorner(4);
+                    if (diffX > diffY){
+                        moveStraight(4,1); // West
+                    }
+                    else {
+                        moveStraight(1,1); // North
+                    }
+                    moveToCorner(4); // move back to center of square
+                }
+            }
         }
         // Diagonal
         else if (diffX == diffY){
