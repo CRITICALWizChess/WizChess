@@ -137,7 +137,7 @@ class Player(object):
             else:
                 # Player is human, get a move from input
                 ##### USE THIS SECTION FOR CALLING MOVE INPUT FUNCTION ########
-                move = chessrec.moveinputconvert()
+                move, select = chessrec.moveinputconvert()
                 #move=raw_input("\nMake a move : ")
                 if move == 'exit':
                     break
