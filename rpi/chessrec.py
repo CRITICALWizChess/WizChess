@@ -7,8 +7,8 @@ import lcdfunc
 
 from gpiozero import Button, LED
 
-#initialize variables
-select = 0
+
+
 
 #initialize inputs & outputs (14 and 15 are taken by UART)
 readyspeak = Button(2) # pin 3
@@ -225,13 +225,15 @@ def manualinput():
 
 def moveinputconvert():
 	lcdfunc.setuplcd()
-	while(select == 0):
+	while(True):
 		senddisplay("press left for voice", "or middle for manual", " ", " ")
 		sleep(2) #change this for final version
 		if (readyspeak.is_pressed):
 			select = 1
+			break
 		if (enter.is_pressed):
 			select = 2
+			break
 	if (select == 1):
 		parts = speechinput()
 	if (select == 2):
