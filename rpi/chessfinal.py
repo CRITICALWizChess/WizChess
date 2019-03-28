@@ -29,6 +29,8 @@ import chessrec
 #
 # Thanks to python-forum.org's users Akavall and Micseydel
 # for constructive feedback.
+firsttime = 0
+
 class Player(object):
     allsquares = [(x, y) for x in range(8) for y in range(8)]
     dullmoves = 0
@@ -133,7 +135,9 @@ class Player(object):
             else:
                 # Player is human, get a move from input
                 ##### USE THIS SECTION FOR CALLING MOVE INPUT FUNCTION ########
-                move = chessrec.moveinputconvert()
+                move = chessrec.moveinputconvert(firsttime)
+                if(firsttime == 0):
+                    firsttime = 1
                 #move=raw_input("\nMake a move : ")
                 if move == 'exit':
                     break

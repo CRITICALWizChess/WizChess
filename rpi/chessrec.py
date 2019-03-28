@@ -17,10 +17,6 @@ listenled = LED(17) # pin 11
 #its gonna be frikken cool (actually this would go 
 # n the main program but the function would be here)
 
-class SpecialParameters:
-	firsttime = 0
-
-FirstTimeCheck = SpecialParameters()
 
 #sends over UART if enabled
 def serialsend(sending):
@@ -226,11 +222,10 @@ def manualinput():
 	parts = Commandi.split(" ",4)
 	return parts
 
-def moveinputconvert():
+def moveinputconvert(firsttime):
 	select = 0
 	lcdfunc.setuplcd()
-	while(select == 0 and FirstTimeCheck.firsttime == 0):
-		FirstTimeCheck.firsttime = 1
+	while(select == 0 and firsttime == 0):
 		senddisplay("press left for voice", "or middle for manual", " ", " ")
 		sleep(2) #change this for final version
 		if (readyspeak.is_pressed):
