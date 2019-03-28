@@ -24,7 +24,7 @@
 # 12: Data Bit 5
 # 13: Data Bit 6
 # 14: Data Bit 7
-# 15: LCD Backlight +5V**
+# 15: LCD Backlight +3.3V**
 # 16: LCD Backlight GND
  
 #import
@@ -32,13 +32,13 @@ import RPi.GPIO as GPIO
 import time
  
 # Define GPIO to LCD mapping
-LCD_RS = 22
-LCD_E  = 27
-LCD_D4 = 17
-LCD_D5 = 25
-LCD_D6 = 24
-LCD_D7 = 23
-LED_ON = 18
+LCD_RS = 21 #pin 40
+LCD_E  = 20 #pin 38
+LCD_D4 = 16 #pin 11
+LCD_D5 = 12 #pin 32
+LCD_D6 = 7 #pin 26
+LCD_D7 = 25 #pin 22
+LED_ON = 24 #pin 18
  
 # Define some device constants
 LCD_WIDTH = 20    # Maximum characters per line
