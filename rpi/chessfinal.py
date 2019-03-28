@@ -133,7 +133,7 @@ class Player(object):
             else:
                 # Player is human, get a move from input
                 ##### USE THIS SECTION FOR CALLING MOVE INPUT FUNCTION ########
-                move, select = chessrec.moveinputconvert(select)
+                move = chessrec.moveinputconvert()
                 #move=raw_input("\nMake a move : ")
                 if move == 'exit':
                     break
@@ -519,8 +519,6 @@ def getplayers():
     return playera, playerb
 def main():
     """ Kickstart everything. Display menu after game has ended. """
-    #initialize setup variables
-    select = 0
     menu="""
     Thanks for playing the Chessmastah, would you like to go again?
     Press [Enter] to play again or type 'exit'.  >>  """
