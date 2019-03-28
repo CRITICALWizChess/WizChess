@@ -29,6 +29,10 @@ import chessrec
 #
 # Thanks to python-forum.org's users Akavall and Micseydel
 # for constructive feedback.
+
+#initialize setup variables
+select = 0
+
 class Player(object):
     allsquares = [(x, y) for x in range(8) for y in range(8)]
     dullmoves = 0
