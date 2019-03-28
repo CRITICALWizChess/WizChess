@@ -31,6 +31,7 @@ import chessrec
 # for constructive feedback.
 class FirstTimeParameters:
     FirstTimeCheck = 0
+    Select = 0
 
 firsttime = FirstTimeParameters()
 
@@ -139,9 +140,9 @@ class Player(object):
                 # Player is human, get a move from input
                 ##### USE THIS SECTION FOR CALLING MOVE INPUT FUNCTION ########
                 if(firsttime.FirstTimeCheck == 0):
-                    select = chessrec.moveinputconvert(firsttime.FirstTimeCheck, 0)
+                    firsttime.Select = chessrec.moveinputconvert(firsttime.FirstTimeCheck, 0)
                     firsttime.FirstTimeCheck = 1
-                move = chessrec.moveinputconvert(firsttime.FirstTimeCheck, select)
+                move = chessrec.moveinputconvert(firsttime.FirstTimeCheck, firsttime.Select)
                 
                 #move=raw_input("\nMake a move : ")
                 if move == 'exit':
