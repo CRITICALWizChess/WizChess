@@ -222,18 +222,19 @@ def manualinput():
 	parts = Commandi.split(" ",4)
 	return parts
 
-def moveinputconvert(firsttime):
-	select = 0
+def moveinputconvert(firsttime, select):
+	
 	lcdfunc.setuplcd()
 	while(select == 0 and firsttime == 0):
 		senddisplay("press left for voice", "or middle for manual", " ", " ")
 		sleep(2) #change this for final version
+		
 		if (readyspeak.is_pressed):
 			select = 1
-			break
+			return select
 		if (enter.is_pressed):
 			select = 2
-			break
+			return select
 	if (select == 1):
 		parts = speechinput()
 	if (select == 2):

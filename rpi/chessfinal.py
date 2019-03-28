@@ -138,9 +138,11 @@ class Player(object):
             else:
                 # Player is human, get a move from input
                 ##### USE THIS SECTION FOR CALLING MOVE INPUT FUNCTION ########
-                move = chessrec.moveinputconvert(firsttime.FirstTimeCheck)
                 if(firsttime.FirstTimeCheck == 0):
+                    select = chessrec.moveinputconvert(firsttime.FirstTimeCheck, 0)
                     firsttime.FirstTimeCheck = 1
+                move = chessrec.moveinputconvert(firsttime.FirstTimeCheck, select)
+                
                 #move=raw_input("\nMake a move : ")
                 if move == 'exit':
                     break
