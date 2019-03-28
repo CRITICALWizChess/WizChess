@@ -34,26 +34,24 @@ therefore any movement after will be in forward direction
 
 #include "main.h"
 
-#define STEP_DIST = 1000
-#define STEP_DIST_DIAG = 1300
+#define STEP_DIST = 1000 // steps required for one motor to move one square length
+#define STEP_DIST_DIAG = 1300 // steps required for both motors to move one square length
 
 enum PieceColor {white, Black};
 
-void short_wait()
-{
+void short_wait(){ // i = 10
   for (int i = 0; i < 10; ++i) {
     sys_clock_wait(10000);
   }
 }
 
-void long_wait()
-{
+void long_wait(){ // i = 5000
   for (int i = 0; i < 5000; ++i) {
     sys_clock_wait(10000);
   }
 }
 
-void motorReset(int16_t finishX, int16_t finishY){ // resets motor back to 0,0 to hit zero switchs
+void motorReset(int16_t finishX, int16_t finishY){ // resets motor back to 7,11 to hit zero switchs
     // reset stuff, take distance to zero and move motor there
     // make sure electromagnet is off
     int16_t diff = 0;
@@ -186,7 +184,7 @@ void moveStraight(int16_t direction, int16_t distance){
     // direction codes: 1-North, 2-East, 3-South, 4-West
     if (direction == 1){
         gpio_write(0x81, GPIO_C); // set for forward
-        for (int f = 0; f <= 1300*distance; f++) // ONLY MOVE NORTH
+        for (int f = 0; f <= (1000*distance); f++) // ONLY MOVE NORTH
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -334,13 +332,22 @@ int main(void){
                 finishY = (recieve[i] - '0') - 1;
             }
         }
-        // find difference for move
-        diffX = startX - finishX;
-        diffY = startY - finishY;
-
-        // Steps = diff * 1000 steps per sqaure
-        moveX = 1000*diffX;
-        moveY = 1000*diffY;
+        // find difference for move -need diff to be positive always
+        // cant use abs() with XInC2. need to do it other way
+        // diffX first
+        if (startX > finishX){
+            diffX = startX - finishX;
+        }
+        else {
+            diffX = finishX - startX;
+        }
+        // diffY second
+        if (startY > finishY){
+            diffY = startY - finishY;
+        }
+        else{
+            diffX = finishY - startY;
+        }
 
         // Is it a capture move? 
         if (board[finishY][finishX] != 0){
@@ -383,46 +390,48 @@ int main(void){
 
         while(1){} /////////////////////////////////////////////////////////////////////// IT'S A TRAP /////////////////////////////////////////////////
 
-        // Is the knight moving?
-        if ((diffX != 0) && (diffY != 0) && (diffX != diffY)){
+        moveToStart(startX, startY); // move motors to start position
+
+        // Is the knight moving?  (diffX != 0) && (diffY != 0) && (diffX != diffY)
+        if ((piece == 3) | (piece == 9)){
     	    //knight is moving somewhere
+
         }
         // Diagonal
         else if (diffX == diffY){
             if (startX < finishX){ // EAST
                 if (startY < finishY){ 
-                    //SE
+                    moveDiagonal(2,diffX); //SE
                 }
                 else if (startY > finishY){
-                    //NE
+                    moveDiagonal(1,diffX); //NE
                 }
             }
             else if (startX > finishX){ // WEST
                 if (startY < finishY){
-                    //SW
+                    moveDiagonal(3,diffX); //SW
                 }
                 else if (startY > finishY){
-                    //NW
+                    moveDiagonal(4,diffX); //NW
                 }
             }
-            //motor movement here
         }
-        // analyze the X or row direction
+        // analyze the X or row direction (horizontal movement)
         else if (diffX != 0){
-            if (diffX < 0){
-                // reverse direction
+            if (startX > finishX){
+                moveStraight(4,diffX); // West
             }
-            else if (diffX > 0){
-                // positive, forward motion
+            else{
+                moveStraight(2,diffX); // East
             }
         }
         // analyze the Y or Column direction
         else if (diffY != 0){
-            if (diffY < 0){
-                // reverse direction
+            if (startY > finishY){
+                moveStraight(1,diffY); // North
             }
-            else if (diffY > 0){
-                // forward movement
+            else{
+                moveStraight(3,diffY); // South
             }
         }
     }
