@@ -173,7 +173,7 @@ def manualinput():
 		while(col1 == 0):
 			while(row == 0):
 				while(col == 0):
-					senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i])
+					senddisplay(columns[coli] + " ->", rows[rowi], columns[col1i], rows[row1i])
 					if(right.is_pressed):
 					# buttonfua = raw_input("Enter to right: ") or " "
 					# if (buttonfua == " "):
@@ -184,7 +184,7 @@ def manualinput():
 					#     col += 1
 					if(enter.is_pressed):
 						col += 1
-				senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i])
+				senddisplay(columns[coli], rows[rowi] + " ->", columns[col1i], rows[row1i])
 				if(right.is_pressed):
 				# buttonfub = raw_input("Enter to right: ") or " "
 				# if (buttonfub == " "):
@@ -195,7 +195,7 @@ def manualinput():
 				#     row += 1
 				if(enter.is_pressed):
 					row += 1
-			senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i])
+			senddisplay(columns[coli], rows[rowi], columns[col1i] + " ->", rows[row1i])
 			if(right.is_pressed):
 			#buttonfuc = raw_input("Enter to right: ") or " "
 			#if (buttonfuc == " "):
@@ -206,7 +206,7 @@ def manualinput():
 			#    col1 += 1
 			if(enter.is_pressed):
 				col1 += 1
-		senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i])
+		senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i] + " ->")
 		if(right.is_pressed):
 		#buttonfud = raw_input("Enter to right: ") or " "
 		#if (buttonfud == " "):

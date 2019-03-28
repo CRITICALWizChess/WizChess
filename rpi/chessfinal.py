@@ -142,6 +142,7 @@ class Player(object):
                 if(firsttime.FirstTimeCheck == 0):
                     firsttime.Select = chessrec.moveinputconvert(firsttime.FirstTimeCheck, 0)
                     firsttime.FirstTimeCheck = 1
+                    #Nik is a god
                 move = chessrec.moveinputconvert(firsttime.FirstTimeCheck, firsttime.Select)
                 
                 #move=raw_input("\nMake a move : ")
