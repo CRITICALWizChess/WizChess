@@ -1,5 +1,12 @@
 import lcdfunc
 import time
+from gpiozero import Button, LED
+
+
+readyspeak = Button(2) # pin 3
+enter = Button(3) # pin 5
+right = Button(4) # pin 7
+listenled = LED(17) # pin 11
 
 def senddisplay(first, second, third, fourth):
     lcdfunc.lcd_string(first,lcdfunc.LCD_LINE_1,2)
@@ -18,49 +25,49 @@ def manualinput():
             while(row == 0):
                 while(col == 0):
                     senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i])
-                    #if(right.is_pressed):
-                    buttonfua = raw_input("Enter to right: ") or " "
-                    if (buttonfua == " "):
+                    if(right.is_pressed):
+                    # buttonfua = raw_input("Enter to right: ") or " "
+                    # if (buttonfua == " "):
                         coli += 1
                         if (coli == 8):
                             coli = 0
-                    else:
+                    # else:
+                    #     col += 1
+                    if(enter.is_pressed):
                         col += 1
-                    #if(enter.is_pressed):
-                    #    col += 1
                 senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i])
-                #if(right.is_pressed):
-                buttonfub = raw_input("Enter to right: ") or " "
-                if (buttonfub == " "):
+                if(right.is_pressed):
+                # buttonfub = raw_input("Enter to right: ") or " "
+                # if (buttonfub == " "):
                     rowi += 1
                     if (rowi == 8):
                         rowi = 0
-                else:
-                    row += 1
-                #if(enter.is_pressed):
-                #    row += 1
+                # else:
+                #     row += 1
+                if(enter.is_pressed):
+                   row += 1
             senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i])
-            #if(right.is_pressed):
-            buttonfuc = raw_input("Enter to right: ") or " "
-            if (buttonfuc == " "):
+            if(right.is_pressed):
+            #buttonfuc = raw_input("Enter to right: ") or " "
+            #if (buttonfuc == " "):
                 col1i += 1
                 if (col1i == 8):
                     col1i = 0
-            else:
-                col1 += 1
-            #if(enter.is_pressed):
+            #else:
             #    col1 += 1
+            if(enter.is_pressed):
+                col1 += 1
         senddisplay(columns[coli], rows[rowi], columns[col1i], rows[row1i])
-        #if(right.is_pressed):
-        buttonfud = raw_input("Enter to right: ") or " "
-        if (buttonfud == " "):
+        if(right.is_pressed):
+        #buttonfud = raw_input("Enter to right: ") or " "
+        #if (buttonfud == " "):
             row1i += 1
             if (row1i == 8):
                 row1i = 0
-        else:
-            row1 += 1
-        #if(enter.is_pressed):
+        #else:
         #    row1 += 1
+        if(enter.is_pressed):
+            row1 += 1
     Commandi = columns[coli] + " " + rows[rowi] + " TO " + columns[col1i] + " " + rows[row1i]
     print(Commandi)
     parts = Commandi.split(" ",4)
