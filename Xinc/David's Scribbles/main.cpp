@@ -97,7 +97,7 @@ void motorReset(int16_t finishX, int16_t finishY){ // resets motor back to 0,0 t
     }
 }
 
-void moveToStart(int16_t startX, int16_t startY){ // resets motor back to 0,0 to hit zero switchs
+void moveToStart(int16_t startX, int16_t startY){ // moves motor to starting position of move
     // reset stuff, take distance to zero and move motor there
     // make sure electromagnet is off
     gpio_write(0x81, GPIO_C); // sets DIR for forward
@@ -227,6 +227,52 @@ void moveStraight(int16_t direction, int16_t distance){
 
 }
 
+void moveDiagonal(int16_t direction, int16_t distance){
+    // diagonal line movement handled by both motors simaltaniously
+    // direction codes: 1-NE, 2-SE, 3-SW, 4-NW (from white perspective)
+    if (direction == 1){
+        // need DIR pin set here
+        for (int f = 0; f <= 1300*distance; f++) // NE
+        {
+            gpio_write(0xC0, GPIO_A); 
+            short_wait();
+            gpio_write(0x00, GPIO_A);
+            short_wait();
+        }
+    }
+    if (direction == 2){
+        gpio_write(0x00, GPIO_C); // Set for backwards
+        for (int f = 0; f <= 1300*distance; f++) // SE
+        {
+            gpio_write(0xC0, GPIO_A); 
+            short_wait();
+            gpio_write(0x00, GPIO_A);
+            short_wait();
+        }
+    }
+    if (direction == 3){
+        // need DIR pin set here
+        for (int f = 0; f <= 1300*distance; f++) // SW
+        {
+            gpio_write(0xC0, GPIO_A); 
+            short_wait();
+            gpio_write(0x00, GPIO_A);
+            short_wait();
+        }
+    }
+    if (direction == 4){
+        gpio_write(0x81, GPIO_C); // set for forward
+        for (int f = 0; f <= 1300*distance; f++) // NW
+        {
+            gpio_write(0xC0, GPIO_A); 
+            short_wait();
+            gpio_write(0x00, GPIO_A);
+            short_wait();
+        }
+    }
+
+}
+
 void pieceRemoval(int16_t finishX, int16_t finishY, int16_t graveLocation[2]){
     // handles piece removal
     int16_t graveX = 0, graveY = 0;    
@@ -325,7 +371,7 @@ int main(void){
         board[startY][startX] = 0;
         board[finishY][finishX] = piece;
 
-
+        // This is all for testing purposes
         xpd_echo_int(startX,XPD_Flag_UnsignedDecimal);
         xpd_echo_int(startY, XPD_Flag_UnsignedDecimal);
         xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal);
@@ -365,7 +411,6 @@ int main(void){
         else if (diffX != 0){
             if (diffX < 0){
                 // reverse direction
-                // 
             }
             else if (diffX > 0){
                 // positive, forward motion
