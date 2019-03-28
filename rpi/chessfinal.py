@@ -29,10 +29,6 @@ import chessrec
 #
 # Thanks to python-forum.org's users Akavall and Micseydel
 # for constructive feedback.
-
-#initialize setup variables
-select = 0
-
 class Player(object):
     allsquares = [(x, y) for x in range(8) for y in range(8)]
     dullmoves = 0
@@ -523,7 +519,8 @@ def getplayers():
     return playera, playerb
 def main():
     """ Kickstart everything. Display menu after game has ended. """
-    
+    #initialize setup variables
+    select = 0
     menu="""
     Thanks for playing the Chessmastah, would you like to go again?
     Press [Enter] to play again or type 'exit'.  >>  """
