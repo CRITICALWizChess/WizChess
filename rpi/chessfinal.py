@@ -29,7 +29,10 @@ import chessrec
 #
 # Thanks to python-forum.org's users Akavall and Micseydel
 # for constructive feedback.
+class FirstTimeParameters:
+    FirstTimeCheck = 0
 
+firsttime = FirstTimeParameters()
 
 class Player(object):
     allsquares = [(x, y) for x in range(8) for y in range(8)]
@@ -135,9 +138,9 @@ class Player(object):
             else:
                 # Player is human, get a move from input
                 ##### USE THIS SECTION FOR CALLING MOVE INPUT FUNCTION ########
-                move = chessrec.moveinputconvert(firsttime)
-                if(firsttime == 0):
-                    firsttime = 1
+                move = chessrec.moveinputconvert(firsttime.FirstTimeCheck)
+                if(firsttime.FirstTimeCheck == 0):
+                    firsttime.FirstTimeCheck = 1
                 #move=raw_input("\nMake a move : ")
                 if move == 'exit':
                     break
@@ -522,7 +525,6 @@ def getplayers():
         playerb = Player('black', 'human', name2)
     return playera, playerb
 def main():
-    firsttime = 0
     """ Kickstart everything. Display menu after game has ended. """
     menu="""
     Thanks for playing the Chessmastah, would you like to go again?
