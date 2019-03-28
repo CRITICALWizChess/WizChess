@@ -2,10 +2,10 @@ import lcdfunc
 import time
 
 def senddisplay(first, second, third, fourth):
-    lcdfunc.lcd_string(first,LCD_LINE_1,2)
-    lcdfunc.lcd_string(second,LCD_LINE_2,2)
-    lcdfunc.lcd_string(third,LCD_LINE_3,2)
-    lcdfunc.lcd_string(fourth,LCD_LINE_4,2)
+    lcdfunc.lcd_string(first,lcdfunc.LCD_LINE_1,2)
+    lcdfunc.lcd_string(second,lcdfunc.LCD_LINE_2,2)
+    lcdfunc.lcd_string(third,lcdfunc.LCD_LINE_3,2)
+    lcdfunc.lcd_string(fourth,lcdfunc.LCD_LINE_4,2)
 
 def manualinput():
     columns = ["ALPHA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL"]
