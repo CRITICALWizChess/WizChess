@@ -76,13 +76,15 @@ def main():
   time.sleep(0.5)
   lcd_backlight(True)
   time.sleep(0.5)
+
+  derp = "player1's turn, *** Your King is in check *** "
  
   while True:
  
     # Send some centred test
-    lcd_string("LCD2004",LCD_LINE_1,2)
-    lcd_string("Hello, world!",LCD_LINE_2,2)
-    lcd_string("20 cols, 4 rows",LCD_LINE_3,2)
+    lcd_string(derp[0:15],LCD_LINE_1,2)
+    lcd_string(derp[20:30],LCD_LINE_2,2)
+    lcd_string(derp[31:43],LCD_LINE_3,2)
     lcd_string("www.sunfounder.com",LCD_LINE_4,2)
  
     time.sleep(3) # 3 second delay
