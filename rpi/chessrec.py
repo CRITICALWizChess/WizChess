@@ -230,7 +230,7 @@ def moveinputconvert(firsttime, select):
 		lcdfunc.setuplcd()
 	while(select == 0 and firsttime == 0):
 		senddisplay("press left for voice", "or middle for manual", " ", " ")
-		sleep(2) #change this for final version
+		#sleep(2) #change this for final version
 		
 		if (readyspeak.is_pressed):
 			select = 1
