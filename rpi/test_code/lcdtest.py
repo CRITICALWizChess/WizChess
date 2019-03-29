@@ -1,5 +1,4 @@
 #LCD menu test
-import func as lcdfunc
 import time
 
 def senddisplay(first, second, third, fourth):
