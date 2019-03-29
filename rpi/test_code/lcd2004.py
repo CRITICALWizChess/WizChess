@@ -77,15 +77,15 @@ def main():
   lcd_backlight(True)
   time.sleep(0.5)
 
-  derp = "player1's turn, *** Your King is in check *** "
+  derp = "\nplayer1 and player2 reached a draw."
  
   while True:
  
     # Send some centred test
-    lcd_string(derp[0:15],LCD_LINE_1,2)
-    lcd_string(derp[16:30],LCD_LINE_2,2)
-    lcd_string(derp[30:45],LCD_LINE_3,2)
-    lcd_string("www.sunfounder.com",LCD_LINE_4,2)
+    lcd_string(derp[2:10],LCD_LINE_1,2)
+    lcd_string(derp[10:15],LCD_LINE_2,2)
+    lcd_string(derp[2],LCD_LINE_3,2)
+    lcd_string(derp[40],LCD_LINE_4,2)
  
     time.sleep(3) # 3 second delay
 

@@ -444,7 +444,7 @@ class Game(object):
             print player.turn(self.board)
             chessrec.senddisplay(player.turn(self.board)[0:15], player.turn(self.board)[26:30],\
                  player.turn(self.board)[30:45], " ")
-            sleep(1.5)
+            sleep(.3)
             try:
                 start, target = player.getmove(self.board)
             except (IndexError, ValueError):
@@ -519,7 +519,7 @@ def newgame():
         sleep(10)
         #raw_input("\n\nPress any key to continue")
 def getplayers():
-    ainames = ['chesschick','foxysquare']
+    ainames = ['player1','player2']
     #name1 = "player1"
     name1 = raw_input("\nPlayer A (white): ")
     if not name1:
