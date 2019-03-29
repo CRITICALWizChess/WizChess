@@ -442,7 +442,9 @@ class Game(object):
         self.refreshscreen(player)
         while True:
             print player.turn(self.board)
-            chessrec.senddisplay(player.turn(self.board)[0:15], player.turn(self.board)[26:30], player.turn(self.board)[30:45], " ")
+            chessrec.senddisplay(player.turn(self.board)[0:15], player.turn(self.board)[26:30],\
+                 player.turn(self.board)[30:45], " ")
+            sleep(1.5)
             try:
                 start, target = player.getmove(self.board)
             except (IndexError, ValueError):
@@ -512,18 +514,20 @@ def newgame():
     else:
         # another opportunity to use the screens here
         print game.end(player, result)
+        chessrec.senddisplay(game.end(player,result)[1:8], game.end(player,result)[9:12],\
+             game.end(player,result)[13:20], game.end(player,result)[21:])
         sleep(10)
         #raw_input("\n\nPress any key to continue")
 def getplayers():
     ainames = ['chesschick','foxysquare']
-    name1 = "player1"
-    #name1 = raw_input("\nPlayer A (white): ")
+    #name1 = "player1"
+    name1 = raw_input("\nPlayer A (white): ")
     if not name1:
         playera = Player('white', 'AI', ainames[0])
     else:
         playera = Player('white', 'human', name1)
-    name2 = "player2"
-    #name2 = raw_input("\nPlayer B (black): ")
+    #name2 = "player2"
+    name2 = raw_input("\nPlayer B (black): ")
     if not name2:
         playerb = Player('black', 'AI', ainames[1])
     else:

@@ -167,7 +167,7 @@ def manualinput():
 	columns = ["ALPHA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL"]
 	rows = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT"]
 	senddisplay("Chose your start", "and end intersection", "Right to go next", "or middle to confirm")
-	sleep(3)
+	sleep(2)
 	col = row = col1 = row1 = 0
 	coli = rowi = col1i = row1i = 0
 	while(row1 == 0):
