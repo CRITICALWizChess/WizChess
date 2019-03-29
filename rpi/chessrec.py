@@ -37,6 +37,7 @@ def spisend(sending):
 	spi.mode = 0
 	msg = [int(sending[0:2]), int(sending[2:4])]
 	for x in range(0,50):
+		msg = [int(sending[0:2]), int(sending[2:4])]
 		spi.xfer2(msg)
 	spi.close()
 
