@@ -530,6 +530,7 @@ def getplayers():
         playerb = Player('black', 'human', name2)
     return playera, playerb
 def main():
+    chessrec.lcdfunc.setuplcd()
     """ Kickstart everything. Display menu after game has ended. """
     menu="""
     Thanks for playing the Chessmastah, would you like to go again?

@@ -32,7 +32,7 @@
 #import
 import RPi.GPIO as GPIO
 import time
- 
+
 #change these to suit your setup
 LCD_RS = 21 #pin 40
 LCD_E  = 20 #pin 38
