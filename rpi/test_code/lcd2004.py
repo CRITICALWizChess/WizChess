@@ -83,8 +83,8 @@ def main():
  
     # Send some centred test
     lcd_string(derp[0:15],LCD_LINE_1,2)
-    lcd_string(derp[20:30],LCD_LINE_2,2)
-    lcd_string(derp[30:41],LCD_LINE_3,2)
+    lcd_string(derp[16:30],LCD_LINE_2,2)
+    lcd_string(derp[30:45],LCD_LINE_3,2)
     lcd_string("www.sunfounder.com",LCD_LINE_4,2)
  
     time.sleep(3) # 3 second delay

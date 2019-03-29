@@ -442,7 +442,7 @@ class Game(object):
         self.refreshscreen(player)
         while True:
             print player.turn(self.board)
-            chessrec.senddisplay(player.turn(self.board)[0:15], player.turn(self.board)[20:30], player.turn(self.board)[31:43], " ")
+            chessrec.senddisplay(player.turn(self.board)[0:15], player.turn(self.board)[26:30], player.turn(self.board)[30:45], " ")
             try:
                 start, target = player.getmove(self.board)
             except (IndexError, ValueError):
