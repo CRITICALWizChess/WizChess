@@ -130,6 +130,7 @@ def speechinput():
 			r = sr.Recognizer()
 			with sr.Microphone() as source:
 				print("Listening")
+				senddisplay(" ", "Listening", " ", " ")
 				audio = r.listen(source)
 			
 			# recognize speech using Sphinx
@@ -244,6 +245,7 @@ def moveinputconvert(firsttime, select):
 		parts = manualinput()
 	if True:
 		print("converting")
+		senddisplay(" ", "Converting", " ", " ")
 		#convert to usable format
 		listenled.off() # processing
 		#piece, ex = piecewtol(parts)

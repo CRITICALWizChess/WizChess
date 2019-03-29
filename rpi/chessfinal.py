@@ -444,7 +444,7 @@ class Game(object):
             print player.turn(self.board)
             chessrec.senddisplay(player.turn(self.board)[0:15], player.turn(self.board)[26:30],\
                  player.turn(self.board)[30:45], " ")
-            sleep(.3)
+            sleep(1)
             try:
                 start, target = player.getmove(self.board)
             except (IndexError, ValueError):
