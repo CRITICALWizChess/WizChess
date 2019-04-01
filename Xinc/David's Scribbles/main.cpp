@@ -51,6 +51,20 @@ void long_wait(){ // i = 5000
   }
 }
 
+int16_t absolute(int16_t value1, int16_t value2){
+    // find difference for move, need diff to be positive always
+    // cant use abs() with XInC2. need to do it other way
+    // diffX first
+    int16_t diff = 0;
+    if (value1 > value2){
+        diff = value1 - value2;
+    }
+    else {
+        diff = finishX - startX;
+    }
+    return diff;
+}
+
 void motorReset(int16_t finishX, int16_t finishY){ // resets motor back to 7,11 to hit zero switchs
     // reset stuff, take distance to zero and move motor there
     // make sure electromagnet is off
@@ -274,9 +288,24 @@ void moveDiagonal(int16_t direction, int16_t distance){
 void pieceRemoval(int16_t finishX, int16_t finishY, int16_t graveLocation[2]){
     // handles piece removal
     int16_t graveX = 0, graveY = 0;    
-    graveX = graveLocation[1] - finishX;
-    graveY = graveLocation[0] - finishY;
-    // proceed with movement for removal
+    graveX = absolute(graveLocation[1], finishX) - 1; // adjusted to work with the corner movement
+    graveY = absolute(graveLocation[0], finishY) - 1;
+    // proceed with movement for removal, first figure out whose turn it is from graveyard selected
+    // move Y axis then X
+    if (graveLocation[1] == 0){
+        // movement to west side grave
+        moveToCorner(4); //NE corner
+        moveStraight(1,graveY); // North
+        moveStraight(4, graveX); // West
+        moveToCorner(4); // center piece
+    }
+    else {
+        // movement to east side grave
+        moveToCorner(2);
+        moveStraight(3, graveY); // South
+        moveStraight(2, graveX); // East
+        moveToCorner(2); // center piece
+    }
 
 }
 
@@ -284,23 +313,23 @@ int main(void){
     // Board dimensions 8 units in length and 12 units in width
     // Respective player graveyards will be to their right hand side
     // Initiate Board
-    int16_t board[8][12] =
+    int16_t board[8][10] =
     {
-        {0, 0,  2, 3, 4, 5, 6, 4, 3, 2, 0, 0},
-        {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0},
-        {0, 0, 8, 9, 10, 11, 12, 10, 9, 8, 0, 0},
+        {0,  2, 3, 4, 5, 6, 4, 3, 2, 0},
+        {0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 7, 7, 7, 7, 7, 7, 7, 7, 0},
+        {0, 8, 9, 10, 11, 12, 10, 9, 8, 0},
     };
  
     char recieve[] = "3234"; // variabe for comm with RPi 
     int16_t turn = 0; // white turn = 0, Black turn = 1
     int16_t piece = 0; // to track piece that is selected
     int16_t graveWhite[2] = {0,0};
-    int16_t graveBlack[2] = {7,11};
+    int16_t graveBlack[2] = {7,9};
     //int16_t deadwhite = 0, deadblack = 0;
     // declare variables for starting position
     int16_t startX = 0;
@@ -320,36 +349,23 @@ int main(void){
         long_wait();
         for (int i=0; i<4; i++){
             if (i==0){
-               startX = (recieve[i] - '0') + 1; // compensate for Graveyard
+               startX = (recieve[i] - '0'); // compensate for Graveyard
             }
             else if (i==1){
                 startY = (recieve[i] - '0') - 1;
             }
             else if (i==2){
-                finishX = (recieve[i] - '0') + 1;
+                finishX = (recieve[i] - '0');
             }
             else if (i==3){
                 finishY = (recieve[i] - '0') - 1;
             }
         }
-        // find difference for move -need diff to be positive always
-        // cant use abs() with XInC2. need to do it other way
-        // diffX first
-        if (startX > finishX){
-            diffX = startX - finishX;
-        }
-        else {
-            diffX = finishX - startX;
-        }
-        // diffY second
-        if (startY > finishY){
-            diffY = startY - finishY;
-        }
-        else{
-            diffX = finishY - startY;
-        }
 
-        // Is it a capture move? 
+        diffX = absolute(startX, finishX);
+        diffY = absolute(startY, finishY);
+
+        // Is it a capture move? piece removal here
         if (board[finishY][finishX] != 0){
             piece = board[finishY][finishX];
             board[finishY][finishX] = 0;
@@ -358,7 +374,7 @@ int main(void){
                 board[graveBlack[0]][graveBlack[1]] = piece;
                 graveBlack[0] = graveBlack[0] - 1;
                 if (graveBlack[0] == 0){
-                    graveBlack[1] = 10;
+                    graveBlack[1] = 9; // fill up same row
                     graveBlack[0] = 7;
                 }
             }
@@ -367,7 +383,7 @@ int main(void){
                 board[graveWhite[0]][graveWhite[1]] = piece;
                 graveWhite[0] = graveWhite[0] + 1;
                 if (graveWhite[0] == 7){
-                    graveWhite[1] = 1;
+                    graveWhite[1] = 0;
                     graveWhite[0] = 0;
                 }
             }
