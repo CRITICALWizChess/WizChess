@@ -2,13 +2,18 @@ import chessrec
 import sys
 
 try:
+    numberz = "1"
     while True:
         print("Welcome to the SPI testing program!\n")
-        choice=raw_input("Input your command or type exit to close: ")
+        choice=raw_input("Input your command, press enter to resend, or type exit to close: ") or " "
             
         if choice == 'exit':
-            print( "\nAs you wish. Welcome back!")
+            print( "\nawww you're leaving?")
             break
-        chessrec.spisend(choice)
+        if choice == " ":
+            chessrec.spisend(numberz)
+        else:
+            choice = numberz
+            chessrec.spisend(numberz)
 except KeyboardInterrupt:
         sys.exit("\n\nExiting now.")
