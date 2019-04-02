@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import lcdfunc
 import time
 from gpiozero import Button, LED

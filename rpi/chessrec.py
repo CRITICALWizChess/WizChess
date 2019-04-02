@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import speech_recognition as sr
 from time import sleep
 import serial
@@ -125,7 +126,7 @@ def speechinput():
 	speak = 1
 	# Input goes here yo
 	while(speak):
-		if (readyspeak.is_pressed or 1): # remove when button added
+		if (readyspeak.is_pressed): # remove when button added
 			listenled.on()
 			# obtain audio from the microphone
 			r = sr.Recognizer()

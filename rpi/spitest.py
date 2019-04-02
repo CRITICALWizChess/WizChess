@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import chessrec
 import sys
 
