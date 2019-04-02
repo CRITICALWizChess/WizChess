@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 import os,sys,random
 from time import sleep
 import chessrec
