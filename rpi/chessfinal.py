@@ -539,6 +539,8 @@ def main():
     menu="""
     Thanks for playing the Chessmastah, would you like to go again?
     Press [Enter] to play again or type 'exit'.  >>  """
+    chessrec.senddisplay(" ", "Welcome to", "WisChess!"," ")
+    sleep(2)
     #try:
     while True:
         newgame()

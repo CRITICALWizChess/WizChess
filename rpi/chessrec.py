@@ -125,6 +125,8 @@ def piecewtol(parts, i):
 def speechinput():
 	speak = 1
 	# Input goes here yo
+	senddisplay("Press the button", "to call", "speech recognition"," ")
+	sleep(1.5)
 	while(speak):
 		if (readyspeak.is_pressed): # remove when button added
 			listenled.on()
