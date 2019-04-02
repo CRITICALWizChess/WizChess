@@ -35,10 +35,10 @@ def spisend(sending):
 	spi.open(0,0)
 	spi.max_speed_hz = 500000
 	spi.mode = 0
-	#msg = [int(sending[0:2]), int(sending[2:4])]
+	msg = [int(sending[0:2]), int(sending[2:4])]
 	for x in range(0,50):
-		msg = [int(sending)]
-		spi.xfer2(msg)
+		mseg = msg
+		spi.xfer2(mseg)
 	spi.close()
 
 
