@@ -520,14 +520,14 @@ def newgame():
         #raw_input("\n\nPress any key to continue")
 def getplayers():
     ainames = ['player1','player2']
-    #name1 = "player1"
-    name1 = raw_input("\nPlayer A (white): ")
+    name1 = "player1"
+    #name1 = raw_input("\nPlayer A (white): ")
     if not name1:
         playera = Player('white', 'AI', ainames[0])
     else:
         playera = Player('white', 'human', name1)
-    #name2 = "player2"
-    name2 = raw_input("\nPlayer B (black): ")
+    name2 = "player2"
+    #name2 = raw_input("\nPlayer B (black): ")
     if not name2:
         playerb = Player('black', 'AI', ainames[1])
     else:
