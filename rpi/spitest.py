@@ -15,5 +15,6 @@ try:
         else:
             numberz = choice
             chessrec.spisend(numberz)
+        print(int(numberz))
 except KeyboardInterrupt:
         sys.exit("\n\nExiting now.")
