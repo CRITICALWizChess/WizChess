@@ -6,6 +6,9 @@
 #include <IOConfig.h>
 #include <Structs.h>
 #include <SPI.h>
+#include <SystemClock.h>
+#include <XPD.h>
+#include <GPIO.h>
 
 #include "time_funcs.h"
 #include "struct_aliases.h"
@@ -19,6 +22,13 @@
 void SPI_init(void){
     SPI_set_config((SPI_ENABLE|SPI_MASTER),SPI1)
     // gnd SEN1 pin or PD3 on board
+}
+
+int main(void){
+    SPI_set_config();
+    int16_t config = 0;
+    config = SPI_get_config(SPI1);
+    xpd_echo_int(config, XPD_Flag_SignedDecimal);
 }
 
 
