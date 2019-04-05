@@ -525,13 +525,13 @@ def getplayers():
     if not name1:
         playera = Player('white', 'AI', ainames[0])
     else:
-        playera = Player('white', 'human', name1)
+        playera = Player('white', 'human', "player1")
     name2 = "player2"
     #name2 = raw_input("\nPlayer B (black): ")
     if not name2:
         playerb = Player('black', 'AI', ainames[1])
     else:
-        playerb = Player('black', 'human', name2)
+        playerb = Player('black', 'human', "player2")
     return playera, playerb
 def main():
     chessrec.lcdfunc.setuplcd()
