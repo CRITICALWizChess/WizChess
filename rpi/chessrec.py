@@ -51,7 +51,7 @@ def spisend(sending):
 
 # sends over a diy 4- bit parallel connection
 def parsend(sending):
-	latch.wait_for_release() #when pin goes high after going low
+	#latch.wait_for_release() #when pin goes high after going low (only the one at the bottom is needed i think)
 	for pos in range(0,4):
 		if sending[pos] == "1":
 			data0.on()
