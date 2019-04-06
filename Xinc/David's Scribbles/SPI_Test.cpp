@@ -78,11 +78,8 @@ int main(void)
   xpd_echo_int(something, XPD_Flag_UnsignedDecimal);
 
   while(exit == 0) {
-    if ( read_buf_button(&read_switch) ){
-      data1 = SPI_read(SPI1);
-      wait_ms(10);
-      xpd_echo_int(data1, XPD_Flag_UnsignedDecimal);
-    }
+    data1 = SPI_read(SPI1);
+    xpd_echo_int(data1, XPD_Flag_UnsignedDecimal);
     wait_ms(10);
   }
   return 0;
