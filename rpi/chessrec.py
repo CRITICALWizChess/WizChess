@@ -59,43 +59,43 @@ def parsend(sending):
 			#data2.off()
 			#data3.off()
 			print("0001")
-		if sending[pos] == "2":
+		elif sending[pos] == "2":
 			#data0.off()
 			#data1.on()
 			#data2.off()
 			#data3.off()
 			print("0010")
-		if sending[pos] == "3":
+		elif sending[pos] == "3":
 			#data0.on()
 			#data1.on()
 			#data2.off()
 			#data3.off()
 			print("0011")
-		if sending[pos] == "4":
+		elif sending[pos] == "4":
 			#data0.off()
 			#data1.off()
 			#data2.on()
 			#data3.off()
 			print("0100")
-		if sending[pos] == "5":
+		elif sending[pos] == "5":
 			#data0.on()
 			#data1.off()
 			#data2.on()
 			#data3.off()
 			print("0101")
-		if sending[pos] == "6":
+		elif sending[pos] == "6":
 			#data0.off()
 			#data1.on()
 			#data2.on()
 			#data3.off()
 			print("0110")
-		if sending[pos] == "7":
+		elif sending[pos] == "7":
 			#data0.on()
 			#data1.on()
 			#data2.on()
 			#data3.off()
 			print("0111")
-		if sending[pos] == "8":
+		elif sending[pos] == "8":
 			#data0.off()
 			#data1.off()
 			#data2.off()
