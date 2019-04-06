@@ -60,11 +60,11 @@ int16_t absolute(int16_t value1, int16_t value2){
         diff = value1 - value2;
     }
     else {
-        diff = finishX - startX;
+        diff = value2 - value1;
     }
     return diff;
 }
-void zero(){
+void zero(void){
     // space for flags if break doesn't work
     while(true){
         gpio_write(0x01, GPIO_B); //turns magnet off
@@ -74,14 +74,14 @@ void zero(){
         gpio_write(0xC0, GPIO_C); //towards the motors, we are going to have to figure this out
         if (!is_NS_pressed){ // moves if NS axis !zeroed
             gpio_write(0x80, GPIO_A);
-            stepdelay();
+            short_wait();
         }
         if (!is_EW_pressed){ // moves if EW axis !zeroed
             gpio_write(0x40, GPIO_A);
-            stepdelay();
+            short_wait();
         }
         gpio_write(0x00, GPIO_A);
-        stepdelay();
+        short_wait();
         if (is_NS_pressed && is_EW_pressed){
             break;
         }
@@ -275,7 +275,7 @@ void moveDiagonal(int16_t direction, int16_t distance){
     // direction codes: 1-NE, 2-SE, 3-SW, 4-NW (from white perspective)
     if (direction == 1){
         gpio_write(0x00, GPIO_B); //turns magnet on
-        gpio_write(0x80, GPIO_c); //DIR set to NE
+        gpio_write(0x80, GPIO_C); //DIR set to NE
         for (int f = 0; f <= 1200*distance; f++) // NE
         {
             gpio_write(0xC0, GPIO_A); 
@@ -331,7 +331,7 @@ void pieceRemoval(int16_t finishX, int16_t finishY, int16_t graveLocation[2]){
     if (graveLocation[1] == 0){
         // movement to west side grave
         moveToCorner(4); //NE corner
-        moveStraight(1,graveY); // North
+        moveStraight(1, graveY); // North
         moveStraight(4, graveX); // West
         moveToCorner(4); // center piece
     }
@@ -379,9 +379,6 @@ int main(void){
     // Variables for difference of position
     int16_t diffX = 0;
     int16_t diffY = 0;
-    // Values for Step calculation
-    int16_t moveX = 0;
-    int16_t moveY = 0;
 
     while(1){
 
@@ -442,6 +439,7 @@ int main(void){
         xpd_echo_arr(board[1],12);
         xpd_putc('\n');
         xpd_echo_arr(board[3],12);
+        xpd_putc('\n');
 
         while(1){} /////////////////////////////////////////////////////////////////////// IT'S A TRAP /////////////////////////////////////////////////
 

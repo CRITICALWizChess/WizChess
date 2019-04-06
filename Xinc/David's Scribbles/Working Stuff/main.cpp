@@ -60,7 +60,7 @@ int16_t absolute(int16_t value1, int16_t value2){
         diff = value1 - value2;
     }
     else {
-        diff = finishX - startX;
+        diff = value2 - value1;
     }
     return diff;
 }
@@ -111,36 +111,36 @@ void motorReset(int16_t finishX, int16_t finishY){ // resets motor back to 7,11 
 
 void moveToStart(int16_t startX, int16_t startY){ // moves motor to starting position of move
     // reset stuff, take distance to zero and move motor there
-    // make sure electromagnet is off
-    gpio_write(0x81, GPIO_C); // sets DIR for forward
+    gpio_write(0x01, GPIO_B);// make sure electromagnet is off
+    gpio_write(0x00, GPIO_C); // sets DIR for forward
     // move smaller distance first
     if (startX > startY){
-        for (int f = 0; f <= 1300*startX; f++) // MOVE WEST ONLY
+        for (int f = 0; f <= 1200*startX; f++) // MOVE WEST ONLY
         {
-            gpio_write(0xC0, GPIO_A); 
+            gpio_write(0x80, GPIO_A); 
             short_wait();
             gpio_write(0x00, GPIO_A);
             short_wait();
         }
-        for (int f = 0; f <= 1300*startY; f++) // MOVE NORTH ONLY
+        for (int f = 0; f <= 1200*startY; f++) // MOVE NORTH ONLY
         {
-            gpio_write(0xC0, GPIO_A); 
+            gpio_write(0x40, GPIO_A); 
             short_wait();
             gpio_write(0x00, GPIO_A);
             short_wait();
         }
     }
     else {
-        for (int f = 0; f <= 1300*startY; f++) // MOVE NORTH ONLY
+        for (int f = 0; f <= 1200*startY; f++) // MOVE NORTH ONLY
         {
-            gpio_write(0xC0, GPIO_A); 
+            gpio_write(0x40, GPIO_A); 
             short_wait();
             gpio_write(0x00, GPIO_A);
             short_wait();
         }
-        for (int f = 0; f <= 1300*startX; f++) // MOVE WEST ONLY
+        for (int f = 0; f <= 1200*startX; f++) // MOVE WEST ONLY
         {
-            gpio_write(0xC0, GPIO_A); 
+            gpio_write(0x80, GPIO_A); 
             short_wait();
             gpio_write(0x00, GPIO_A);
             short_wait();
@@ -151,9 +151,10 @@ void moveToStart(int16_t startX, int16_t startY){ // moves motor to starting pos
 void moveToCorner(int16_t direction){ // Moves piece to corner of square in order to move between pieces
     // any of the four courners depending on direction input
     // from white perspective going cw 1-NE, 2-SE, 3-SW, 4-NW
+    // NOTE: magnet is not toggled in this function
     if (direction == 1) { //NE corner
-        // need DIR pin set here
-        for (int f = 0; f <= 1300; f++)
+        gpio_write(0x80, GPIO_C); // DIR
+        for (int f = 0; f <= 600; f++)
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -162,8 +163,8 @@ void moveToCorner(int16_t direction){ // Moves piece to corner of square in orde
         }
     }
     else if (direction == 2){ //SE corner
-        gpio_write(0x00, GPIO_C);
-        for (int f = 0; f <= 1300; f++)
+        gpio_write(0xC0, GPIO_C); // DIR
+        for (int f = 0; f <= 600; f++)
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -172,8 +173,8 @@ void moveToCorner(int16_t direction){ // Moves piece to corner of square in orde
         }
     }
     else if (direction == 3){ //SW corner
-        //need DIR pin set here
-        for (int f = 0; f <= 1300; f++)
+        gpio_write(0x40, GPIO_C); // DIR
+        for (int f = 0; f <= 600; f++)
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -182,8 +183,8 @@ void moveToCorner(int16_t direction){ // Moves piece to corner of square in orde
         }
     }
     else if (direction == 4){ //NW corner
-        gpio_write(0x81, GPIO_C);
-        for (int f = 0; f <= 1300; f++)
+        gpio_write(0x00, GPIO_C); // DIR
+        for (int f = 0; f <= 600; f++)
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -196,6 +197,7 @@ void moveToCorner(int16_t direction){ // Moves piece to corner of square in orde
 void moveStraight(int16_t direction, int16_t distance){
     // Straight line movement handled by either motor
     // direction codes: 1-North, 2-East, 3-South, 4-West
+    gpio_write(0x01, GPIO_B); // Magnet On
     if (direction == 1){
         gpio_write(0x81, GPIO_C); // set for forward
         for (int f = 0; f <= (1000*distance); f++) // ONLY MOVE NORTH
@@ -340,9 +342,6 @@ int main(void){
     // Variables for difference of position
     int16_t diffX = 0;
     int16_t diffY = 0;
-    // Values for Step calculation
-    int16_t moveX = 0;
-    int16_t moveY = 0;
 
     while(1){
 
@@ -403,6 +402,7 @@ int main(void){
         xpd_echo_arr(board[1],12);
         xpd_putc('\n');
         xpd_echo_arr(board[3],12);
+        xpd_putc('\n');
 
         while(1){} /////////////////////////////////////////////////////////////////////// IT'S A TRAP /////////////////////////////////////////////////
 
