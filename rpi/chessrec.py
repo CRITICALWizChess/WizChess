@@ -13,10 +13,15 @@ readyspeak = Button(2) # pin 3
 enter = Button(3) # pin 5
 right = Button(4) # pin 7
 listenled = LED(17) # pin 11
+data0 = LED(26) # pin 37
+data1 = LED(19) # pin 35
+data2 = LED(13) # pin 33
+data3 = LED(6) # pin 31
+latch = Button(5) # pin 29
 
 #put startup tone here, pygame suggested solution
 #its gonna be frikken cool (actually this would go 
-# n the main program but the function would be here)
+# in the main program but the function would be here)
 
 
 #sends over UART if enabled
@@ -31,6 +36,7 @@ def serialsend(sending):
 		)
 	ser.write(sending)
 
+# sends over SPI
 def spisend(sending):
 	spi = spidev.SpiDev()
 	spi.open(0,0)
@@ -42,6 +48,63 @@ def spisend(sending):
 		#mseg =[int(sending)]
 		spi.xfer2(mseg)
 	spi.close()
+
+# sends over a diy 4- bit parallel connection
+def parsend(sending):
+	#latch.wait_for_release()
+	for pos in range(0,4):
+		if sending[pos] == "1":
+			#data0.on()
+			#data1.off()
+			#data2.off()
+			#data3.off()
+			print("0001")
+		if sending[pos] == "2":
+			#data0.off()
+			#data1.on()
+			#data2.off()
+			#data3.off()
+			print("0010")
+		if sending[pos] == "3":
+			#data0.on()
+			#data1.on()
+			#data2.off()
+			#data3.off()
+			print("0011")
+		if sending[pos] == "4":
+			#data0.off()
+			#data1.off()
+			#data2.on()
+			#data3.off()
+			print("0100")
+		if sending[pos] == "5":
+			#data0.on()
+			#data1.off()
+			#data2.on()
+			#data3.off()
+			print("0101")
+		if sending[pos] == "6":
+			#data0.off()
+			#data1.on()
+			#data2.on()
+			#data3.off()
+			print("0110")
+		if sending[pos] == "7":
+			#data0.on()
+			#data1.on()
+			#data2.on()
+			#data3.off()
+			print("0111")
+		if sending[pos] == "8":
+			#data0.off()
+			#data1.off()
+			#data2.off()
+			#data3.on()
+			print("1000")
+		else:
+			print("idk")
+		#latch.wait_for_release()
+		raw_input("next")
 
 
 def numberwtod(parts, i):
@@ -259,8 +322,8 @@ def moveinputconvert(firsttime, select):
 		Commando = " "
 		if (not ex):
 			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
-			Commandser = nat+number+nat1+number1
-			spisend(Commandser)
+			Commandsen = nat+number+nat1+number1
+			parsend(Commandsen)
 			sleep(1)
 		
 		ex = 0
