@@ -103,8 +103,8 @@ def parsend(sending):
 			#print("1000")
 		else:
 			print("idk")
-		latch.wait_for_release() #same as above
-		#raw_input("next")
+		#latch.wait_for_release() #same as above
+		raw_input("next")
 
 
 def numberwtod(parts, i):
