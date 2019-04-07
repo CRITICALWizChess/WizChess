@@ -234,7 +234,7 @@ def senddisplay(first, second, third, fourth):
 def manualinput():
 	columns = ["ALPHA", "BRAVO", "CHARLIE", "DELTA", "ECHO", "FOXTROT", "GOLF", "HOTEL"]
 	rows = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT"]
-	senddisplay("Chose your start", "and end intersection", "Right to go next", "or middle to confirm")
+	senddisplay("Choose your start", "and end intersection", "Right to go next", "or middle to confirm")
 	sleep(2)
 	col = row = col1 = row1 = 0
 	coli = rowi = col1i = row1i = 0
@@ -289,6 +289,7 @@ def manualinput():
 	Commandi = columns[coli] + " " + rows[rowi] + " TO " + columns[col1i] + " " + rows[row1i]
 	print(Commandi)
 	senddisplay(" ", "Submitted", "^.^", " ")
+	sleep(0.5)
 	parts = Commandi.split(" ",4)
 	return parts
 
@@ -314,7 +315,7 @@ def moveinputconvert(firsttime, select):
 		print("converting")
 		senddisplay(" ", "Converting", " ", " ")
 		#convert to usable format
-		listenled.off() # processing
+		#listenled.off() # processing
 		#piece, ex = piecewtol(parts)
 		number, ex = numberwtod(parts, 1)
 		number1, ex = numberwtod(parts, 4)

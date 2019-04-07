@@ -442,7 +442,7 @@ class Game(object):
         self.refreshscreen(player)
         while True:
             print player.turn(self.board)
-            chessrec.senddisplay(player.turn(self.board)[0:15], player.turn(self.board)[26:30],\
+            chessrec.senddisplay(player.turn(self.board)[1:15], player.turn(self.board)[26:30],\
                  player.turn(self.board)[30:45], " ")
             sleep(1)
             try:
@@ -539,7 +539,7 @@ def main():
     menu="""
     Thanks for playing the Chessmastah, would you like to go again?
     Press [Enter] to play again or type 'exit'.  >>  """
-    chessrec.senddisplay(" ", "Welcome to", "WisChess!"," ")
+    chessrec.senddisplay(" ", "Welcome to", "WizChess!"," ")
     sleep(2)
     #try:
     while True:
