@@ -74,23 +74,24 @@ int16_t turnList(int16_t turn){
 */
 void zero(){ // Use instead of motorReset
     // space for flags if break doesn't work
+    gpio_write(0xC0, GPIO_C); // DIR, SE
     while(true){
         gpio_write(0x01, GPIO_B); //turns magnet off
-        uint16_t port_b_state = gpio_read(GPIO_B);
-        bool is_NS_pressed = (port_b_state & (1<<2)); //supposedly read pin 1 
-        bool is_EW_pressed = (port_b_state & (1<<3)); //supposedly 2
-        gpio_write(0xC0, GPIO_C); //towards the motors, we are going to have to figure this out
-        if (!is_NS_pressed){ // moves if NS axis !zeroed
+        uint16_t port_d_state = gpio_read(GPIO_D);
+        bool is_NS_pressed = (port_d_state & (1<<5)); //supposedly read pin D5
+        bool is_EW_pressed = (port_d_state & (1<<6)); //supposedly D6
+        
+        if (!is_EW_pressed){ // moves if EW axis !zeroed
             gpio_write(0x80, GPIO_A);
             short_wait();
         }
-        if (!is_EW_pressed){ // moves if EW axis !zeroed
+        if (is_EW_pressed){ // moves if NS axis !zeroed
             gpio_write(0x40, GPIO_A);
             short_wait();
         }
         gpio_write(0x00, GPIO_A);
         short_wait();
-        if (is_NS_pressed && is_EW_pressed){
+        if (is_NS_pressed && is_EW_pressed){ // exit when both are pressed
             break;
         }
     }
@@ -343,6 +344,33 @@ void pieceRemoval(int16_t finishX, int16_t finishY, int16_t graveLocation[2]){
 
 }
 
+int16_t par_receive(){ // parallel recieve from RPi
+    int16_t data = 0;
+
+    while(data == 0){
+        bool port_e_state = gpio_read(GPIO_E); // read port E each time
+        //first bit will be on E4 and fill in to E7
+        if (port_e_state & (1<<4)){ // does this really check pin 4?
+            data += 8;
+        }
+        if (port_e_state & (1<<5)){ // pin 5
+            data += 4;
+        }
+        if (port_e_state & (1<<6)){ // pin 6
+            data += 2;
+        }
+        if (port_e_state & (1<<7)){ // pin 7
+            data += 1;
+        }
+    }
+    // toggle the latch pin
+    gpio_write(0x08 , GPIO_E);
+    short_wait();
+    gpio_write(0x00, GPIO_E);
+    
+    return data;
+}
+
 int main(void){
     // Board dimensions 8 units in length and 12 units in width
     // Respective player graveyards will be to their right hand side
@@ -358,6 +386,11 @@ int main(void){
         {0, 7, 7, 7, 7, 7, 7, 7, 7, 0},
         {0, 8, 9, 10, 11, 12, 10, 9, 8, 0},
     };
+
+    gpio_set_config((0xC0 << 8), GPIO_C); //sets pins 6 and 7 on C to output
+    gpio_set_config((0xC0 << 8), GPIO_A); //sets pins 6 and 7 on A to output
+    gpio_set_config((0x80 << 8), GPIO_D); //sets pins on B to input for zeroing
+    gpio_set_config((0x08 << 8), GPIO_E); // pins 4,5,6,7 for data, pin 3 for latch
  
     char recieve[] = "3234"; // variabe for comm with RPi 
     int16_t turn = 0; // white turn = 0, Black turn = 1
@@ -378,7 +411,7 @@ int main(void){
     while(1){
 
         long_wait();
-        for (int i=0; i<4; i++){
+        for (int i=0; i<4; i++){ // Assign the recieve values
             if (i==0){
                startX = (recieve[i] - '0'); // compensate for Graveyard
             }
@@ -392,6 +425,32 @@ int main(void){
                 finishY = (recieve[i] - '0') - 1;
             }
         }
+        // This is all for testing purposes
+        xpd_echo_int(startX,XPD_Flag_UnsignedDecimal);
+        xpd_echo_int(startY, XPD_Flag_UnsignedDecimal);
+        xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal);
+        xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal);
+        xpd_putc('\n');
+        xpd_echo_arr(board[1],12);
+        xpd_putc('\n');
+        xpd_echo_arr(board[3],12);
+        xpd_putc('\n');
+
+        
+        startX = par_receive();
+        startY = par_receive() -1;
+        finishX = par_receive();
+        finishY = par_receive() -1;
+        // This is all for testing purposes
+        xpd_echo_int(startX,XPD_Flag_UnsignedDecimal);
+        xpd_echo_int(startY, XPD_Flag_UnsignedDecimal);
+        xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal);
+        xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal);
+        xpd_putc('\n');
+        xpd_echo_arr(board[1],12);
+        xpd_putc('\n');
+        xpd_echo_arr(board[3],12);
+        xpd_putc('\n');
 
         diffX = absolute(startX, finishX);
         diffY = absolute(startY, finishY);
@@ -425,22 +484,13 @@ int main(void){
         board[startY][startX] = 0;
         board[finishY][finishX] = piece;
 
-        // This is all for testing purposes
-        xpd_echo_int(startX,XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(startY, XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal);
-        xpd_putc('\n');
-        xpd_echo_arr(board[1],12);
-        xpd_putc('\n');
-        xpd_echo_arr(board[3],12);
-        xpd_putc('\n');
+        //zero();     // uncomment when ready to test
 
         while(1){} /////////////////////////////////////////////////////////////////////// IT'S A TRAP /////////////////////////////////////////////////
 
         moveToStart(startX, startY); // move motors to start position
 
-        gpio_write(0x01, GPIO_B); // Magnet on
+        gpio_write(0x00, GPIO_D); // Magnet on
 
         // Is the knight moving?  (diffX != 0) && (diffY != 0) && (diffX != diffY)
         if ((piece == 3) | (piece == 9)){
@@ -536,7 +586,7 @@ int main(void){
             }
         }
 
-        gpio_write(0x00, GPIO_B); // Magnet off
+        gpio_write(0x80, GPIO_D); // Magnet off
 
         // replace this with the zero function once switchs are in place
         motorReset(finishX, finishY); // zero the motor
