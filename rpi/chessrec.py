@@ -5,6 +5,7 @@ import serial
 import spidev
 import sys
 import lcdfunc
+import RPI.GPIO as GPIO
 
 from gpiozero import Button, LED, DigitalOutputDevice
 
@@ -13,10 +14,10 @@ readyspeak = Button(2) # pin 3
 enter = Button(3) # pin 5
 right = Button(4) # pin 7
 listenled = LED(17) # pin 11
-data0 = DigitalOutputDevice(26) # pin 37
-data1 = DigitalOutputDevice(19) # pin 35
-data2 = DigitalOutputDevice(13) # pin 33
-data3 = DigitalOutputDevice(6) # pin 31
+# data0 = DigitalOutputDevice(26) # pin 37
+# data1 = DigitalOutputDevice(19) # pin 35
+# data2 = DigitalOutputDevice(13) # pin 33
+# data3 = DigitalOutputDevice(6) # pin 31
 latch = Button(5) # pin 29
 
 #put startup tone here, pygame suggested solution
@@ -49,57 +50,64 @@ def spisend(sending):
 		spi.xfer2(mseg)
 	spi.close()
 
+def setupgpio():
+	GPIO.setmode(GPIO.BCM)       # Use BCM GPIO numbers
+	GPIO.setup(26, GPIO.OUT)  # E
+	GPIO.setup(19, GPIO.OUT) # RS
+	GPIO.setup(13, GPIO.OUT) # DB4
+	GPIO.setup(6, GPIO.OUT) # DB5 
+
 # sends over a diy 4- bit parallel connection
 def parsend(sending):
 	#latch.wait_for_release() #when pin goes high after going low (only the one at the bottom is needed i think)
 	for pos in range(0,4):
 		if sending[pos] == "1":
-			data0.on()
-			data1.off()
-			data2.off()
-			data3.off()
+			GPIO.output(26, True)
+			GPIO.output(19, False)
+			GPIO.output(13, False)
+			GPIO.output(6, False)
 			#print("0001")
 		elif sending[pos] == "2":
-			data0.off()
-			data1.on()
-			data2.off()
-			data3.off()
+			GPIO.output(26, False)
+			GPIO.output(19, True)
+			GPIO.output(13, False)
+			GPIO.output(6, False)
 			#print("0010")
 		elif sending[pos] == "3":
-			data0.on()
-			data1.on()
-			data2.off()
-			data3.off()
+			GPIO.output(26, True)
+			GPIO.output(19, True)
+			GPIO.output(13, False)
+			GPIO.output(6, False)
 			#print("0011")
 		elif sending[pos] == "4":
-			data0.off()
-			data1.off()
-			data2.on()
-			data3.off()
+			GPIO.output(26, False)
+			GPIO.output(19, False)
+			GPIO.output(13, True)
+			GPIO.output(6, False)
 			#print("0100")
 		elif sending[pos] == "5":
-			data0.on()
-			data1.off()
-			data2.on()
-			data3.off()
+			GPIO.output(26, True)
+			GPIO.output(19, False)
+			GPIO.output(13, True)
+			GPIO.output(6, False)
 			#print("0101")
 		elif sending[pos] == "6":
-			data0.off()
-			data1.on()
-			data2.on()
-			data3.off()
+			GPIO.output(26, False)
+			GPIO.output(19, True)
+			GPIO.output(13, True)
+			GPIO.output(6, False)
 			#print("0110")
 		elif sending[pos] == "7":
-			data0.on()
-			data1.on()
-			data2.on()
-			data3.off()
+			dGPIO.output(26, True)
+			GPIO.output(19, True)
+			GPIO.output(13, True)
+			GPIO.output(6, False)
 			#print("0111")
 		elif sending[pos] == "8":
-			data0.off()
-			data1.off()
-			data2.off()
-			data3.on()
+			GPIO.output(26, False)
+			GPIO.output(19, False)
+			GPIO.output(13, False)
+			GPIO.output(6, True)
 			#print("1000")
 		else:
 			print("idk")
