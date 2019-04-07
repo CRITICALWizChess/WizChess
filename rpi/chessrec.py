@@ -6,17 +6,17 @@ import spidev
 import sys
 import lcdfunc
 
-from gpiozero import Button, LED
+from gpiozero import Button, LED, DigitalOutputDevice
 
 #initialize inputs & outputs (14 and 15 are taken by UART)
 readyspeak = Button(2) # pin 3
 enter = Button(3) # pin 5
 right = Button(4) # pin 7
 listenled = LED(17) # pin 11
-data0 = LED(26) # pin 37
-data1 = LED(19) # pin 35
-data2 = LED(13) # pin 33
-data3 = LED(6) # pin 31
+data0 = DigitalOutputDevice(26) # pin 37
+data1 = DigitalOutputDevice(19) # pin 35
+data2 = DigitalOutputDevice(13) # pin 33
+data3 = DigitalOutputDevice(6) # pin 31
 latch = Button(5) # pin 29
 
 #put startup tone here, pygame suggested solution
