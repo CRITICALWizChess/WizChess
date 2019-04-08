@@ -5,7 +5,6 @@ import serial
 import spidev
 import sys
 import lcdfunc
-import RPI.GPIO as GPIO
 
 from gpiozero import Button, LED, DigitalOutputDevice
 
