@@ -3,7 +3,6 @@ import chessrec
 import sys
 
 try:
-    chessrec.setupgpio()
     numberz = "1"
     print("Welcome to the parallel testing program!\n")
     while True:
