@@ -98,7 +98,7 @@ def parsend(sending):
 			GPIO.output(6, False)
 			#print("0110")
 		elif sending[pos] == "7":
-			dGPIO.output(26, True)
+			GPIO.output(26, True)
 			GPIO.output(19, True)
 			GPIO.output(13, True)
 			GPIO.output(6, False)
