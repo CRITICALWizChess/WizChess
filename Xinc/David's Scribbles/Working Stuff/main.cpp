@@ -64,14 +64,7 @@ int16_t absolute(int16_t value1, int16_t value2){
     }
     return diff;
 }
-/*
-int16_t turnList(int16_t turn){
-    char select[] = {
-        "3735",
-        "3746"
-    }
-}
-*/
+
 void zero(){ // Use instead of motorReset
     // space for flags if break doesn't work
     gpio_write(0xC0, GPIO_C); // DIR, SE
@@ -346,27 +339,47 @@ void pieceRemoval(int16_t finishX, int16_t finishY, int16_t graveLocation[2]){
 
 int16_t par_receive(){ // parallel recieve from RPi
     int16_t data = 0;
-
-    while(data == 0){
-        bool port_e_state = gpio_read(GPIO_E); // read port E each time
-        //first bit will be on E4 and fill in to E7
-        if (port_e_state & (1<<4)){ // does this really check pin 4?
-            data += 8;
-        }
-        if (port_e_state & (1<<5)){ // pin 5
-            data += 4;
-        }
-        if (port_e_state & (1<<6)){ // pin 6
-            data += 2;
-        }
-        if (port_e_state & (1<<7)){ // pin 7
-            data += 1;
+    while(1){
+        uint16_t is_ready = gpio_read(GPIO_E);
+        if (is_ready & (1<<3)){
+            break;
         }
     }
+    
+    while(data == 0){
+        uint16_t port_e_state = gpio_read(GPIO_E); // read port E each time
+        //first bit will be on E4 and fill in to E7
+        bool bit8 = (port_e_state & (1<<4));
+        bool bit4 = (port_e_state & (1<<5));
+        bool bit2 = (port_e_state & (1<<6));
+        bool bit1 = (port_e_state & (1<<7));
+        if (bit1){ // pin 7
+            data += 1;
+            xpd_putc('1');
+            xpd_putc('\n');
+        }
+        if (bit2){ // pin 6
+            data += 2;
+            xpd_putc('2');
+            xpd_putc('\n');
+        }
+        if (bit4){ // pin 5
+            data += 4;
+            xpd_putc('4');
+            xpd_putc('\n');
+        }
+        if (bit8){ // pin 4?
+            data += 8;
+            xpd_putc('8');
+            xpd_putc('\n');
+        }
+    }
+    // port_e_state = 0;
     // toggle the latch pin
-    gpio_write(0x08 , GPIO_E);
+    gpio_write(0x04 , GPIO_I);
     short_wait();
-    gpio_write(0x00, GPIO_E);
+    gpio_write(0x00, GPIO_I);
+    short_wait();
     
     return data;
 }
@@ -390,8 +403,9 @@ int main(void){
     gpio_set_config((0xC0 << 8), GPIO_C); //sets pins 6 and 7 on C to output
     gpio_set_config((0xC0 << 8), GPIO_A); //sets pins 6 and 7 on A to output
     gpio_set_config((0x80 << 8), GPIO_D); //sets pins on B to input for zeroing
-    gpio_set_config((0x08 << 8), GPIO_E); // pins 4,5,6,7 for data, pin 3 for latch
- 
+    gpio_set_config((0x00 << 8), GPIO_E); // pins 4,5,6,7 for data, pin 3 reading complete
+    gpio_set_config((0x04 << 8), GPIO_I); // set pin I 2 as an output for comm
+
     char recieve[] = "3234"; // variabe for comm with RPi 
     int16_t turn = 0; // white turn = 0, Black turn = 1
     int16_t piece = 0; // to track piece that is selected
@@ -431,29 +445,27 @@ int main(void){
         xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal);
         xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal);
         xpd_putc('\n');
-        xpd_echo_arr(board[1],12);
-        xpd_putc('\n');
-        xpd_echo_arr(board[3],12);
-        xpd_putc('\n');
 
-        
+        // location assignment from RPi
+        xpd_puts("Start");
+        xpd_putc('\n');
         startX = par_receive();
-        startY = par_receive() -1;
+        xpd_echo_int(startX,XPD_Flag_UnsignedDecimal); // StartX
+        xpd_putc('\n');
+        startY = par_receive();
+        xpd_echo_int(startY, XPD_Flag_UnsignedDecimal); // StartY
+        xpd_putc('\n');
         finishX = par_receive();
-        finishY = par_receive() -1;
-        // This is all for testing purposes
-        xpd_echo_int(startX,XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(startY, XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal);
+        xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal); // FinishX
         xpd_putc('\n');
-        xpd_echo_arr(board[1],12);
+        finishY = par_receive();
+        xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal); // FinishY
         xpd_putc('\n');
-        xpd_echo_arr(board[3],12);
+        xpd_puts("finish");
         xpd_putc('\n');
 
-        diffX = absolute(startX, finishX);
-        diffY = absolute(startY, finishY);
+        diffX = absolute(startX, finishX); // calculate x axis move distance 
+        diffY = absolute(startY, finishY); // calculate y axis move distance
 
         // Is it a capture move? piece removal here
         if (board[finishY][finishX] != 0){
@@ -483,6 +495,12 @@ int main(void){
         piece = board[startY][startX]; // swap piece position with end position
         board[startY][startX] = 0;
         board[finishY][finishX] = piece;
+
+        // display board state for rows 2 and 4
+        xpd_echo_arr(board[1],12);
+        xpd_putc('\n');
+        xpd_echo_arr(board[3],12);
+        xpd_putc('\n');
 
         //zero();     // uncomment when ready to test
 
@@ -588,12 +606,8 @@ int main(void){
 
         gpio_write(0x80, GPIO_D); // Magnet off
 
-        // replace this with the zero function once switchs are in place
-        motorReset(finishX, finishY); // zero the motor
-
-        
+        zero(); // zero the motor        
     }
-    
     return 0;
 }
 
