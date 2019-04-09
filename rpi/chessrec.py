@@ -17,7 +17,7 @@ data0 = DigitalOutputDevice(26) # pin 37
 data1 = DigitalOutputDevice(19) # pin 35
 data2 = DigitalOutputDevice(13) # pin 33
 data3 = DigitalOutputDevice(6) # pin 31
-latch = DigitalInputDevice(5,False,True) # pin 29
+latch = DigitalInputDevice(5,False) # pin 29
 
 #put startup tone here, pygame suggested solution
 #its gonna be frikken cool (actually this would go 
