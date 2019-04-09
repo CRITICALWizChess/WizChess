@@ -104,8 +104,8 @@ def parsend(sending):
 		else:
 			print("idk")
 		while (True):
-    		if(latch.value()):
-        		break
+			if(latch.value()):
+				break
 		#raw_input("next\n")
 
 
