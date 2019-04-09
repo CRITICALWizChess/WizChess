@@ -104,6 +104,7 @@ def parsend(sending):
 		else:
 			print("idk")
 		latch.wait_for_active()
+		sleep(.1)
 		# while (True):
 		# 	if(latch.value()):
 		# 		break
