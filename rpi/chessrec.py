@@ -51,7 +51,10 @@ def spisend(sending):
 
 # sends over a diy 4- bit parallel connection
 def parsend(sending):
-	
+	data0.off()
+	data1.off()
+	data2.off()
+	data3.off()
 	for pos in range(0,4):
 		if sending[pos] == "1":
 			data0.on()
