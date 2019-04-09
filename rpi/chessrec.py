@@ -17,6 +17,7 @@ data0 = DigitalOutputDevice(26) # pin 37
 data1 = DigitalOutputDevice(19) # pin 35
 data2 = DigitalOutputDevice(13) # pin 33
 data3 = DigitalOutputDevice(6) # pin 31
+ready = DigitalOutputDevice(22) # pin 15
 latch = DigitalInputDevice(5,False) # pin 29
 
 #put startup tone here, pygame suggested solution
@@ -56,53 +57,62 @@ def parsend(sending):
 	data2.off()
 	data3.off()
 	for pos in range(0,4):
+
 		if sending[pos] == "1":
 			data0.on()
 			data1.off()
 			data2.off()
 			data3.off()
+			ready.on()
 			print("0001")
 		elif sending[pos] == "2":
 			data0.off()
 			data1.on()
 			data2.off()
 			data3.off()
+			ready.on()
 			print("0010")
 		elif sending[pos] == "3":
 			data0.on()
 			data1.on()
 			data2.off()
 			data3.off()
+			ready.on()
 			print("0011")
 		elif sending[pos] == "4":
 			data0.off()
 			data1.off()
 			data2.on()
 			data3.off()
+			ready.on()
 			print("0100")
 		elif sending[pos] == "5":
 			data0.on()
 			data1.off()
 			data2.on()
 			data3.off()
+			ready.on()
 			print("0101")
 		elif sending[pos] == "6":
 			data0.off()
 			data1.on()
 			data2.on()
 			data3.off()
+			ready.on()
 			print("0110")
 		elif sending[pos] == "7":
 			data0.on()
 			data1.on()
 			data2.on()
 			data3.off()
+			ready.on()
 			print("0111")
 		elif sending[pos] == "8":
 			data0.off()
 			data1.off()
 			data2.off()
 			data3.on()
+			ready.on()
 			print("1000")
 		else:
 			print("idk")
@@ -111,6 +121,7 @@ def parsend(sending):
 		data1.off()
 		data2.off()
 		data3.off()
+		ready.off()
 		sleep(.5)
 		# while (True):
 		# 	if(latch.value()):
