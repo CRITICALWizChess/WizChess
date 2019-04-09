@@ -108,7 +108,7 @@ def parsend(sending):
 		data1.off()
 		data2.off()
 		data3.off()
-		sleep(.1)
+		sleep(.5)
 		# while (True):
 		# 	if(latch.value()):
 		# 		break
