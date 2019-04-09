@@ -211,40 +211,43 @@ def speechinput():
 	speak = 1
 	# Input goes here yo
 	senddisplay("Press the button", "to call", "speech recognition"," ")
-	sleep(1.5)
-	while(speak):
-		if (readyspeak.is_pressed): # remove when button added
-			listenled.on()
-			# obtain audio from the microphone
-			r = sr.Recognizer()
-			with sr.Microphone() as source:
-				print("Listening")
-				senddisplay(" ", "Listening", " ", " ")
-				audio = r.listen(source)
+	sleep(1)
+	try:
+		while(speak):
+			if (readyspeak.is_pressed): # remove when button added
+				listenled.on()
+				# obtain audio from the microphone
+				r = sr.Recognizer()
+				with sr.Microphone() as source:
+					print("Listening")
+					senddisplay(" ", "Listening", " ", " ")
+					audio = r.listen(source)
+				
+				# recognize speech using Sphinx
+				try:
+					Commandi = r.recognize_sphinx(audio) # save command as variable
+					print(Commandi + "\n") # print variable, this will not be in the final version
+				except sr.UnknownValueError:
+					print("Sphinx could not understand audio")
+					Commandi = "nope"
+				except sr.RequestError as e:
+					print("Sphinx error; {0}".format(e))		
 			
-			# recognize speech using Sphinx
-			try:
-				Commandi = r.recognize_sphinx(audio) # save command as variable
-				print(Commandi + "\n") # print variable, this will not be in the final version
-			except sr.UnknownValueError:
-				print("Sphinx could not understand audio")
-				Commandi = "nope"
-			except sr.RequestError as e:
-				print("Sphinx error; {0}".format(e))		
-		
-			#checks if string is usable 
-			if (len(Commandi) >= 20 and len(Commandi) <= 30): #16 and 23 for piece to intersect
-				parts = Commandi.split(" ",4) # 3 for piece to intersect
-				if (len(parts[4]) <= 5 and parts[0]+parts[1] != parts[3]+parts[4]):
-					speak = 0
+				#checks if string is usable 
+				if (len(Commandi) >= 20 and len(Commandi) <= 30): #16 and 23 for piece to intersect
+					parts = Commandi.split(" ",4) # 3 for piece to intersect
+					if (len(parts[4]) <= 5 and parts[0]+parts[1] != parts[3]+parts[4]):
+						speak = 0
+					else:
+						listenled.blink()
+						sleep(1)
+						speak = 1
 				else:
 					listenled.blink()
 					sleep(1)
 					speak = 1
-			else:
-				listenled.blink()
-				sleep(1)
-				speak = 1
+	except:
+		parts = [" "," "," "," ", " "]
 	return parts
 
 def senddisplay(first, second, third, fourth):
