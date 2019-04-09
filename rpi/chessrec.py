@@ -104,6 +104,10 @@ def parsend(sending):
 		else:
 			print("idk")
 		latch.wait_for_active()
+		data0.off()
+		data1.off()
+		data2.off()
+		data3.off()
 		sleep(.1)
 		# while (True):
 		# 	if(latch.value()):
