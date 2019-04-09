@@ -103,9 +103,10 @@ def parsend(sending):
 			print("1000")
 		else:
 			print("idk")
-		while (True):
-			if(latch.value()):
-				break
+		latch.wait_for_active()
+		# while (True):
+		# 	if(latch.value()):
+		# 		break
 		#raw_input("next\n")
 
 
@@ -183,7 +184,7 @@ def piecewtol(parts, i):
 	else:
 		print("P CONVERSION ERROR\n")
 		sleep(1)
-		exit = 1
+		ext = 1
 		piece = "lol"
 	return piece, ext
 
