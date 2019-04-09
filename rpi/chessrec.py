@@ -346,11 +346,11 @@ def moveinputconvert(firsttime, select):
 		if (not ex):
 			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
 			Commandsen = nat+number+nat1+number1
-			parsend(Commandsen)
+			#parsend(Commandsen)
 			sleep(1)
 		
 		ex = 0
-		return Commando
+		return Commando, Commandsen
 	
 	
 	#raw_input("")

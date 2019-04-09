@@ -143,7 +143,7 @@ class Player(object):
                     firsttime.Select = chessrec.moveinputconvert(firsttime.FirstTimeCheck, 0)
                     firsttime.FirstTimeCheck = 1
                     #Nik is a god
-                move = chessrec.moveinputconvert(firsttime.FirstTimeCheck, firsttime.Select)
+                move, send = chessrec.moveinputconvert(firsttime.FirstTimeCheck, firsttime.Select)
                 
                 #move=raw_input("\nMake a move : ")
                 if move == 'exit':
@@ -151,7 +151,7 @@ class Player(object):
                 else:
                     start, target = self.getposition(move)
                     if (start, target) in self.validmoves(board):
-                        return start, target
+                        return start, target, send
                     else:
                         raise IndexError
     def makesuscheck(self, start, target, board):
@@ -446,7 +446,7 @@ class Game(object):
                  player.turn(self.board)[30:45], " ")
             sleep(1)
             try:
-                start, target = player.getmove(self.board)
+                start, target, send = player.getmove(self.board)
             except (IndexError, ValueError):
                 self.refreshscreen(player)
                 print "\n\nPlease enter a valid move."
@@ -471,6 +471,7 @@ class Game(object):
                     return 2, player
                 else:
                     self.refreshscreen(player)
+                chessrec.parsend(send)
     def end(self, player, result):
         looser = player.name
         winner = player.opponent.name
