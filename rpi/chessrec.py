@@ -239,11 +239,11 @@ def speechinput():
 					if (len(parts[4]) <= 5 and parts[0]+parts[1] != parts[3]+parts[4]):
 						speak = 0
 					else:
-						listenled.blink()
+						senddisplay("Press the button", "to try again", " ", " ")
 						sleep(1)
 						speak = 1
 				else:
-					listenled.blink()
+					senddisplay("Press the button", "to try again", " ", " ")
 					sleep(1)
 					speak = 1
 	except:
