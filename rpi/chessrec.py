@@ -6,7 +6,7 @@ import spidev
 import sys
 import lcdfunc
 
-from gpiozero import Button, LED, DigitalOutputDevice
+from gpiozero import Button, LED, DigitalOutputDevice, DigitalInputDevice
 
 #initialize inputs & outputs (14 and 15 are taken by UART)
 readyspeak = Button(2) # pin 3
@@ -17,7 +17,7 @@ data0 = DigitalOutputDevice(26) # pin 37
 data1 = DigitalOutputDevice(19) # pin 35
 data2 = DigitalOutputDevice(13) # pin 33
 data3 = DigitalOutputDevice(6) # pin 31
-latch = Button(5) # pin 29
+latch = DigitalInputDevice(5,False,True) # pin 29
 
 #put startup tone here, pygame suggested solution
 #its gonna be frikken cool (actually this would go 
@@ -51,7 +51,7 @@ def spisend(sending):
 
 # sends over a diy 4- bit parallel connection
 def parsend(sending):
-	#latch.wait_for_release() #when pin goes high after going low (only the one at the bottom is needed i think)
+	
 	for pos in range(0,4):
 		if sending[pos] == "1":
 			data0.on()
@@ -103,7 +103,9 @@ def parsend(sending):
 			print("1000")
 		else:
 			print("idk")
-		latch.wait_for_press() #same as above
+		while (True):
+    		if(latch.value()):
+        		break
 		#raw_input("next\n")
 
 
