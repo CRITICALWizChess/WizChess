@@ -90,6 +90,7 @@ void zero(){ // Use instead of motorReset
     }
 }
 
+/*
 void motorReset(int16_t finishX, int16_t finishY){ // resets motor back to 7,11 to hit zero switchs
     // reset stuff, take distance to zero and move motor there
     // make sure electromagnet is off
@@ -133,6 +134,7 @@ void motorReset(int16_t finishX, int16_t finishY){ // resets motor back to 7,11 
         }
     }
 }
+*/
 
 void moveToStart(int16_t startX, int16_t startY){ // moves motor to starting position of move
     // reset stuff, take distance to zero and move motor there
@@ -452,13 +454,13 @@ int main(void){
         startX = par_receive();
         xpd_echo_int(startX,XPD_Flag_UnsignedDecimal); // StartX
         xpd_putc('\n');
-        startY = par_receive();
+        startY = par_receive() - 1;
         xpd_echo_int(startY, XPD_Flag_UnsignedDecimal); // StartY
         xpd_putc('\n');
         finishX = par_receive();
         xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal); // FinishX
         xpd_putc('\n');
-        finishY = par_receive();
+        finishY = par_receive() - 1;
         xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal); // FinishY
         xpd_putc('\n');
         xpd_puts("finish");
