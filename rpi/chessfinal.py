@@ -517,6 +517,7 @@ def newgame():
         print game.end(player, result)
         chessrec.senddisplay(game.end(player,result)[1:8], game.end(player,result)[9:12],\
              game.end(player,result)[13:20], game.end(player,result)[21:])
+        chessrec.parsend("9")
         sleep(10)
         #raw_input("\n\nPress any key to continue")
 def getplayers():
