@@ -95,6 +95,26 @@ void zero(){ // Use instead of motorReset
     }
 }
 
+void beginTurn(){
+    //North
+    gpio_write(0x00, GPIO_C); // DIR
+    for (int f = 0; f <= 350; f++)
+    {
+        gpio_write(0x40, GPIO_A); 
+        short_wait();
+        gpio_write(0x00, GPIO_A);
+        short_wait();
+    }
+    for (int f = 0; f <= 100; f++)
+    {
+        gpio_write(0x80, GPIO_A); 
+        short_wait();
+        gpio_write(0x00, GPIO_A);
+        short_wait();
+    }
+    xpd_puts("Ready\n");
+}
+
 /*
 void motorReset(int16_t finishX, int16_t finishY){ // resets motor back to 7,11 to hit zero switchs
     // reset stuff, take distance to zero and move motor there
@@ -147,14 +167,14 @@ void moveToStart(int16_t startX, int16_t startY){ // moves motor to starting pos
     gpio_write(0x00, GPIO_C); // sets DIR for forward
     int16_t moveX = 9 - startX;
     int16_t moveY = 7 - startY;
-    for (int f = 0; f <= 1200*moveY; f++) // MOVE NORTH ONLY
+    for (int f = 0; f <= 1140*moveY; f++) // MOVE NORTH ONLY
     {
         gpio_write(0x40, GPIO_A); 
         short_wait();
         gpio_write(0x00, GPIO_A);
         short_wait();
     }
-    for (int f = 0; f <= 1200*moveX; f++) // MOVE WEST ONLY
+    for (int f = 0; f <= 1140*moveX; f++) // MOVE WEST ONLY
     {
         gpio_write(0x80, GPIO_A); 
         short_wait();
@@ -167,9 +187,10 @@ void moveToLine(int16_t direction){ // Moves piece to corner of square in order 
     // any of the four edges of the square depending on direction input
     // from white perspective going cw 1-N, 2-E, 3-S, 4-W
     // NOTE: magnet is not toggled in this function
+    int16_t move = 570;
     if (direction == 1) { //North
         gpio_write(0x00, GPIO_C); // DIR
-        for (int f = 0; f <= 600; f++)
+        for (int f = 0; f <= move; f++)
         {
             gpio_write(0x40, GPIO_A); 
             short_wait();
@@ -179,7 +200,7 @@ void moveToLine(int16_t direction){ // Moves piece to corner of square in order 
     }
     else if (direction == 2){ //East
         gpio_write(0x80, GPIO_C); // DIR
-        for (int f = 0; f <= 600; f++)
+        for (int f = 0; f <= move; f++)
         {
             gpio_write(0x80, GPIO_A); 
             short_wait();
@@ -189,7 +210,7 @@ void moveToLine(int16_t direction){ // Moves piece to corner of square in order 
     }
     else if (direction == 3){ //South
         gpio_write(0x40, GPIO_C); // DIR
-        for (int f = 0; f <= 600; f++)
+        for (int f = 0; f <= move; f++)
         {
             gpio_write(0x40, GPIO_A); 
             short_wait();
@@ -199,7 +220,7 @@ void moveToLine(int16_t direction){ // Moves piece to corner of square in order 
     }
     else if (direction == 4){ //West
         gpio_write(0x00, GPIO_C); // DIR
-        for (int f = 0; f <= 600; f++)
+        for (int f = 0; f <= move; f++)
         {
             gpio_write(0x80, GPIO_A); 
             short_wait();
@@ -213,9 +234,10 @@ void moveToCorner(int16_t direction){ // Moves piece to corner of square in orde
     // any of the four courners depending on direction input
     // from white perspective going cw 1-NE, 2-SE, 3-SW, 4-NW
     // NOTE: magnet is not toggled in this function
+    int16_t move = 570;
     if (direction == 1) { //NE corner
         gpio_write(0x80, GPIO_C); // DIR
-        for (int f = 0; f <= 600; f++)
+        for (int f = 0; f <= move; f++)
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -225,7 +247,7 @@ void moveToCorner(int16_t direction){ // Moves piece to corner of square in orde
     }
     else if (direction == 2){ //SE corner
         gpio_write(0xC0, GPIO_C); // DIR
-        for (int f = 0; f <= 600; f++)
+        for (int f = 0; f <= move; f++)
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -235,7 +257,7 @@ void moveToCorner(int16_t direction){ // Moves piece to corner of square in orde
     }
     else if (direction == 3){ //SW corner
         gpio_write(0x40, GPIO_C); // DIR
-        for (int f = 0; f <= 600; f++)
+        for (int f = 0; f <= move; f++)
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -245,7 +267,7 @@ void moveToCorner(int16_t direction){ // Moves piece to corner of square in orde
     }
     else if (direction == 4){ //NW corner
         gpio_write(0x00, GPIO_C); // DIR
-        for (int f = 0; f <= 600; f++)
+        for (int f = 0; f <= move; f++)
         {
             gpio_write(0xC0, GPIO_A); 
             short_wait();
@@ -259,7 +281,7 @@ void moveStraight(int16_t direction, int16_t distance){
     // Straight line movement handled by either motor
     // direction codes: 1-North, 2-East, 3-South, 4-West
     // gpio_write(0x01, GPIO_B); // Magnet On
-    int16_t move = (1200*distance);
+    int16_t move = (1140*distance);
     if (direction == 1){
         gpio_write(0x00, GPIO_C); // set for forward
         for (int f = 0; f <= (move); f++) // ONLY MOVE NORTH
@@ -307,7 +329,7 @@ void moveDiagonal(int16_t direction, int16_t distance){
     // diagonal line movement handled by both motors simaltaniously
     // direction codes: 1-NE, 2-SE, 3-SW, 4-NW (from white perspective)
     // gpio_write(0x01, GPIO_B); // Magnet on
-    int16_t move = (1200*distance) + 500;
+    int16_t move = (1140*distance);
     if (direction == 1){
         gpio_write(0x80, GPIO_C); // DIR
         for (int f = 0; f <= move; f++) // NE
@@ -354,8 +376,9 @@ void moveDiagonal(int16_t direction, int16_t distance){
 void centerPiece(int16_t move){
     // no change to direction pins
     // move is either 1 for N/S, 2 for E/W
+    // int16_t dist = 140;
     if (move == 1){
-        for (int f = 0; f <= (move); f++) // N/S
+        for (int f = 0; f <= (220); f++) // N/S
         {
             gpio_write(0x40, GPIO_A); 
             short_wait();
@@ -364,9 +387,18 @@ void centerPiece(int16_t move){
         }
     }
     else if (move == 2){
-        for (int f = 0; f <= (move); f++) // E/W
+        for (int f = 0; f <= (220); f++) // E/W
         {
             gpio_write(0x80, GPIO_A); 
+            short_wait();
+            gpio_write(0x00, GPIO_A);
+            short_wait();
+        }
+    }
+    else if (move == 3){
+        for (int f = 0; f <= (150); f++) // dia
+        {
+            gpio_write(0xC0, GPIO_A); 
             short_wait();
             gpio_write(0x00, GPIO_A);
             short_wait();
@@ -459,273 +491,267 @@ int16_t par_receive(){ // parallel recieve from RPi
 }
 
 int main(void){
-    // Board dimensions 8 units in length and 12 units in width
-    // Respective player graveyards will be to their right hand side
-    // Initiate Board
-    int16_t board[8][10] =
-    {
-        {0,  2, 3, 4, 5, 6, 4, 3, 2, 0},
-        {0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 7, 7, 7, 7, 7, 7, 7, 7, 0},
-        {0, 8, 9, 10, 11, 12, 10, 9, 8, 0},
-    };
-
-    gpio_set_config((0xC0 << 8), GPIO_C); //sets pins 6 and 7 on C to output
-    gpio_set_config((0xC0 << 8), GPIO_A); //sets pins 6 and 7 on A to output
-    gpio_set_config((0x80 << 8), GPIO_D); //sets pins on B to input for zeroing
-    gpio_set_config((0x00 << 8), GPIO_E); // pins 4,5,6,7 for data, pin 3 reading complete
-    gpio_set_config((0x04 << 8), GPIO_I); // set pin I 2 as an output for comm
-
-    char recieve[] = "4247"; // variabe for comm with RPi 
-    int16_t turns = 1; // number of turns in game
-    bool is_white_turn = 1;
-    int16_t piece = 0; // to track piece that is selected
-    int16_t graveWhite[2] = {0,1}; // y,x
-    int16_t graveBlack[2] = {6,9}; // y,x
-    //int16_t deadwhite = 0, deadblack = 0;
-    // declare variables for starting position
-    int16_t startX = 0;
-    int16_t startY = 0;
-    // Variables for future position
-    int16_t finishX = 0;
-    int16_t finishY = 0;
-    // Variables for difference of position
-    int16_t diffX = 0;
-    int16_t diffY = 0;
-
+    // this loop will never end
     while(1){
+        // Board dimensions 8 units in length and 12 units in width
+        // Respective player graveyards will be to their right hand side
+        // Initiate Board
+        int16_t board[8][10] =
+        {
+            {0,  2, 3, 4, 5, 6, 4, 3, 2, 0},
+            {0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 7, 7, 7, 7, 7, 7, 7, 7, 0},
+            {0, 8, 9, 10, 11, 12, 10, 9, 8, 0},
+        };
 
-        long_wait();
-        zero();     // make sure motor is zero
-        /*
-        for (int i=0; i<4; i++){ // Assign the recieve values
-            if (i==0){
-               startX = (recieve[i] - '0'); // compensate for Graveyard
-            }
-            else if (i==1){
-                startY = (recieve[i] - '0') - 1;
-            }
-            else if (i==2){
-                finishX = (recieve[i] - '0');
-            }
-            else if (i==3){
-                finishY = (recieve[i] - '0') - 1;
-            }
-        }
-        // This is all for testing purposes
-        xpd_echo_int(startX,XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(startY, XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal);
-        xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal);
-        xpd_putc('\n');
-        */
-        
-        // location assignment from RPi
-        xpd_puts("Start");
-        xpd_putc('\n');
-        startX = par_receive();
-        xpd_echo_int(startX,XPD_Flag_UnsignedDecimal); // StartX
-        xpd_putc('\n');
-        if (startX == 9){
-            xpd_puts("END GAME");
-            int16_t board[8][10] =
-            {
-                {0,  2, 3, 4, 5, 6, 4, 3, 2, 0},
-                {0, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 7, 7, 7, 7, 7, 7, 7, 7, 0},
-                {0, 8, 9, 10, 11, 12, 10, 9, 8, 0},
-            };
-            int16_t turns = 1; // number of turns in game
-            bool is_white_turn = 1;
-            int16_t piece = 0; // to track piece that is selected
-            int16_t graveWhite[2] = {0,1}; // y,x
-            int16_t graveBlack[2] = {6,9}; // y,x
-            continue;
-        }
-        startY = par_receive() - 1;
-        xpd_echo_int(startY, XPD_Flag_UnsignedDecimal); // StartY
-        xpd_putc('\n');
-        finishX = par_receive();
-        xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal); // FinishX
-        xpd_putc('\n');
-        finishY = par_receive() - 1;
-        xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal); // FinishY
-        xpd_putc('\n');
-        xpd_puts("finish");
-        xpd_putc('\n');
-        
+        gpio_set_config((0xC0 << 8), GPIO_C); //sets pins 6 and 7 on C to output
+        gpio_set_config((0xC0 << 8), GPIO_A); //sets pins 6 and 7 on A to output
+        gpio_set_config((0x80 << 8), GPIO_D); //sets pins on B to input for zeroing
+        gpio_set_config((0x00 << 8), GPIO_E); // pins 4,5,6,7 for data, pin 3 reading complete
+        gpio_set_config((0x04 << 8), GPIO_I); // set pin I 2 as an output for comm
 
-        diffX = absolute(startX, finishX); // calculate x axis move distance 
-        diffY = absolute(startY, finishY); // calculate y axis move distance
+        //char recieve[] = "4247"; // variabe for comm with RPi 
+        int16_t turns = 1; // number of turns in game
+        bool is_white_turn = 1;
+        int16_t piece = 0; // to track piece that is selected
+        int16_t graveWhite[2] = {1,0}; // y,x
+        int16_t graveBlack[2] = {6,9}; // y,x
+        //int16_t deadwhite = 0, deadblack = 0;
+        // declare variables for starting position
+        int16_t startX = 0;
+        int16_t startY = 0;
+        // Variables for future position
+        int16_t finishX = 0;
+        int16_t finishY = 0;
+        // Variables for difference of position
+        int16_t diffX = 0;
+        int16_t diffY = 0;
 
-        // Is it a capture move? piece removal here
-        if (board[finishY][finishX] != 0){
-            //piece = board[finishY][finishX];
-            board[finishY][finishX] = 0;
-            if (is_white_turn){  // If its whites turn they are capturing black pieces
-                moveToStart(finishX,finishY); // move to capture location
-                pieceRemoval(finishX,finishY,graveBlack);
-                //board[graveBlack[0]][graveBlack[1]] = piece;
-                graveBlack[0] = graveBlack[0] - 1;
-                if (graveBlack[0] == 1){
-                    graveBlack[0] = 6;
+        while(1){
+
+            long_wait();
+            zero();     // make sure motor is zero
+            beginTurn();
+            /*
+            for (int i=0; i<4; i++){ // Assign the recieve values
+                if (i==0){
+                   startX = (recieve[i] - '0'); // compensate for Graveyard
                 }
-                xpd_puts("Black piece taken\n");
-            }
-            else if (!is_white_turn){
-                moveToStart(finishX, finishY); // move to capture location
-                pieceRemoval(finishX,finishY,graveWhite);
-                //board[graveWhite[0]][graveWhite[1]] = piece;
-                graveWhite[0] = graveWhite[0] + 1;
-                if (graveWhite[0] == 6){
-                    graveWhite[0] = 0;
+                else if (i==1){
+                    startY = (recieve[i] - '0') - 1;
                 }
-                xpd_puts("White piece taken\n");
+                else if (i==2){
+                    finishX = (recieve[i] - '0');
+                }
+                else if (i==3){
+                    finishY = (recieve[i] - '0') - 1;
+                }
             }
-            zero(); // zero after capture
-        }
-        // piece location ol' swapperoo
-        piece = board[startY][startX]; // swap piece position with end position
-        board[startY][startX] = 0;
-        board[finishY][finishX] = piece;
+            // This is all for testing purposes
+            xpd_echo_int(startX,XPD_Flag_UnsignedDecimal);
+            xpd_echo_int(startY, XPD_Flag_UnsignedDecimal);
+            xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal);
+            xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal);
+            xpd_putc('\n');
+            */
+        
+            // location assignment from RPi
+            xpd_puts("Start");
+            xpd_putc('\n');
+            startX = par_receive();
+            xpd_echo_int(startX,XPD_Flag_UnsignedDecimal); // StartX
+            xpd_putc('\n');
+            if (startX == 9){
+                break;
+            }
+            startY = par_receive() - 1;
+            xpd_echo_int(startY, XPD_Flag_UnsignedDecimal); // StartY
+            xpd_putc('\n');
+            finishX = par_receive();
+            xpd_echo_int(finishX, XPD_Flag_UnsignedDecimal); // FinishX
+            xpd_putc('\n');
+            finishY = par_receive() - 1;
+            xpd_echo_int(finishY, XPD_Flag_UnsignedDecimal); // FinishY
+            xpd_putc('\n');
+            xpd_puts("finish");
+            xpd_putc('\n');
+            
 
-        // display board state for rows 2 and 4
-        xpd_echo_int(diffX, XPD_Flag_UnsignedDecimal);
-        xpd_putc('\n');
-        xpd_echo_int(diffY, XPD_Flag_UnsignedDecimal);
-        xpd_putc('\n');
+            diffX = absolute(startX, finishX); // calculate x axis move distance 
+            diffY = absolute(startY, finishY); // calculate y axis move distance
 
-        //while(1){} /////////////////////////////////////////////////////////////////////// IT'S A TRAP /////////////////////////////////////////////////
+            // Is it a capture move? piece removal here
+            if (board[finishY][finishX] != 0){
+                //piece = board[finishY][finishX];
+                board[finishY][finishX] = 0;
+                if (is_white_turn) {  // If its whites turn they are capturing black pieces
+                    moveToStart(finishX,finishY); // move to capture location
+                    pieceRemoval(finishX,finishY,graveBlack);
+                    //board[graveBlack[0]][graveBlack[1]] = piece;
+                    graveBlack[0] = graveBlack[0] - 1;
+                    if (graveBlack[0] == 1){
+                        graveBlack[0] = 6;
+                    }
+                    xpd_puts("Black piece taken\n");
+                }
+                else {
+                    moveToStart(finishX, finishY); // move to capture location
+                    pieceRemoval(finishX,finishY,graveWhite);
+                    //board[graveWhite[0]][graveWhite[1]] = piece;
+                    graveWhite[0] = graveWhite[0] + 1;
+                    if (graveWhite[0] == 6){
+                        graveWhite[0] = 0;
+                    }
+                    xpd_puts("White piece taken\n");
+                }
+                zero(); // zero after capture
+                beginTurn();
+            }
+            // piece location ol' swapperoo
+            piece = board[startY][startX]; // swap piece position with end position
+            board[startY][startX] = 0;
+            board[finishY][finishX] = piece;
 
-        moveToStart(startX, startY); // move motors to start position
+            // display board state for rows 2 and 4
+            xpd_echo_int(diffX, XPD_Flag_UnsignedDecimal);
+            xpd_putc('\n');
+            xpd_echo_int(diffY, XPD_Flag_UnsignedDecimal);
+            xpd_putc('\n');
 
-        gpio_write(0x00, GPIO_D); // Magnet on
+            //while(1){} /////////////////////////////////////////////////////////////////////// IT'S A TRAP /////////////////////////////////////////////////
 
-        // Is the knight moving?  (diffX != 0) && (diffY != 0) && (diffX != diffY)
-        if ((piece == 3) | (piece == 9)){
-    	    //knight is moving somewhere
-            // 8 options for knight move, 4 to the north and 4 to the south
-            if (startY < finishY){
-                // 4 south options
-                // figure out east or west
+            moveToStart(startX, startY); // move motors to start position
+
+            gpio_write(0x00, GPIO_D); // Magnet on
+
+            // Is the knight moving?  (diffX != 0) && (diffY != 0) && (diffX != diffY)
+            if ((piece == 3) | (piece == 9)){
+                //knight is moving somewhere
+                // 8 options for knight move, 4 to the north and 4 to the south
+                if (startY < finishY){
+                    // 4 south options
+                    // figure out east or west
+                    if (startX < finishX){
+                        // SE, find difference on last two options
+                        moveToLine(2); // move to SE corner
+                        moveToLine(3);
+                        if (diffX > diffY){
+                            moveStraight(2,1); // move east 1 square
+                        }
+                        else {
+                            moveStraight(3,1); // move south 1 square
+                        }
+                        moveToCorner(2); // move to center of square
+                        centerPiece(3);
+                    }
+                    else{
+                        // SW, find the last two options
+                        moveToLine(4); // move to SW corner
+                        moveToLine(3);
+                        if (diffX > diffY){
+                            moveStraight(4,1); // west
+                        }
+                        else{
+                            moveStraight(3,1); // south
+                        }
+                        moveToCorner(3); // move back to center of square
+                        centerPiece(3);
+                    }
+                }
+                else if (startY > finishY){
+                    // 4 north options, figure out east or west
+                    if (startX < finishX){
+                        // NE, find difference on last two
+                        moveToLine(2);
+                        moveToLine(1);
+                        if (diffX > diffY){
+                            moveStraight(2,1); // East
+                        }
+                        else{
+                            moveStraight(1,1); // North
+                        }
+                        moveToCorner(1); // move back to center of square
+                        centerPiece(3);
+                    }
+                    else if (startX > finishX){
+                        // NW, find difference between last two
+                        moveToLine(4);
+                        moveToLine(1);
+                        if (diffX > diffY){
+                            moveStraight(4,1); // West
+                        }
+                        else {
+                            moveStraight(1,1); // North
+                        }
+                        moveToCorner(4); // move back to center of square
+                        centerPiece(3);
+                    }
+                }
+            }
+            // Diagonal
+            else if (diffX == diffY){
+                if (startX < finishX){ // EAST
+                    if (startY < finishY){ 
+                        moveDiagonal(2,diffX); //SE
+                    }
+                    else if (startY > finishY){
+                        moveDiagonal(1,diffX); //NE
+                    }
+                }
+                else if (startX > finishX){ // WEST
+                    if (startY < finishY){
+                        moveDiagonal(3,diffX); //SW
+                    }
+                    else if (startY > finishY){
+                        moveDiagonal(4,diffX); //NW
+                    }
+                }
+                centerPiece(3);
+            }
+            // analyze the X or row direction (horizontal movement)
+            else if (diffY == 0){
                 if (startX < finishX){
-                    // SE, find difference on last two options
-                    moveToCorner(2); // move to SE corner
-                    if (diffX > diffY){
-                        moveStraight(2,1); // move east 1 square
-                    }
-                    else {
-                        moveStraight(3,1); // move south 1 square
-                    }
-                    moveToCorner(2); // move to center of square
+                    moveStraight(2,diffX); // East
                 }
                 else{
-                    // SW, find the last two options
-                    moveToCorner(3); // move to SW corner
-                    if (diffX > diffY){
-                        moveStraight(4,1); // west
-                    }
-                    else{
-                        moveStraight(3,1); // south
-                    }
-                    moveToCorner(3); // move back to center of square
+                    moveStraight(4,diffX); // West
                 }
+                centerPiece(2);
             }
-            else if (startY > finishY){
-                // 4 north options, figure out east or west
-                if (startX < finishX){
-                    // NE, find difference on last two
-                    moveToCorner(1);
-                    if (diffX > diffY){
-                        moveStraight(2,1); // East
-                    }
-                    else{
-                        moveStraight(1,1); // North
-                    }
-                    moveToCorner(1); // move back to center of square
-                }
-                else if (startX > finishX){
-                    // NW, find difference between last two
-                    moveToCorner(4);
-                    if (diffX > diffY){
-                        moveStraight(4,1); // West
-                    }
-                    else {
-                        moveStraight(1,1); // North
-                    }
-                    moveToCorner(4); // move back to center of square
-                }
-            }
-        }
-        // Diagonal
-        else if (diffX == diffY){
-            if (startX < finishX){ // EAST
-                if (startY < finishY){ 
-                    moveDiagonal(2,diffX); //SE
-                }
-                else if (startY > finishY){
-                    moveDiagonal(1,diffX); //NE
-                }
-            }
-            else if (startX > finishX){ // WEST
+            // analyze the Y or Column direction (vertical movement)
+            else if (diffX == 0){
                 if (startY < finishY){
-                    moveDiagonal(3,diffX); //SW
+                    moveStraight(3,diffY); // South
+                    xpd_puts("South\n");
                 }
-                else if (startY > finishY){
-                    moveDiagonal(4,diffX); //NW
+                else{
+                    moveStraight(1,diffY); // North
+                    xpd_puts("North\n");
                 }
+                centerPiece(1);
             }
-        }
-        // analyze the X or row direction (horizontal movement)
-        else if (diffY == 0){
-            if (startX < finishX){
-                moveStraight(2,diffX); // East
+
+            gpio_write(0x80, GPIO_D); // Magnet off
+
+            if (turns % 2) {
+                // end of whites turn, switch to black
+                is_white_turn = 0;
+                xpd_puts("Black's turn\n");
             }
-            else{
-                moveStraight(4,diffX); // West
+            else {
+                // end of blacks turn, switch to white
+                is_white_turn = 1;
+                xpd_puts("White's turn\n");
             }
-            centerPiece(2);
+            turns += 1;
+            //zero(); // zero the motor   
+
+            //while(1){} /////////////////////////////////////////////////////////////////////// IT'S A TRAP /////////////////////////////////////////////////
         }
-        // analyze the Y or Column direction (vertical movement)
-        else if (diffX == 0){
-            if (startY < finishY){
-                moveStraight(3,diffY); // South
-                xpd_puts("South\n");
-            }
-            else{
-                moveStraight(1,diffY); // North
-                xpd_puts("North\n");
-            }
-            centerPiece(1);
-        }
-
-        gpio_write(0x80, GPIO_D); // Magnet off
-
-        if (turns % 2) {
-            // end of blacks turn, switch to white
-            is_white_turn = 1;
-            xpd_puts("White's turn");
-        }
-        else {
-            // end of whites turn, switch to black
-            is_white_turn = 0;
-            xpd_puts("Black's turn");
-        }
-
-        zero(); // zero the motor   
-
-        while(1){} /////////////////////////////////////////////////////////////////////// IT'S A TRAP /////////////////////////////////////////////////
-
     }
     return 0;
 }
-
-

@@ -45,30 +45,33 @@ void *button_reading_thread(void *)
 void zero(){ // Use instead of motorReset
     // space for flags if break doesn't work
     gpio_write(0xC0, GPIO_C); // DIR, SE
-    while(true){
-        gpio_write(0x01, GPIO_B); //turns magnet off
+    gpio_write(0x80, GPIO_D); //turns magnet off
+    uint16_t port_d_state = gpio_read(GPIO_D);
+    bool is_NS_pressed = (port_d_state & (1<<5)); //supposedly read pin D5
+    bool is_EW_pressed = (port_d_state & (1<<6)); //supposedly D6
+    while((is_NS_pressed == 1) || (is_EW_pressed == 1)){
         uint16_t port_d_state = gpio_read(GPIO_D);
         bool is_NS_pressed = (port_d_state & (1<<5)); //supposedly read pin D5
         bool is_EW_pressed = (port_d_state & (1<<6)); //supposedly D6
         
         if (is_EW_pressed == 1){ // moves if EW axis !zeroed
-          gpio_write(0x80, GPIO_A);
-          short_wait();
-          xpd_puts("hey\n");
+            gpio_write(0x80, GPIO_A);
+            short_wait();
         }
         if (is_EW_pressed == 0){ // moves if NS axis !zeroed
-          gpio_write(0x40, GPIO_A);
-          short_wait();
-          xpd_puts("sup\n");
+            gpio_write(0x40, GPIO_A);
+            short_wait();
         }
         gpio_write(0x00, GPIO_A);
         short_wait();
+        /*
         if ((is_NS_pressed == 0) && (is_EW_pressed == 0)){ // exit when both are pressed
-          xpd_puts("zeroed bitch\n");
-          reallylong_wait();
-          break;
+            xpd_puts("Zeroed\n");
+            break;
         }
+        */
     }
+    xpd_puts("zero\n");
 }
 
 // main() runs in thread 0
@@ -85,7 +88,7 @@ int main(void)
   gpio_set_config((0xC0 << 8), GPIO_A);
 
   // Set port D as inputs
-  gpio_set_config((0x00 << 8), GPIO_D);
+  gpio_set_config((0x80 << 8), GPIO_D);
 
   // Configure thread 1
   //thread_setup(button_reading_thread, NULL, 1);

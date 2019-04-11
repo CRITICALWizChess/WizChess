@@ -225,7 +225,7 @@ void moveStraight(int16_t direction, int16_t distance){
     // direction codes: 1-North, 2-East, 3-South, 4-West
     if (direction == 1){
         gpio_write(0x00, GPIO_B); //turns magnet on
-        gpio_write(0x00, GPIO_C); // set for forward
+        gpio_write(0x40, GPIO_C); // set for forward
         for (int f = 0; f <= (1200*distance); f++) // ONLY MOVE NORTH
         {
             gpio_write(0x40, GPIO_A); 
@@ -247,7 +247,7 @@ void moveStraight(int16_t direction, int16_t distance){
     }
     if (direction == 3){
         gpio_write(0x00, GPIO_B); //turns magnet on
-        gpio_write(0x40, GPIO_C); // set for backwards
+        gpio_write(0x00, GPIO_C); // set for backwards
         for (int f = 0; f <= 1200*distance; f++) // ONLY MOVE SOUTH
         {
             gpio_write(0x40, GPIO_A); 
@@ -258,7 +258,7 @@ void moveStraight(int16_t direction, int16_t distance){
     }
     if (direction == 4){
         gpio_write(0x00, GPIO_B); //turns magnet on
-        gpio_write(0x00, GPIO_C); // set for forward
+        gpio_write(0xC0, GPIO_C); // set for forward
         for (int f = 0; f <= 1200*distance; f++) // ONLY MOVE WEST
         {
             gpio_write(0x80, GPIO_A); 
