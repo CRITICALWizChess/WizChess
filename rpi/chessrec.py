@@ -346,6 +346,7 @@ def moveinputconvert(firsttime, select):
 		number1, ex = numberwtod(parts, 4)
 		nat, nat1, ex = natotod(parts)
 		Commando = " "
+		Commandsen = " "
 		if (not ex):
 			Commando = parts[0][0].lower()+number+parts[3][0].lower()+number1
 			Commandsen = nat+number+nat1+number1
