@@ -18,6 +18,8 @@ following changes will have to be made:
 - add .lm and .dic files
 In ~/speech_recognition change init.py to reflect changes
 
+the .lm amd .dic files used in the final version were named 8590
+
 There is code gathered from other sources, any borrowed code 
 has had the header comments left intact
 
